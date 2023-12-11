@@ -1,0 +1,41 @@
+{
+  "title": "Villas and chalets",
+  "subtitle": "Each house in our collection is a match between our criteria of excellence and a love at first sight. Our advisors help you with total transparency to find the perfect house that matches your every desire.",
+  "rentals": [
+    {
+      "name": "Chalet des Sources",
+      "description": "A part of Megève's historic heritage in the heart of the village, the Chalet des Sœurs has been reborn and welcomes you, combining modernity and authenticity. Here, the warmth of old wood, all the comforts of modernity and the beauty of art work together in harmony.\n\nImagine waking up to a breathtaking view of the mountains, then starting your day with a refreshing dip in the heated pool. After a pleasant lunch in one of the resort's restaurants, return to relax in the chalet's hammam or sauna. In the evening, gather round the fire to share anecdotes from the day or organise a film night in the cinema. To round off the day in style, gaze up at the stars from the lush garden, lulled by the quietude of the surrounding countryside.",
+      "specs": [4, 2, 1],
+      "calendar_url": "https://www.remcode.net/gite/cal.ics",
+      "videos": [ 
+        {
+          "embedUrl":"https://www.youtube.com/embed/qkehup4b4yM?si=vOtPV1Z-JMVHN54e"
+        }
+      ],
+      "prices": [
+        500,
+        600,
+        650,
+        975,
+        600,
+        500,
+        675
+      ]
+    },
+    {
+      "name": "Appartement Magnifique",
+      "description": "Appartement Matignon is a gem of refined luxury in the heart of Paris. This extraordinary villa exudes an aura of sophistication and elegance, its architectural beauty casting a spell upon those who gaze upon its grand façade.\n\nSip your morning coffee as you overlook the bustling cityscape from your private balcony. Step out and find yourself immediately immersed in the vibrant pulse of the city, with shops, restaurants, and bars merely a minute's walk away. When the day comes to a close, retreat back to your opulent sanctuary, stoke the fireplace, and curl up with a good book, while the City of Lights twinkles outside your window.",
+      "specs": [6, 3, 2],
+      "calendar_url": "https://www.airbnb.com/calendar/ical/35450605.ics?s=fdfe02b1f240b8b92b457b9153f41fcf",
+      "prices": [
+        600,
+        650,
+        700,
+        1100,
+        675,
+        625,
+        725
+      ]
+    }
+  ]
+}
