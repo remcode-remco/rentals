@@ -1,8 +1,7 @@
-import { useState, TouchEventHandler, useEffect } from "react"
-import Heading from "./shared/Heading"
+import { useState, TouchEventHandler } from "react"
+import Heading2 from "./shared/Heading2"
 import Paragraph from "./shared/Paragraph"
 import Rental, { TextRental } from "./Rental"
-import { SaveEdit } from "./constants/constants"
 
 export interface TextRentals {
   title:string;
@@ -10,13 +9,12 @@ export interface TextRentals {
   rentals: [ TextRental ]
 }
 
-const Rentals = ({content,password,editingSection, setEditingSection,setLockScroll}:{content:TextRentals,password:string,editingSection:number,setEditingSection:(editingSection:number)=>void,setLockScroll:(lockScroll:boolean)=>void}) => {
+const Rentals = ({content,setLockScroll}:{content:TextRentals,setLockScroll:(lockScroll:boolean)=>void}) => {
   const [showRental, setShowRental] = useState<number|null>(null)
   const [touchStartX, setTouchStartX] = useState<number|null>(null)
   const [touchEndX, setTouchEndX] = useState<number|null>(null)
   const [touchStartY, setTouchStartY] = useState<number|null>(null)
   const [touchEndY, setTouchEndY] = useState<number|null>(null)
-  const [changes, setChanges] = useState<TextRentals>()
 
   // the required distance between touchStart and touchEnd to be detected as a swipe
   const minSwipeDistance = 100 
@@ -65,26 +63,6 @@ const Rentals = ({content,password,editingSection, setEditingSection,setLockScro
     }
   }
 
-  
-	//@ts-ignore
-  const handleChange = (e: any) => {
-    if (changes) {
-      setChanges({
-        ...changes,
-        [e.target.name]:e.target.value
-      })
-    }
-  }
-  
-	//@ts-ignore
-  const handleUpload = () => {
-    SaveEdit(password,editingSection,setEditingSection,changes)
-  }
-  
-  useEffect(()=>{
-    if (content) {setChanges(content)}
-  },[content])
-  
   if (content) {
     return (
       <section>
@@ -92,7 +70,7 @@ const Rentals = ({content,password,editingSection, setEditingSection,setLockScro
           className="mx-auto max-w-screen-xl px-4 py-8 sm:py-12 sm:px-6 lg:py-16 lg:px-8 bg-green-200"
         >
           <div className="grid grid-cols-1 gap-2">
-            <Heading password={password} text={content.title} />
+            <Heading2 text={content.title} />
             <Paragraph text={content.subtitle} />
           </div>
           <div className="mt-2 grid lg:grid-cols-2">
@@ -105,7 +83,7 @@ const Rentals = ({content,password,editingSection, setEditingSection,setLockScro
         </div>
         <div 
           onClick={()=>{setShowRental(null);setLockScroll(false)}} 
-          className={`z-10 fixed top-0 bottom-0 left-0 right-0 bg-white/80 ${showRental !== null ? 'translate-y-0' : 'translate-y-full'}`}
+          className={`z-10 fixed top-0 bottom-0 left-0 right-0 transition-opacity bg-white/80 ${showRental !== null ? 'opacity-1 translate-y-0' : 'opacity-0 translate-y-full'}`}
         ></div>
         <div
           onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}
@@ -118,8 +96,6 @@ const Rentals = ({content,password,editingSection, setEditingSection,setLockScro
         </div>
       </section>
     )
-  } else {
-    return <div>Loading...</div>
   }
 }
 

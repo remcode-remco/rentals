@@ -11,10 +11,17 @@ import Footer from './Footer'
 import { useEffect, useState } from 'react'
 import IconAdmin from './shared/IconAdmin'
 import { FetchData } from './constants/constants'
+import PopupMessage from './shared/PopupMessage'
+import Loading from './Loading'
 
 export interface AppContext {
+  password:string|null;
   siteContents:SiteContents|null|undefined;
   language:string;
+  editingSection:number;
+  setEditingSection:(editingSection:number)=>void;
+  setShowLoading:(showLoading:boolean)=>void;
+  setMessage:(message:Message)=>void;
 }
 
 interface SiteContents {
@@ -29,15 +36,22 @@ interface SiteContents {
 
 export const RentalsContext = createContext<AppContext|null>(null)
 
+export interface Message {
+  error: boolean;
+  message: string;
+}
+
 const App = () => {
   //@ts-ignore
   const [lockScroll,setLockScroll]=useState<boolean>(false)
   const [scrollPosition, setScrollPosition] = useState<number>(0)
   const [editingSection, setEditingSection] = useState<number>(0)
-  const [password,setPassword] = useState<string>("")
+  const [password,setPassword] = useState<string|null>(null)
   const [showAdmin,setShowAdmin] = useState<boolean>(false)
   const [siteContents,setSiteContents] = useState<SiteContents|null|undefined>()
-  const [language,setLanguage] = useState<string>(navigator.language.split('-')[0])
+  const [language,setLanguage] = useState<string>(navigator.language)
+  const [message,setMessage] = useState<Message|null>(null)
+  const [showLoading,setShowLoading] = useState<boolean>(false)
 
   useEffect(() => {
     if (lockScroll) {
@@ -58,26 +72,27 @@ const App = () => {
   }, [lockScroll, scrollPosition])
 
   useEffect(()=>{
-    let url = 'http://localhost:8000/php/get_json.php?language=' + language.split('-')[0]
-    FetchData(url)
+    FetchData(language.split('-')[0])
     .then(data=>{
       setSiteContents(data)
     })
   },[language])
   
-  const contextValue = {siteContents, language}
-
+  const contextValue = {password, siteContents, language, editingSection, setEditingSection, setShowLoading, setMessage}
+  
   if (siteContents) {
     return (
       <RentalsContext.Provider value={contextValue}>
-        <Navigation content={{navigation:siteContents.navigation, languages:siteContents.languages}} password={password} editingSection={editingSection} setEditingSection={setEditingSection} language={language} setLanguage={setLanguage} />
-        <Hero content={siteContents.hero} password={password} editingSection={editingSection} setEditingSection={setEditingSection} />
-        <Area content={siteContents.area} password={password} editingSection={editingSection} setEditingSection={setEditingSection} />
-        <Rentals content={siteContents.rentals} password={password} editingSection={editingSection} setEditingSection={setEditingSection} setLockScroll={setLockScroll} />
-        <Contact content={siteContents.contact} password={password} editingSection={editingSection} setEditingSection={setEditingSection} />
-        <Footer content={{contact: siteContents.contact, navigation:siteContents.navigation, languages:siteContents.languages}} language={language} setLanguage={setLanguage} />
-        <IconAdmin showAdmin={showAdmin} setShowAdmin={setShowAdmin} size={"80"} color={"text-black"} />
-        {showAdmin && <Admin setShowAdmin={setShowAdmin} setPassword={setPassword} />}
+        <Navigation content={{navigation:siteContents.navigation, languages:siteContents.languages}} setLanguage={setLanguage} />
+        <Hero content={siteContents.hero} />
+        <Area content={siteContents.area} setLockScroll={setLockScroll} />
+        <Rentals content={siteContents.rentals} setLockScroll={setLockScroll} />
+        <Contact content={siteContents.contact} />
+        <Footer content={{contact: siteContents.contact, navigation:siteContents.navigation, languages:siteContents.languages}} setLanguage={setLanguage} />
+        {!password && <IconAdmin showAdmin={showAdmin} setShowAdmin={setShowAdmin} size={"80"} color={"text-black"} /> }
+        {showAdmin && <Admin setMessage={setMessage} setShowAdmin={setShowAdmin} setPassword={setPassword} />}
+        <PopupMessage message={message} setMessage={setMessage} />
+        <Loading showLoading={showLoading} setLockScroll={setLockScroll} />
       </RentalsContext.Provider>
     )
   } else {

@@ -11,7 +11,8 @@ interface ContentFooter {
 	languages: [ string ];
 }
 
-const Footer = ({content,language,setLanguage}:{content:ContentFooter,language:string,setLanguage:(language:string)=>void}) => {
+const Footer = ({content,setLanguage}:{content:ContentFooter,setLanguage:(language:string)=>void}) => {
+	
   const { contact, navigation, languages } = content
 	
   if (contact && navigation) {
@@ -48,13 +49,11 @@ const Footer = ({content,language,setLanguage}:{content:ContentFooter,language:s
 					<div className="mb-14 mt-16 w-full [border-bottom:1.7px_solid_rgb(0,_0,_0)]"></div>
 					<div className="flex flex-row justify-between max-[991px]:items-center max-[767px]:flex-col max-[767px]:items-start max-[479px]:flex-col-reverse">
 						<Menu content={navigation} />
-            <Language languages={languages} language={language} setLanguage={setLanguage} />
+            <Language languages={languages} setLanguage={setLanguage} />
 					</div>
 				</div>
 			</footer>
 		)
-	} else {
-		return <div>Loading...</div>
 	}
 }
 

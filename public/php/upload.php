@@ -1,4 +1,11 @@
 <?php
+    //TMP remove when uploading ===============================================================================================
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+    header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+    //========================================================================================================================
+    
+
     function checkFilePermissions($thisFile, $desiredPermissions) {
         $currentPermissions = fileperms($thisFile) & 0777;
 
@@ -19,28 +26,24 @@
 
     $jsonInput = file_get_contents('php://input');
     $data = json_decode($jsonInput, true);
+    
 
-    // Check if only the password is provided
+    // Check if only the password is provided to mock a logged in session for frontend
     if (isset($data['password']) && count($data) === 1) {
-        $userPassword = $data['password'];
-
-        if ($userPassword === $expectedPassword) {
+        if ($data['password'] === $expectedPassword) {
             $response = ['status' => 'authenticated'];
         } else {
             $response = ['status' => 'authentication_failed'];
         }
 
-        header('Content-Type: application/json');
         echo json_encode($response);
         exit;
     }
 
-    if ($userPassword !== $expectedPassword) {
+    if ($data['password'] !== $expectedPassword) {
         echo json_encode(['status' => 'error', 'message' => 'Invalid password']);
         exit;
     }
-
-    $thisFile = 'upload.php';
 
     if (!isset($data['editingSection'])) {
         exit('No editing section provided.');
@@ -48,29 +51,30 @@
 
     switch ($data['editingSection']) {
         case 1:
-            $filePath = 'navigation_nl.json';
+            $fileName = 'navigation.json';
             break;
         case 2:
-            $filePath = 'hero_nl.json';
+            $fileName = 'hero.json';
             break;
         case 3:
-            $filePath = 'area_nl.json';
+            $fileName = 'area.json';
             break;
         case 4:
-            $filePath = 'rentals_nl.json';
+            $fileName = 'rentals.json';
             break;
         case 5:
-            $filePath = 'contact_nl.json';
+            $fileName = 'contact.json';
             break;
         case 6:
-            $filePath = 'footer_nl.json';
+            $fileName = 'footer.json';
             break;
         default:
-            $filePath = 'tmp_nl.json'; 
+            $fileName = 'tmp_nl.json'; 
             break;
     }
 
     $jsonData = $data['jsonData'];
+    $filePath = __DIR__ . '/../json/' . $data['language'] . '/' . $fileName;
 
     if (file_put_contents($filePath, json_encode($jsonData, JSON_PRETTY_PRINT)) !== false) {
         echo json_encode(['status' => 'success', 'message' => 'Data saved successfully']);

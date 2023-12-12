@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import Compressor from 'compressorjs'
 
-const Upload = () => {
+const ImageCompressUpload = () => {
   const [compressedFile, setCompressedFile] = useState<Blob|null>(null);
   
   const handleCompressedUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,4 +53,4 @@ const Upload = () => {
   )
 }
 
-export default Upload
+export default ImageCompressUpload

@@ -1,11 +1,11 @@
 import React from "react"
 import Heading3 from "./shared/Heading3"
 import RentalSpec from "./RentalSpec"
-import RentalImageGallery from "./RentalImageGallery"
-import RentalImage from "./RentalImage";
-import Paragraph from "./shared/Paragraph";
+import ImageGallery from "./ImageGallery"
+import Image from "./Image"
+import Paragraph from "./shared/Paragraph"
 import RentalCalendar from "./RentalCalendar"
-import RentalPrices from "./RentalPrices";
+import RentalPrices from "./RentalPrices"
 
 export interface TextRental {
   name:string;
@@ -22,9 +22,9 @@ const Rental = ({index,rental,overview}:{index:number,rental:TextRental,overview
     <Heading3 text={rental.name} />
     <Paragraph text={rental.description} />
     {overview ?
-      <RentalImage image={rental.pictures[0]} />
+      <Image image={rental.pictures[0]} />
     :
-      <RentalImageGallery images={rental.pictures} />
+      <ImageGallery images={rental.pictures} />
     }
     <div className="grid grid-cols-3">
       {rental.specs.length > 0 && rental.specs.map((spec,index)=>

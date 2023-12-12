@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react"
+import { useContext } from "react";
+import { AppContext, RentalsContext } from "./App";
 import IconHome from "./shared/IconHome"
-import { SaveEdit } from "./constants/constants"
-import Loading from "./Loading"
 import ReactFlagsSelect from 'react-flags-select'
 
 interface ContentNavigation {
@@ -38,7 +37,11 @@ const MenuItem = ({label}:{label:string}) => (
   )
 
 
-export const Language = ({languages,language,setLanguage}:{languages:[string],language:string,setLanguage:(language:string)=>void}) => {
+export const Language = ({languages,setLanguage}:{languages:[string],setLanguage:(language:string)=>void}) => {
+  
+  const contextValue = useContext(RentalsContext)
+  const { language } = contextValue as AppContext
+  
   // ============ not pretty =================
   const fixLanguagesArray = (languages:[string]) => languages.map((str) => (str === 'en' ? 'GB' : str.toUpperCase()))
   const fixSelectedLanguage = (language:string) => language === 'en' ? 'GB' : language.toUpperCase()
@@ -46,7 +49,7 @@ export const Language = ({languages,language,setLanguage}:{languages:[string],la
   // =========================================
   
   return (
-    <div className="z-50 flex items-center space-x-2">
+    <div className="z-40 flex items-center space-x-2">
       <ReactFlagsSelect
         countries={fixLanguagesArray(languages)}
         selected={fixSelectedLanguage(language)} 
@@ -57,33 +60,16 @@ export const Language = ({languages,language,setLanguage}:{languages:[string],la
 }
 
 const Navigation = (
-    {content,password,editingSection,setEditingSection,language,setLanguage}:
-    {content:ContentNavigation,password:string,editingSection:number,setEditingSection:(editingSection:number)=>void,language:string,setLanguage:(language:string)=>void}
+    {content,setLanguage}:
+    {content:ContentNavigation,setLanguage:(language:string)=>void}
   ) => {
-  const [changes, setChanges] = useState<TextNavigation>()
+    
   const { navigation, languages } = content
   
-  const handleChange = (e: any) => {
-    if (changes) {
-      setChanges({
-        ...changes,
-        [e.target.name]:e.target.value
-      })
-    }
-  }
-  
-  const handleUpload = () => {
-    SaveEdit(password,editingSection,setEditingSection,changes)
-  }
-
-  useEffect(()=>{
-    if (navigation) {setChanges(navigation)}
-  },[navigation])
-
   if (content) {
     return (
       <header>
-        <nav className="z-50 bg-white border-gray-200 px-2 lg:px-6 py-2.5 dark:bg-gray-800">
+        <nav className="z-40 bg-white border-gray-200 px-2 lg:px-6 py-2.5 dark:bg-gray-800">
           <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <a className="flex gap-2 items-center block text-xl font-semibold whitespace-nowrap ">
               <IconHome size="40" color="text-green-800" />
@@ -97,13 +83,11 @@ const Navigation = (
               </button>
             </div>
             <Menu content={navigation} />
-            <Language languages={languages} language={language} setLanguage={setLanguage} />
+            <Language languages={languages} setLanguage={setLanguage} />
           </div>
         </nav>
       </header>
     )
-  } else {
-    return <Loading />
   }
 }
 

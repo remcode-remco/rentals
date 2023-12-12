@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react"
-import { FetchData, SaveEdit } from "./constants/constants.tsx"
-import Heading from "./shared/Heading"
+import { useContext, useEffect, useState } from "react"
+import { SaveEdit } from "./constants/constants.tsx"
+import Heading2 from "./shared/Heading2.tsx"
+import { AppContext, RentalsContext } from "./App.tsx";
 
 export interface TextContact {
   title:string;
@@ -10,7 +11,10 @@ export interface TextContact {
   address:string;
 }
 
-const Contact = ({content,password,editingSection, setEditingSection}:{content:TextContact,password:string,editingSection:number,setEditingSection:(editingSection:number)=>void}) => {
+const Contact = ({content}:{content:TextContact}) => {
+  const contextValue = useContext(RentalsContext)
+  const { password, editingSection, language } = contextValue as AppContext
+  
   const [changes, setChanges] = useState<TextContact>()
   
   const handleChange = (e: any) => {
@@ -23,7 +27,7 @@ const Contact = ({content,password,editingSection, setEditingSection}:{content:T
   }
   
   const handleUpload = () => {
-    SaveEdit(password,editingSection,setEditingSection,changes)
+    SaveEdit(language,password,editingSection,changes)
   }
 
   useEffect(()=>{
@@ -36,7 +40,7 @@ const Contact = ({content,password,editingSection, setEditingSection}:{content:T
         <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
             <div className="lg:col-span-2 lg:py-12">
-              <Heading password={password} text={content.title} />
+              <Heading2 text={content.title} />
               <p className="max-w-xl text-lg">
                 {content.text}
               </p>

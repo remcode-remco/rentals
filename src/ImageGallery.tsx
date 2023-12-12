@@ -1,9 +1,8 @@
 import ImageGallery from "react-image-gallery"
 import "react-image-gallery/styles/css/image-gallery.css"
 
-const RentalImageGallery = ({images}:{images:any}) => {
-
-  function extractYouTubeVideoId(embedUrl) {
+const ImageGalleryComponent = ({images}:{images:any}) => {
+  function extractYouTubeVideoId(embedUrl: string) {
     // Match the video ID using a regular expression
     const match = embedUrl.match(/(?:embed\/|v=)([a-zA-Z0-9_-]{11})/);
   
@@ -30,7 +29,7 @@ const RentalImageGallery = ({images}:{images:any}) => {
     })
   }
   
-  const renderVideo = (item) => {
+  const renderVideo = (item: { embedUrl: string | undefined; }) => {
     return (
       <div className="video-wrapper">
         <iframe
@@ -46,7 +45,6 @@ const RentalImageGallery = ({images}:{images:any}) => {
 
 
   const modifiedPicturesArray = modifyPicturesArray(images)
-  
   return (
     <ImageGallery 
       items={modifiedPicturesArray} 
@@ -56,6 +54,6 @@ const RentalImageGallery = ({images}:{images:any}) => {
   )
 }
 
-export default RentalImageGallery
+export default ImageGalleryComponent
 
 

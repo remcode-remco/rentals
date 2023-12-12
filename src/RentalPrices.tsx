@@ -1,21 +1,14 @@
 import { AppContext, RentalsContext } from './App'
 import { useContext } from 'react'
-import Loading from './Loading'
 
 const RentalPrices = ({rentalIndex}:{rentalIndex:number}) => {
   const contextValue = useContext(RentalsContext)
-
-  if (!contextValue) {
-    return <Loading />
-  }
-
   const { siteContents, language } = contextValue as AppContext
 
   if (siteContents) {
     return (
       <div>
         <table className="min-w-full divide-y divide-gray-200">
-          {/* ... */}
           <tbody className="bg-white divide-y divide-gray-200">
             {siteContents.dates.map((date, index) => (
               <tr key={index}>
@@ -27,8 +20,6 @@ const RentalPrices = ({rentalIndex}:{rentalIndex:number}) => {
         </table>
       </div>
     )
-  } else {
-    return <Loading />
   }
 }
 
