@@ -14,7 +14,10 @@ export interface TextArea {
   pictures: [ {original:string} ];
 }
 
-const AreaDetail = ({overview,content,password,setShowArea,setLockScroll}:{overview:boolean,content:TextArea,password:string|null,setShowArea:(showArea:boolean)=>void,setLockScroll:(lockScroll:boolean)=>void}) => {
+const AreaDetail = ({overview,content,setShowArea,setLockScroll}:{overview:boolean,content:TextArea,setShowArea:(showArea:boolean)=>void,setLockScroll:(lockScroll:boolean)=>void}) => {
+  const contextValue = useContext(RentalsContext)
+
+  const { password } = contextValue as AppContext
 
   return (
     <div
@@ -50,15 +53,12 @@ const AreaDetail = ({overview,content,password,setShowArea,setLockScroll}:{overv
 }
 
 const Area = ({content,setLockScroll}:{content:TextArea,setLockScroll:(lockScroll:boolean)=>void}) => {
-  const contextValue = useContext(RentalsContext)
-
-  const { password } = contextValue as AppContext
   const [showArea, setShowArea] = useState<boolean>(false)
   
   if (content) {
     return (
       <section className="relative">
-        <AreaDetail content={content} overview={true} setShowArea={setShowArea} password={password} setLockScroll={setLockScroll} />
+        <AreaDetail content={content} overview={true} setShowArea={setShowArea} setLockScroll={setLockScroll} />
         <div 
           onClick={()=>{setShowArea(false);setLockScroll(false)}} 
           className={`z-10 fixed top-0 bottom-0 left-0 right-0 bg-white/80 ${showArea ? 'translate-y-0' : 'translate-y-full'}`}
@@ -69,7 +69,7 @@ const Area = ({content,setLockScroll}:{content:TextArea,setLockScroll:(lockScrol
             ${showArea ? 'translate-y-0' : 'translate-y-full' }`}
         >
           <div className="overflow-y-auto h-full px-4">
-            {showArea && <AreaDetail content={content} overview={false} setShowArea={setShowArea} password={password} setLockScroll={setLockScroll} />}
+            {showArea && <AreaDetail content={content} overview={false} setShowArea={setShowArea} setLockScroll={setLockScroll} />}
           </div>
         </div>
       </section>

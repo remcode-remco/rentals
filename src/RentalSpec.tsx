@@ -2,17 +2,16 @@ import IconBath from "./shared/IconBath"
 import IconBed from "./shared/IconBed"
 import IconPeople from "./shared/IconPeople"
 
-
-const RentalSpec = ({spec,index}:{spec:number,index:number}) => (
+const RentalSpec = ({spec,specNo}:{spec:string,specNo:number}) => (
   <div className="flex items-center px-5">
-    {index === 0 ?
+    {specNo === 1 ?
       <IconPeople size="20" color="text-green-800" />
-    : index === 1 ?
+    : specNo === 2 ?
       <IconBed size="20" color="text-green-800" />
     :
       <IconBath size="20" color="text-green-800" />
     }
-    {spec.toString()}
+    {spec}
   </div>
 )
 

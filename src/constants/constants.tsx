@@ -1,9 +1,10 @@
-const apiUrl = 'http://localhost:8000/php/'
+export const apiUrl = 'http://localhost:8000/php/'
 const url_upload = apiUrl + 'upload.php'
+const url_delete = apiUrl + 'delete_image.php'
 const url_get_json = apiUrl + 'get_json.php?language='
 
 export const VerifyPassword = async (password:string) => {
-  const requestData = {
+  const dataSending = {
     password,
   }
 
@@ -13,7 +14,7 @@ export const VerifyPassword = async (password:string) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(requestData),
+      body: JSON.stringify(dataSending),
     })
 
     const data = await response.json()
@@ -25,7 +26,7 @@ export const VerifyPassword = async (password:string) => {
 
 export const SaveEdit = async (language:string,password:string|null,editingSection: number,data:any) => {
   if (password) {
-    const requestData = {
+    const dataSending = {
       language,
       password,
       editingSection,
@@ -38,7 +39,31 @@ export const SaveEdit = async (language:string,password:string|null,editingSecti
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(requestData),
+        body: JSON.stringify(dataSending),
+      })
+
+      const data = await response.json()
+      return data
+    } catch (error) {
+      console.error('Error uploading data:', error)
+    }
+  }
+}
+
+export const DeleteImage = async (password:string|null,filename:string) => {
+  if (password) {
+    const dataSending = {
+      password,
+      filename
+    }
+
+    try {
+      const response = await fetch(url_delete, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dataSending),
       })
 
       const data = await response.json()

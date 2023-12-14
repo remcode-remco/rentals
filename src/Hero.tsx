@@ -1,7 +1,7 @@
 import Heading1 from "./shared/Heading1.tsx"
 import { AppContext, RentalsContext } from "./App.tsx"
 import Edit from "./shared/Edit.tsx"
-import EditImage from "./shared/EditImage.tsx";
+import HeroImageEdit from "./HeroImageEdit.tsx";
 import { useContext } from "react";
 
 export interface TextHero {
@@ -25,7 +25,7 @@ const Hero = ({content}:{content:TextHero}) => {
           {password && <Edit section={2} />}
           <Heading1 text={content.title} subtext={content.subtitle} />
         </div>
-        {password && <EditImage section={2} />}
+        {password && <HeroImageEdit section={2} />}
       </div>
     </section>
   )

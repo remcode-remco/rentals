@@ -1,9 +1,9 @@
 import { useContext, useRef } from 'react'
-import ImageUpload from '../ImageUpload';
-import { AppContext, RentalsContext } from '../App';
-import IconImage from './IconImage';
+import HeroImageUpload from './HeroImageUpload'
+import { AppContext, RentalsContext } from './App'
+import IconImage from './shared/IconImage'
 
-const EditImage = ({section}:{section:number}) => {
+const HeroImageEdit = ({section}:{section:number}) => {
   const contextValue = useContext(RentalsContext)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -19,7 +19,7 @@ const EditImage = ({section}:{section:number}) => {
     if (event.target.files) {
       setShowLoading(true)
       const image:Blob = event.target.files[0]
-      ImageUpload({section,image,password}).then((result)=>{
+      HeroImageUpload({section,image,password}).then((result)=>{
         if (result.status === "success") {
           setShowLoading(false)
           setMessage({error:false,message:"Image Uploaded"})
@@ -45,4 +45,4 @@ const EditImage = ({section}:{section:number}) => {
   )
 }
 
-export default EditImage
+export default HeroImageEdit

@@ -1,15 +1,20 @@
-import { useState, TouchEventHandler } from "react"
+import { useState, TouchEventHandler, useContext } from "react"
 import Heading2 from "./shared/Heading2"
 import Paragraph from "./shared/Paragraph"
 import Rental, { TextRental } from "./Rental"
+import Edit from "./shared/Edit";
+import { RentalsContext, AppContext } from "./App";
 
 export interface TextRentals {
   title:string;
-  subtitle: string;
+  text: string;
   rentals: [ TextRental ]
 }
 
 const Rentals = ({content,setLockScroll}:{content:TextRentals,setLockScroll:(lockScroll:boolean)=>void}) => {
+  const contextValue = useContext(RentalsContext)
+  const { password } = contextValue as AppContext
+  
   const [showRental, setShowRental] = useState<number|null>(null)
   const [touchStartX, setTouchStartX] = useState<number|null>(null)
   const [touchEndX, setTouchEndX] = useState<number|null>(null)
@@ -69,13 +74,14 @@ const Rentals = ({content,setLockScroll}:{content:TextRentals,setLockScroll:(loc
         <div
           className="mx-auto max-w-screen-xl px-4 py-8 sm:py-12 sm:px-6 lg:py-16 lg:px-8 bg-green-200"
         >
-          <div className="grid grid-cols-1 gap-2">
+          <div className="relative grid grid-cols-1 gap-2">
             <Heading2 text={content.title} />
-            <Paragraph text={content.subtitle} />
+            <Paragraph text={content.text} />
+            {password && <Edit section={4} />}
           </div>
           <div className="mt-2 grid lg:grid-cols-2">
             {content.rentals.map((rental: TextRental,index:number)=>(
-              <div key={index} onClick={()=>{setShowRental(index);setLockScroll(true)}}>
+              <div key={index} onClick={()=>{!password && setShowRental(index);!password && setLockScroll(true)}}>
                 <Rental index={index} rental={rental} overview={true} />
               </div>
             ))}

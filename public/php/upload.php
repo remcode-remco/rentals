@@ -5,20 +5,7 @@
     header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
     //========================================================================================================================
     
-
-    function checkFilePermissions($thisFile, $desiredPermissions) {
-        $currentPermissions = fileperms($thisFile) & 0777;
-
-        return $currentPermissions === $desiredPermissions;
-    }
-
-    $thisFile = 'upload.php';
-
-    // Check file permissions for password_config.php
-    $passwordConfigFile = 'password_config.php';
-    if (!checkFilePermissions($passwordConfigFile, 0700)) {
-        exit('Insufficient file permissions for password_config.php.');
-    }
+    include 'security_check.php';
 
     // ============== set your password in password_config.php ==============
     include $passwordConfigFile;
@@ -26,7 +13,6 @@
 
     $jsonInput = file_get_contents('php://input');
     $data = json_decode($jsonInput, true);
-    
 
     // Check if only the password is provided to mock a logged in session for frontend
     if (isset($data['password']) && count($data) === 1) {
@@ -75,6 +61,10 @@
 
     $jsonData = $data['jsonData'];
     $filePath = __DIR__ . '/../json/' . $data['language'] . '/' . $fileName;
+
+    error_log($data['password']);
+    error_log($data['editingSection']);
+    error_log($data['jsonData']['rentals'][1]['name']);
 
     if (file_put_contents($filePath, json_encode($jsonData, JSON_PRETTY_PRINT)) !== false) {
         echo json_encode(['status' => 'success', 'message' => 'Data saved successfully']);

@@ -17,7 +17,7 @@ const compressedImage = ({image}:{image:Blob}):Promise<Blob> => {
   })
 }
 
-const ImageUpload = async ({section,image,password}:{section:number,image:Blob,password:string|null}) => {
+const HeroImageUpload = async ({section,image,password}:{section:number,image:Blob,password:string|null}) => {
   if (password) {
     let url = ''
     if (section === 2) {
@@ -43,4 +43,4 @@ const ImageUpload = async ({section,image,password}:{section:number,image:Blob,p
   }
 }    
 
-export default ImageUpload
+export default HeroImageUpload

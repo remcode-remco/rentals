@@ -23,7 +23,7 @@ const EditFormInput = ({text,name,handleChange}:{text:string,name:string,handleC
 
 const Edit = ({section}:{section:number}) => {
   const contextValue = useContext(RentalsContext)
-  const { password, language, setMessage, siteContents, editingSection, setEditingSection, setShowLoading } = contextValue as AppContext
+  const { password, language, setMessage, siteContents, editingSection, setEditingSection, setShowLoading, setSiteContents } = contextValue as AppContext
   const [changes, setChanges] = useState<any>(null)
   const [dataStructure,setDataStructure] = useState<DataStructureType|null>(null)
 
@@ -32,7 +32,6 @@ const Edit = ({section}:{section:number}) => {
       if (editingSection === 1) {
         setChanges(siteContents.navigation)
         setDataStructure({
-          title: ["navigation", "title"],
           home: ["navigation", "home"],
           area: ["navigation", "area"],
           rentals: ["navigation", "rentals"],
@@ -54,14 +53,7 @@ const Edit = ({section}:{section:number}) => {
         setChanges(siteContents.rentals)
         setDataStructure({
           title: ["rentals", "title"],
-          subtitle: ["rentals", "subtitle"],
-          name: ["rentals", "rentals", "name"],
-          description: ["rentals", "rentals", "description"],
-          pictureOriginal: ["rentals", "rentals", "pictures", "original"],
-          specs: ["rentals", "rentals", "specs"],
-          calendarUrl: ["rentals", "rentals", "calendar_url"],
-          videosEmbedUrl: ["rentals", "rentals", "videos", "embedUrl"],
-          prices: ["rentals", "rentals", "prices"],
+          text: ["rentals", "text"],
         })
       } else if (editingSection === 5) {
         setChanges(siteContents.contact)
@@ -95,6 +87,37 @@ const Edit = ({section}:{section:number}) => {
         setMessage({error:false,message:"Saved succesfully!"})
         setShowLoading(false)
         setEditingSection(0)
+        if (editingSection === 1) {
+          //@ts-ignore
+          setSiteContents((prevSiteContents: SiteContents) => ({
+            ...prevSiteContents,
+            navigation: changes,
+          }))
+        } else if (editingSection === 2) {
+          //@ts-ignore
+          setSiteContents((prevSiteContents: SiteContents) => ({
+            ...prevSiteContents,
+            hero: changes,
+          }))
+        } else if (editingSection === 3) {
+          //@ts-ignore
+          setSiteContents((prevSiteContents: SiteContents) => ({
+            ...prevSiteContents,
+            area: changes,
+          }))
+        } else if (editingSection === 4) {
+          //@ts-ignore
+          setSiteContents((prevSiteContents: SiteContents) => ({
+            ...prevSiteContents,
+            rentals: changes,
+          }))
+        } else if (editingSection === 5) {
+          //@ts-ignore
+          setSiteContents((prevSiteContents: SiteContents) => ({
+            ...prevSiteContents,
+            contact: changes,
+          }))
+        } 
       } else {
         setMessage({error:true,message:"Error saving data."})
         setShowLoading(false)
@@ -112,8 +135,8 @@ const Edit = ({section}:{section:number}) => {
             <IconPencil size={"60"} color={""} onClick={() => setEditingSection(section)} />
           </div>
         : 
-          <div className="z-40 fixed top-0 bottom-0 left-0 right-0 flex items-center justify-center w-full h-full bg-red-300">
-            <div className="bg-white mx-auto p-3 shadow-xl md:w-3/6">
+          <div className="z-40 fixed top-0 bottom-0 left-0 right-0 flex items-center justify-center w-full h-full bg-red-300 py-5">
+            <div className="h-auto bg-white mx-auto m-3 p-3 shadow-xl md:w-3/6 overflow-y-auto">
               {siteContents && dataStructure &&
                 <EditForm>
                   {Object.keys(dataStructure).map((fieldName) => (

@@ -27,22 +27,26 @@
     foreach ($fileNames as $fileName) {
         $filePath = $jsonFilesDirectory . $fileName . '.json';
 
-        // Extract the base filename without anything after and including '_' to add to the returned json
-        $baseFileName = explode('_', $fileName)[0];
-
         if (file_exists($filePath)) {
             $jsonContent = file_get_contents($filePath);
             $decodedContent = json_decode($jsonContent, true);
 
-            foreach ($imageFiles as $imageFile) {
-                if ($baseFileName === 'rentals') {
+                if ($fileName === 'rentals') {
+                    // clear pictures array for each rental
+                    foreach ($decodedContent['rentals'] as &$rental) {
+                        $rental['pictures'] = [];
+                    }     
+                    unset($rental); 
+
                     foreach ($imageFiles as $imageFile) {
                         // Check if the file starts with a number followed by an underscore
                         if (preg_match('/^(\d+)_/', $imageFile, $matches)) {
                             $index = intval($matches[1]);
-                            $decodedContent['rentals'][$index]['pictures'][] = ['original' => "/images/{$imageFile}"];                    
+                            // add to the pictures array of the specific rental index
+                            $decodedContent['rentals'][$index]['pictures'][] = ['original' => "/images/{$imageFile}"];
                         }
                     }
+
                     if (isset($decodedContent['rentals']) && is_array($decodedContent['rentals'])) {
                         foreach ($decodedContent['rentals'] as $rentalIndex => $rental) {
                             if (isset($rental['videos'])) {
@@ -55,7 +59,8 @@
                     }
                 }
     
-                if ($baseFileName === 'area') {
+                if ($fileName === 'area') {
+                    $decodedContent['pictures'] = [];
                     foreach ($imageFiles as $imageFile) {
                         // Check if the file starts with 'area_'
                         if (preg_match('/^area_/', $imageFile, $matches)) {
@@ -70,10 +75,9 @@
                     }                
                 }
             
-            $fileContents[$baseFileName] = $decodedContent;
-            }
+            $fileContents[$fileName] = $decodedContent;
         } else {
-            $fileContents[$baseFileName] = ['status' => 'error', 'message' => 'File not found'];
+            $fileContents[$fileName] = ['status' => 'error', 'message' => 'File not found'];
         }
     }
 
@@ -95,26 +99,3 @@
 
     echo json_encode($fileContents, JSON_PRETTY_PRINT);
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

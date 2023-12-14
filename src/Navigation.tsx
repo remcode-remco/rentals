@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AppContext, RentalsContext } from "./App";
 import IconHome from "./shared/IconHome"
 import ReactFlagsSelect from 'react-flags-select'
+import Edit from "./shared/Edit";
 
 interface ContentNavigation {
   navigation: TextNavigation;
@@ -38,7 +39,6 @@ const MenuItem = ({label}:{label:string}) => (
 
 
 export const Language = ({languages,setLanguage}:{languages:[string],setLanguage:(language:string)=>void}) => {
-  
   const contextValue = useContext(RentalsContext)
   const { language } = contextValue as AppContext
   
@@ -63,6 +63,8 @@ const Navigation = (
     {content,setLanguage}:
     {content:ContentNavigation,setLanguage:(language:string)=>void}
   ) => {
+    const contextValue = useContext(RentalsContext)
+    const { password } = contextValue as AppContext
     
   const { navigation, languages } = content
   
@@ -70,7 +72,7 @@ const Navigation = (
     return (
       <header>
         <nav className="z-40 bg-white border-gray-200 px-2 lg:px-6 py-2.5 dark:bg-gray-800">
-          <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+          <div className="relative flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <a className="flex gap-2 items-center block text-xl font-semibold whitespace-nowrap ">
               <IconHome size="40" color="text-green-800" />
               {navigation.title}
@@ -84,6 +86,7 @@ const Navigation = (
             </div>
             <Menu content={navigation} />
             <Language languages={languages} setLanguage={setLanguage} />
+            {password && <Edit section={1} />}
           </div>
         </nav>
       </header>

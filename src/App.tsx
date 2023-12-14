@@ -22,9 +22,10 @@ export interface AppContext {
   setEditingSection:(editingSection:number)=>void;
   setShowLoading:(showLoading:boolean)=>void;
   setMessage:(message:Message)=>void;
+  setSiteContents:(SiteContents:SiteContents)=>void;
 }
 
-interface SiteContents {
+export interface SiteContents {
   navigation: TextNavigation;
   hero: TextHero;
   area: TextArea;
@@ -78,7 +79,7 @@ const App = () => {
     })
   },[language])
   
-  const contextValue = {password, siteContents, language, editingSection, setEditingSection, setShowLoading, setMessage}
+  const contextValue = {password, siteContents, language, editingSection, setEditingSection, setShowLoading, setMessage, setSiteContents}
   
   if (siteContents) {
     return (
