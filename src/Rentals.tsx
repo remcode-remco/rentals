@@ -21,6 +21,7 @@ const Rentals = ({content,setLockScroll}:{content:TextRentals,setLockScroll:(loc
   const [touchEndX, setTouchEndX] = useState<number|null>(null)
   const [touchStartY, setTouchStartY] = useState<number|null>(null)
   const [touchEndY, setTouchEndY] = useState<number|null>(null)
+  const [evenNoOfRentals] = useState<boolean>((content.rentals.length % 2) === 0)
 
   // the required distance between touchStart and touchEnd to be detected as a swipe
   const minSwipeDistance = 100 
@@ -79,9 +80,11 @@ const Rentals = ({content,setLockScroll}:{content:TextRentals,setLockScroll:(loc
           <Paragraph text={content.text} />
           {password && <Edit section={4} />}
         </div>
-        <div className="mt-2 grid grid-cols-2 gap-2">
+        <div className={`mt-2 grid gap-2
+                          ${evenNoOfRentals || content.rentals.length < 4 ? "grid-cols-2 lg:grid-cols-4" : "grid-cols-2 lg:grid-cols-3"}`}
+        >
           {content.rentals.map((rental: TextRental,index:number)=>(
-            <div className="h-full" key={index} onClick={()=>{!password && setShowRental(index);!password && setLockScroll(true)}}>
+            <div className={`h-full ${rental === content.rentals[content.rentals.length-1] && !evenNoOfRentals && ""}`} key={index} onClick={()=>{!password && setShowRental(index);!password && setLockScroll(true)}}>
               <Rental index={index} rental={rental} overview={true} />
             </div>
           ))}
