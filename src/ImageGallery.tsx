@@ -31,10 +31,8 @@ const ImageGalleryComponent = ({images}:{images:any}) => {
   
   const renderVideo = (item: { embedUrl: string | undefined; }) => {
     return (
-      <div className="video-wrapper">
-        <iframe
-          width="100%"
-          height="480px"
+      <div className="aspect-square">
+        <iframe className="w-full h-full"
           src={item.embedUrl}
           allowFullScreen
           title="ex"
@@ -50,6 +48,7 @@ const ImageGalleryComponent = ({images}:{images:any}) => {
       items={modifiedPicturesArray} 
       showThumbnails={false}
       showPlayButton
+      additionalClass="h-full w-full object-cover"
     />
   )
 }

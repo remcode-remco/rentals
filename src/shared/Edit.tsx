@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { AppContext, RentalsContext } from "../App"
-import IconPencil from "./IconPencil"
+import IconPencil from "./icons/IconPencil"
 import SaveButton from "./SaveButton"
 import { SaveEdit } from "../constants/constants"
 
@@ -130,9 +130,9 @@ const Edit = ({section}:{section:number}) => {
   }  
 
     return (
-        editingSection === 0 || editingSection !== section ? 
-          <div className="z-30 absolute -translate-y-full w-full h-full bottom-0 flex items-end justify-end">
-            <IconPencil size={"60"} color={""} onClick={() => setEditingSection(section)} />
+        editingSection === -1 || editingSection !== section ? 
+          <div className="z-40 absolute right-0 top-0">
+            <IconPencil size={"50"} color={""} onClick={() => setEditingSection(section)} />
           </div>
         : 
           <div className="z-40 fixed top-0 bottom-0 left-0 right-0 flex items-center justify-center w-full h-full bg-red-300 py-5">

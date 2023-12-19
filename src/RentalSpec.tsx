@@ -1,6 +1,6 @@
-import IconBath from "./shared/IconBath"
-import IconBed from "./shared/IconBed"
-import IconPeople from "./shared/IconPeople"
+import IconBath from "./shared/icons/IconBath"
+import IconBed from "./shared/icons/IconBed"
+import IconPeople from "./shared/icons/IconPeople"
 
 const RentalSpec = ({spec,specNo}:{spec:string,specNo:number}) => (
   <div className="flex items-center px-5">

@@ -1,13 +1,21 @@
 {
     "title": "Villas and chalets",
-    "text": "Each house in our collection is a match between our criteria of excellence and a love at first sight. Our advisors help you with total transparency to find the perfect house that matches your every desire.",
+    "text": "Our exclusive rentals at Villa Serenity Retreat offer an enchanting fusion of modern comfort and Mediterranean charm. Each meticulously curated space promises a distinctive experience\u2014whether you choose the intimate tranquility of the Azure Horizon Suite, the golden hues and warmth of Sunset Haven Villa, or the grandeur of the Majestic Seaview Residence. Immerse yourself in luxurious interiors, relish private terraces with panoramic views, and unwind in surroundings where the timeless beauty of the Mediterranean becomes the backdrop for an unforgettable stay. Our rentals are designed to elevate your escape, providing a harmonious blend of opulence and serenity for an unparalleled coastal retreat.",
+    "dates": [
+        "2024\/01\/14",
+        "2024-04-06",
+        "2024-06-01",
+        "2024-07-06",
+        "2024-08-31",
+        "2024-10-26"
+    ],
     "rentals": [
         {
-            "name": "Chalet des Sources",
-            "description": "A part of Meg\u00e8ve's historic heritage in the heart of the village, the Chalet des S\u0153urs has been reborn and welcomes you, combining modernity and authenticity. Here, the warmth of old wood, all the comforts of modernity and the beauty of art work together in harmony.\n\nImagine waking up to a breathtaking view of the mountains, then starting your day with a refreshing dip in the heated pool. After a pleasant lunch in one of the resort's restaurants, return to relax in the chalet's hammam or sauna. In the evening, gather round the fire to share anecdotes from the day or organise a film night in the cinema. To round off the day in style, gaze up at the stars from the lush garden, lulled by the quietude of the surrounding countryside.",
+            "name": "Tranquil Oasis",
+            "description": "Immerse yourself in the serenity of the Azure Horizon Suite. The interior boasts contemporary elegance, while the expansive terrace offers breathtaking views of the Mediterranean. Perfect for intimate getaways.",
             "people": "3",
-            "bed": "2",
-            "bath": "1",
+            "beds": "2",
+            "baths": "1",
             "calendar_url": "https:\/\/www.remcode.net\/gite\/cal.ics",
             "videos": [
                 {
@@ -25,19 +33,13 @@
             ],
             "pictures": [
                 {
-                    "original": "\/images\/0_img93837345.webp"
+                    "original": "\/images\/0_0_b9d9122a.jpg"
                 },
                 {
-                    "original": "\/images\/0_img9837345.webp"
+                    "original": "\/images\/0_0_d8cb5dba.jpg"
                 },
                 {
-                    "original": "\/images\/0_img987343545.webp"
-                },
-                {
-                    "original": "\/images\/0_img987345.webp"
-                },
-                {
-                    "original": "\/images\/0_img98df37345.webp"
+                    "original": "\/images\/0_0_e0a1907b.jpg"
                 },
                 {
                     "embedUrl": "https:\/\/www.youtube.com\/embed\/qkehup4b4yM?si=vOtPV1Z-JMVHN54e"
@@ -45,33 +47,48 @@
             ]
         },
         {
-            "name": "Appartement Magnifique",
-            "description": "Appartement Matignon is a gem of refined luxury in the heart of Paris. This extraordinary villa exudes an aura of sophistication and elegance, its architectural beauty casting a spell upon those who gaze upon its grand fa\u00e7ade.\n\nSip your morning coffee as you overlook the bustling cityscape from your private balcony. Step out and find yourself immediately immersed in the vibrant pulse of the city, with shops, restaurants, and bars merely a minute's walk away. When the day comes to a close, retreat back to your opulent sanctuary, stoke the fireplace, and curl up with a good book, while the City of Lights twinkles outside your window.",
-            "people": "333",
-            "bed": "2",
-            "bath": "1",
+            "name": "Golden Retreat",
+            "description": "Experience the warmth of Sunset Haven Villa, where the golden hues of the setting sun paint the surroundings. Indulge in luxurious interiors and unwind on the private patio overlooking the coast.",
+            "people": "6",
+            "beds": "4",
+            "baths": "2",
             "calendar_url": "https:\/\/www.airbnb.com\/calendar\/ical\/35450605.ics?s=fdfe02b1f240b8b92b457b9153f41fcf",
             "prices": [
                 600,
                 650,
-                700,
-                1100,
+                "799",
+                "110000",
                 675,
-                625,
+                "699",
+                725
+            ],
+            "pictures": []
+        },
+        {
+            "name": "Seaside Grandeur",
+            "description": "A residence of grand proportions, the Majestic Seaview Residence combines opulence with comfort. Enjoy the spacious living areas, a fully equipped kitchen, and a private garden with direct access to the Mediterranean shoreline.",
+            "people": "6",
+            "beds": "44",
+            "baths": "2",
+            "calendar_url": "https:\/\/www.airbnb.com\/calendar\/ical\/35450605.ics?s=fdfe02b1f240b8b92b457b9153f41fcf",
+            "prices": [
+                600,
+                650,
+                "799",
+                "110000",
+                675,
+                "699",
                 725
             ],
             "pictures": [
                 {
-                    "original": "\/images\/1_0_img93837345.webp"
+                    "original": "\/images\/2_2_0cec0dd3.jpg"
                 },
                 {
-                    "original": "\/images\/1_0_img9837345.webp"
+                    "original": "\/images\/2_2_3c9603b1.jpg"
                 },
                 {
-                    "original": "\/images\/1_0_img98df37345.webp"
-                },
-                {
-                    "original": "\/images\/1_area_blabla.jpg"
+                    "original": "\/images\/2_2_91f5156a.jpg"
                 }
             ]
         }

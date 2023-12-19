@@ -1,11 +1,22 @@
 {
-  "title": "Villas and chalets",
-  "subtitle": "Each house in our collection is a match between our criteria of excellence and a love at first sight. Our advisors help you with total transparency to find the perfect house that matches your every desire.",
+  "title": "Nos villas",
+  "text": "Nos locations exclusives à la Villa Serenity Retreat offrent une fusion enchanteresse entre le confort moderne et le charme méditerranéen. Chaque espace méticuleusement aménagé promet une expérience distinctive, que vous optiez pour l'intimité tranquille de la Suite Horizon Azur, les teintes dorées et la chaleur de la Villa Havre du Coucher de Soleil, ou la grandeur de la Résidence Majestueuse Vue sur la Mer. Immergez-vous dans des intérieurs luxueux, savourez des terrasses privées avec des vues panoramiques, et détendez-vous dans un cadre où la beauté intemporelle de la Méditerranée devient le décor d'un séjour inoubliable. Nos locations sont conçues pour sublimer votre escapade, offrant un mélange harmonieux d'opulence et de sérénité pour une retraite côtière sans égale.",
+  "dates": [
+      "2024-01-06",
+      "2024-04-06",
+      "2024-06-01",
+      "2024-07-06",
+      "2024-08-31",
+      "2024-10-26",
+      "2024-12-21"
+  ],
   "rentals": [
     {
-      "name": "Chalet des Sources",
-      "description": "A part of Megève's historic heritage in the heart of the village, the Chalet des Sœurs has been reborn and welcomes you, combining modernity and authenticity. Here, the warmth of old wood, all the comforts of modernity and the beauty of art work together in harmony.\n\nImagine waking up to a breathtaking view of the mountains, then starting your day with a refreshing dip in the heated pool. After a pleasant lunch in one of the resort's restaurants, return to relax in the chalet's hammam or sauna. In the evening, gather round the fire to share anecdotes from the day or organise a film night in the cinema. To round off the day in style, gaze up at the stars from the lush garden, lulled by the quietude of the surrounding countryside.",
-      "specs": [4, 2, 1],
+      "name": "Oasis Tranquille",
+      "description": "Plongez dans la sérénité de la Suite Horizon Azur. L'intérieur allie élégance contemporaine, tandis que la terrasse spacieuse offre une vue imprenable sur la Méditerranée. Parfait pour des escapades intimes.",
+      "people": "3",
+      "beds": "2",
+      "baths": "1",
       "calendar_url": "https://www.remcode.net/gite/cal.ics",
       "videos": [ 
         {
@@ -23,9 +34,28 @@
       ]
     },
     {
-      "name": "Appartement Magnifique",
-      "description": "Appartement Matignon is a gem of refined luxury in the heart of Paris. This extraordinary villa exudes an aura of sophistication and elegance, its architectural beauty casting a spell upon those who gaze upon its grand façade.\n\nSip your morning coffee as you overlook the bustling cityscape from your private balcony. Step out and find yourself immediately immersed in the vibrant pulse of the city, with shops, restaurants, and bars merely a minute's walk away. When the day comes to a close, retreat back to your opulent sanctuary, stoke the fireplace, and curl up with a good book, while the City of Lights twinkles outside your window.",
-      "specs": [6, 3, 2],
+      "name": "Retraite Dorée",
+      "description": "Découvrez la chaleur de la Villa Havre du Coucher de Soleil, où les teintes dorées du soleil couchant peignent les environs. Laissez-vous choyer dans des intérieurs luxueux et détendez-vous sur la terrasse privée avec vue sur la côte.",
+      "people": "6",
+      "beds": "4",
+      "baths": "2",
+      "calendar_url": "https://www.airbnb.com/calendar/ical/35450605.ics?s=fdfe02b1f240b8b92b457b9153f41fcf",
+      "prices": [
+        600,
+        650,
+        700,
+        1100,
+        675,
+        625,
+        725
+      ]
+    },
+    {
+      "name": "Grandeur en Bord de Mer",
+      "description": "Une résidence de proportions grandioses, la Résidence Majestueuse Vue sur la Mer allie opulence et confort. Profitez des espaces de vie spacieux, d'une cuisine entièrement équipée et d'un jardin privé avec un accès direct au littoral méditerranéen.",
+      "people": "6",
+      "beds": "4",
+      "baths": "2",
       "calendar_url": "https://www.airbnb.com/calendar/ical/35450605.ics?s=fdfe02b1f240b8b92b457b9153f41fcf",
       "prices": [
         600,

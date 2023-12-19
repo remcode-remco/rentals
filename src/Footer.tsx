@@ -1,14 +1,14 @@
 import { Language, Menu } from "./Navigation"
-import IconEmail from "./shared/IconEmail"
-import IconMarker from "./shared/IconMarker"
-import IconPhone from "./shared/IconPhone"
+import IconEmail from "./shared/icons/IconEmail"
+import IconMarker from "./shared/icons/IconMarker"
+import IconPhone from "./shared/icons/IconPhone"
 import { TextNavigation } from "./Navigation"
 import { TextContact } from "./Contact"
 
 interface ContentFooter {
 	contact:TextContact;
 	navigation:TextNavigation;
-	languages: [ string ];
+	languages: string[];
 }
 
 const Footer = ({content,setLanguage}:{content:ContentFooter,setLanguage:(language:string)=>void}) => {

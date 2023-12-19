@@ -62,10 +62,6 @@
     $jsonData = $data['jsonData'];
     $filePath = __DIR__ . '/../json/' . $data['language'] . '/' . $fileName;
 
-    error_log($data['password']);
-    error_log($data['editingSection']);
-    error_log($data['jsonData']['rentals'][1]['name']);
-
     if (file_put_contents($filePath, json_encode($jsonData, JSON_PRETTY_PRINT)) !== false) {
         echo json_encode(['status' => 'success', 'message' => 'Data saved successfully']);
     } else {

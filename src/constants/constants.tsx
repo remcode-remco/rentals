@@ -24,7 +24,7 @@ export const VerifyPassword = async (password:string) => {
   }
 }
 
-export const SaveEdit = async (language:string,password:string|null,editingSection: number,data:any) => {
+export const SaveEdit = async (language:string,password:string|null|undefined,editingSection: number,data:any) => {
   if (password) {
     const dataSending = {
       language,
@@ -50,7 +50,7 @@ export const SaveEdit = async (language:string,password:string|null,editingSecti
   }
 }
 
-export const DeleteImage = async (password:string|null,filename:string) => {
+export const DeleteImage = async (password:string|null|undefined,filename:string) => {
   if (password) {
     const dataSending = {
       password,

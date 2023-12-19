@@ -1,11 +1,11 @@
 import React, { useContext, useRef } from 'react'
 import Compressor from 'compressorjs'
 import { RentalsContext, AppContext, SiteContents } from './App'
-import IconPlus from './shared/icons/IconPlus'
 import { apiUrl } from './constants/constants'
-import { TextRental } from './Rental'
+import { TextArea } from './Area'
+import IconImage from './shared/icons/IconImage'
 
-const RentalImageUpload = ({index}:{index:number}) => {
+const AreaImageUpload = () => {
   const contextValue = useContext(RentalsContext)
   const { password, setMessage, siteContents, setSiteContents } = contextValue as AppContext
 
@@ -29,7 +29,7 @@ const RentalImageUpload = ({index}:{index:number}) => {
           const formData = new FormData()
           formData.append('compressedFile', compressedResult)
           formData.append('filename', image.name)
-          formData.append('rentalIndex', index.toString())
+          formData.append('rentalIndex', "area")
           formData.append('password', password)
       
           let url:string = apiUrl + 'upload_image.php'
@@ -41,17 +41,14 @@ const RentalImageUpload = ({index}:{index:number}) => {
             .then(data => {
               if (data.status === "success") {
                 setMessage({error:false,message:"Upload succesfull"})
-                const newRentals: TextRental[] = [...siteContents.rentals.rentals]
-                const newPictures: { original: string }[] = [...newRentals[index].pictures, { original: data.message }]
-                newRentals[index].pictures = newPictures
+                const newArea:TextArea = siteContents.area
+                const newPictures: { original: string }[] = [...newArea.pictures, { original: data.message }]
+                newArea.pictures = newPictures
 
-                //@ts-ignore
+                // @ts-ignore
                 setSiteContents((prevSiteContents: SiteContents) => ({
                   ...prevSiteContents,
-                  rentals: {
-                    ...prevSiteContents.rentals,
-                    rentals: newRentals,
-                  },
+                  area: newArea
                 }))
               }
             })
@@ -64,8 +61,8 @@ const RentalImageUpload = ({index}:{index:number}) => {
   }
   
   return (
-    <div className='shadow-xl flex items-center justify-center rounded-xl cursor-pointer'>
-      <IconPlus size={60} color={'text-black'} handleIconClick={handleIconClick} />
+    <div className='absolute right-0 z-40'>
+      <IconImage size={'60'} color={'text-black'} handleIconClick={handleIconClick} />
       <input
         type="file"
         id="fileInput"
@@ -77,4 +74,4 @@ const RentalImageUpload = ({index}:{index:number}) => {
   )
 }
 
-export default RentalImageUpload
+export default AreaImageUpload

@@ -1,32 +1,20 @@
-import { useState } from "react"
 import EditInput from "./EditInput"
-import IconBath from "./IconBath"
-import IconBed from "./IconBed"
-import IconPeople from "./IconPeople"
-import { SiteContents } from "../App"
+import IconBath from "./icons/IconBath"
+import IconBed from "./icons/IconBed"
+import IconPeople from "./icons/IconPeople"
+import { TextRentals } from "../Rentals"
 
-const EditRentalSpecs = ({specs,changes,setChanges,index}:{specs:{people:string,beds:string,baths:string},changes:any,setChanges:(changes:any)=>void,index:number}) => {
-  
+const EditRentalSpecs = ({specs,setChanges,index}:{specs:{people:string,beds:string,baths:string},setChanges:(changes:any)=>void,index:number}) => {
   const { people, beds, baths } = specs
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
-    setChanges((prevChanges:SiteContents) => {
-      const updatedRentals = [...prevChanges.rentals.rentals]
-      
-      updatedRentals[index] = {
-        ...updatedRentals[index],
-        [name]: value,
-      };
-    
-      return {
-        ...prevChanges,
-        rentals: {
-          ...prevChanges.rentals,
-          rentals: updatedRentals,
-        },
-      }
-    })
+    setChanges((prevChanges:TextRentals) => ({
+      ...prevChanges,
+      rentals: prevChanges.rentals.map((rental, i) =>
+        i === index ? { ...rental, [name]: value } : rental
+      ),
+    }));
   }
   
   return (

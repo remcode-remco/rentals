@@ -8,7 +8,8 @@ import { RentalsContext, AppContext } from "./App";
 export interface TextRentals {
   title:string;
   text: string;
-  rentals: [ TextRental ]
+  dates: string[];
+  rentals: TextRental[];
 }
 
 const Rentals = ({content,setLockScroll}:{content:TextRentals,setLockScroll:(lockScroll:boolean)=>void}) => {
@@ -68,41 +69,39 @@ const Rentals = ({content,setLockScroll}:{content:TextRentals,setLockScroll:(loc
     }
   }
 
-  if (content) {
-    return (
-      <section>
-        <div
-          className="mx-auto max-w-screen-xl px-4 py-8 sm:py-12 sm:px-6 lg:py-16 lg:px-8 bg-green-200"
-        >
-          <div className="relative grid grid-cols-1 gap-2">
-            <Heading2 text={content.title} />
-            <Paragraph text={content.text} />
-            {password && <Edit section={4} />}
-          </div>
-          <div className="mt-2 grid lg:grid-cols-2">
-            {content.rentals.map((rental: TextRental,index:number)=>(
-              <div key={index} onClick={()=>{!password && setShowRental(index);!password && setLockScroll(true)}}>
-                <Rental index={index} rental={rental} overview={true} />
-              </div>
-            ))}
-          </div>
+  return (
+    <section>
+      <div
+        className="mx-auto max-w-screen-xl px-2 py-8 bg-green-200"
+      >
+        <div className="relative grid grid-cols-1 gap-2">
+          <Heading2 text={content.title} />
+          <Paragraph text={content.text} />
+          {password && <Edit section={4} />}
         </div>
-        <div 
-          onClick={()=>{setShowRental(null);setLockScroll(false)}} 
-          className={`z-10 fixed top-0 bottom-0 left-0 right-0 transition-opacity bg-white/80 ${showRental !== null ? 'opacity-1 translate-y-0' : 'opacity-0 translate-y-full'}`}
-        ></div>
-        <div
-          onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}
-          className={`z-20 fixed bottom-0 left-0 right-0 bg-white py-4 transition-transform transform h-[80vh]
-            ${showRental !== null ? 'translate-y-0' : 'translate-y-full' }`}
-        >
-          <div className="overflow-y-auto h-full px-4">
-            {showRental !== null && <Rental rental={content.rentals[showRental]} overview={false} index={showRental} />}
-          </div>
+        <div className="mt-2 grid grid-cols-2 gap-2">
+          {content.rentals.map((rental: TextRental,index:number)=>(
+            <div className="h-full" key={index} onClick={()=>{!password && setShowRental(index);!password && setLockScroll(true)}}>
+              <Rental index={index} rental={rental} overview={true} />
+            </div>
+          ))}
         </div>
-      </section>
-    )
-  }
+      </div>
+      <div 
+        onClick={()=>{setShowRental(null);setLockScroll(false)}} 
+        className={`z-10 fixed top-0 bottom-0 left-0 right-0 transition-opacity bg-white/80 ${showRental !== null ? 'opacity-1 translate-y-0' : 'opacity-0 translate-y-full'}`}
+      ></div>
+      <div
+        onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}
+        className={`z-20 fixed bottom-0 left-0 right-0 bg-white py-4 transition-transform transform h-[80vh]
+          ${showRental !== null ? 'translate-y-0' : 'translate-y-full' }`}
+      >
+        <div className="overflow-y-auto h-full px-4">
+          {showRental !== null && <Rental rental={content.rentals[showRental]} overview={false} index={showRental} />}
+        </div>
+      </div>
+    </section>
+  )
 }
 
 export default Rentals

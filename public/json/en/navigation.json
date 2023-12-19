@@ -1,6 +1,7 @@
 {
-  "home": "EN Home",
-  "area": "Property",
-  "rentals": "Villas",
-  "contact": "Contact"
+    "home": "Home",
+    "area": "Property",
+    "rentals": "Villas",
+    "contact": "Contact",
+    "title": "Villa Serenity Retreat"
 }
