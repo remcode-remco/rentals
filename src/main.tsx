@@ -6,7 +6,6 @@ import {
 } from "react-router-dom"
 import './index.css'
 import Home from './Home'
-import Rental from './Rental'
 
 const router = createBrowserRouter([
   {

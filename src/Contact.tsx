@@ -1,8 +1,5 @@
-import { useContext, useEffect, useState, forwardRef } from "react"
-import { SaveEdit } from "./constants/constants.tsx"
+import { useState, forwardRef } from "react"
 import Heading2 from "./shared/Heading2.tsx"
-import { AppContext, RentalsContext } from "./Home.tsx";
-import Edit from "./shared/Edit.tsx";
 import Paragraph from "./shared/Paragraph.tsx";
 import IconMarker from "./shared/icons/IconMarker.tsx";
 import IconEmail from "./shared/icons/IconEmail.tsx";
@@ -64,8 +61,8 @@ const ContactDetails = ({content}:{content?:TextContact}) => {
 }
 
 const Contact: React.ForwardRefRenderFunction<HTMLDivElement, ContactProps> = ({ content }, ref) => {
-  const contextValue = useContext(RentalsContext)
-  const { password, editingSection, language } = contextValue as AppContext
+  // const contextValue = useContext(RentalsContext)
+  // const { password, editingSection, language } = contextValue as AppContext
   const [formInput,setFormInput] = useState<FormInput>({name:"",email:"",message:""})
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

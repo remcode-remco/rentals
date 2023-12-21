@@ -1,14 +1,11 @@
 import { useContext } from "react"
 import Heading3 from "./shared/Heading3"
-import RentalSpec from "./RentalSpecs"
 import ImageGallery from "./ImageGallery"
-import Image from "./Image"
 import Paragraph from "./shared/Paragraph"
 import RentalCalendar from "./RentalCalendar"
 import RentalPrices from "./RentalPrices"
 import { RentalsContext, AppContext } from "./Home"
 import EditRental from "./shared/EditRental"
-import { useParams } from "react-router-dom"
 import RentalSpecs from "./RentalSpecs"
 
 export interface TextRental {
