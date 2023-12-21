@@ -1,6 +1,6 @@
 import { useContext, useRef } from 'react'
 import HeroImageUpload from './HeroImageUpload'
-import { AppContext, RentalsContext } from './App'
+import { AppContext, RentalsContext } from './Home'
 import IconImage from './shared/icons/IconImage'
 
 const HeroImageEdit = ({section}:{section:number}) => {

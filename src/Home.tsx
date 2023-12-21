@@ -1,6 +1,6 @@
-import { createContext } from 'react'
+import React, { useRef, createContext } from 'react'
 import Admin from './Admin'
-import './App.css'
+import './Home.css'
 import Area, { TextArea } from './Area'
 import Hero, { TextHero } from './Hero'
 import Navigation, { TextNavigation } from './Navigation'
@@ -13,6 +13,7 @@ import { FetchData } from './constants/constants'
 import PopupMessage from './shared/PopupMessage'
 import Loading from './Loading'
 
+
 export interface AppContext {
   password:string|null|undefined;
   language:string;
@@ -22,6 +23,8 @@ export interface AppContext {
   setMessage:(message:Message)=>void;
   siteContents:SiteContents|null|undefined;
   setSiteContents:(siteContents:SiteContents|null|undefined)=>void;
+  section:number|undefined;
+  setShowRental:(showRental:number|null)=>void;
 }
 
 export interface SiteContents {
@@ -40,8 +43,11 @@ export interface Message {
   message: string;
 }
 
-const App = () => {
-  //@ts-ignore
+interface HomeProps {
+  section: number;
+}
+
+const Home: React.FC<HomeProps> = ({section}) => {
   const [lockScroll,setLockScroll]=useState<boolean>(false)
   const [scrollPosition, setScrollPosition] = useState<number>(0)
   const [scrolledHalfway, setScrolledHalfway] = useState<boolean>(false)
@@ -52,6 +58,36 @@ const App = () => {
   const [language,setLanguage] = useState<string>(navigator.language)
   const [message,setMessage] = useState<Message|null>(null)
   const [showLoading,setShowLoading] = useState<boolean>(false)
+  const [doneLoading,setDoneLoading] = useState<boolean>(false)
+  const [showRental, setShowRental] = useState<number|null>(null)
+
+  const areaRef = useRef<HTMLDivElement>(null)
+  const rentalsRef = useRef<HTMLDivElement>(null)
+  const contactRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (section && areaRef.current) {
+      if (section === 1) {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: 'smooth',
+        })
+      } else if (section === 2) {
+        window.requestAnimationFrame(() => 
+          areaRef.current?.scrollIntoView({behavior:'smooth'})
+        )  
+      } else if (section === 3) {
+        window.requestAnimationFrame(() => 
+          rentalsRef.current?.scrollIntoView({behavior:'smooth'})
+        )  
+      }  else if (section === 4) {
+        window.requestAnimationFrame(() => 
+          contactRef.current?.scrollIntoView({behavior:'smooth'})
+        )  
+      } 
+    }
+  }, [section,areaRef.current])
 
   useEffect(() => {
     const handleScroll = () => {      
@@ -65,7 +101,16 @@ const App = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
+  }, [])  
+  
+  useEffect(() => {
+    const delayedFunction = () => {
+      setDoneLoading(true)
+    }
+    const timeoutId = setTimeout(delayedFunction, 500)
+    return () => clearTimeout(timeoutId)
   }, [])
+
 
   useEffect(() => {
     if (lockScroll) {
@@ -92,18 +137,17 @@ const App = () => {
     })
   },[language])
   
-  const contextValue = {password, siteContents, language, editingSection, setEditingSection, setShowLoading, setMessage, setSiteContents}
-  
-  if (siteContents) {
+  const contextValue = {password, siteContents, language, editingSection, setEditingSection, setShowLoading, setMessage, setSiteContents, section, setShowRental}
+
     return (
       <RentalsContext.Provider value={contextValue}>
         <div className='relative'>
-          <Navigation scrolledHalfway={scrolledHalfway} content={{navigation:siteContents.navigation, languages:siteContents.languages}} setLanguage={setLanguage} />
-          <Hero scrolledHalfway={scrolledHalfway} content={siteContents.hero} />
-          <Area content={siteContents.area} setLockScroll={setLockScroll} />
-          <Rentals content={siteContents.rentals} setLockScroll={setLockScroll} />
-          <Contact content={siteContents.contact} />
-          <Footer content={{contact: siteContents.contact, navigation:siteContents.navigation, languages:siteContents.languages}} setLanguage={setLanguage} />
+          <Navigation scrolledHalfway={scrolledHalfway} setScrolledHalfway={setScrolledHalfway} content={{navigation:siteContents?.navigation, languages:siteContents?.languages}} setLanguage={setLanguage} />
+          <Hero scrolledHalfway={scrolledHalfway} doneLoading={doneLoading} content={siteContents?.hero} />
+          <Area ref={areaRef} content={siteContents?.area} />
+          <Rentals ref={rentalsRef} content={siteContents?.rentals} setLockScroll={setLockScroll} showRental={showRental} setShowRental={setShowRental} />
+          <Contact ref={contactRef} content={siteContents?.contact} />
+          <Footer content={{contact: siteContents?.contact, navigation:siteContents?.navigation, languages:siteContents?.languages}} setLanguage={setLanguage} />
           {!password && <IconAdmin showAdmin={showAdmin} setShowAdmin={setShowAdmin} size={"80"} color={"text-black"} /> }
           {showAdmin && <Admin setMessage={setMessage} setShowAdmin={setShowAdmin} setPassword={setPassword} />}
           <PopupMessage message={message} setMessage={setMessage} />
@@ -111,9 +155,7 @@ const App = () => {
         </div>
       </RentalsContext.Provider>
     )
-  } else {
-    return <div>Loading................</div>
   }
-}
 
-export default App
+
+export default Home

@@ -1,7 +1,7 @@
 import ImageGallery from "react-image-gallery"
 import "react-image-gallery/styles/css/image-gallery.css"
 
-const ImageGalleryComponent = ({images}:{images:any}) => {
+const ImageGalleryComponent = ({images}:{images?:any}) => {
   function extractYouTubeVideoId(embedUrl: string) {
     // Match the video ID using a regular expression
     const match = embedUrl.match(/(?:embed\/|v=)([a-zA-Z0-9_-]{11})/);
@@ -41,16 +41,17 @@ const ImageGalleryComponent = ({images}:{images:any}) => {
     )
   }
 
-
-  const modifiedPicturesArray = modifyPicturesArray(images)
-  return (
-    <ImageGallery 
-      items={modifiedPicturesArray} 
-      showThumbnails={false}
-      showPlayButton
-      additionalClass="h-full w-full object-cover"
-    />
-  )
+  if (images) {
+    const modifiedPicturesArray = modifyPicturesArray(images)
+    return (
+      <ImageGallery 
+        items={modifiedPicturesArray} 
+        showThumbnails={false}
+        showPlayButton
+        additionalClass="w-full object-cover"
+      />
+    )
+  }
 }
 
 export default ImageGalleryComponent

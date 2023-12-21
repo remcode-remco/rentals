@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Message } from '../App'
+import { Message } from '../Home'
 
 const PopupMessage = ({message,setMessage}:{message:Message|null,setMessage:(message:Message|null)=>void}) => {
   const [classNames,setClassnames]=useState<string>("transition-all translate-y-full")

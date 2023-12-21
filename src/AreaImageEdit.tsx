@@ -1,6 +1,6 @@
 import React, { useContext, useRef } from 'react'
 import Compressor from 'compressorjs'
-import { RentalsContext, AppContext, SiteContents } from './App'
+import { RentalsContext, AppContext, SiteContents } from './Home'
 import { apiUrl } from './constants/constants'
 import { TextArea } from './Area'
 import IconImage from './shared/icons/IconImage'

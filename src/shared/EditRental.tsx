@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import { AppContext, RentalsContext, SiteContents } from "../App"
+import { AppContext, RentalsContext, SiteContents } from "../Home"
 import IconPencil from "./icons/IconPencil"
 import SaveButton from "./SaveButton"
 import { DeleteImage, SaveEdit } from "../constants/constants"

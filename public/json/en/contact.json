@@ -1,7 +1,10 @@
 {
     "title": "Contact",
     "text": "Reach out to us for an Unforgettable Mediterranean Getaway",
+    "owner_image": "\/images\/owner_img.jpg",
+    "owner": "Mr and Mrs Owner",
     "email": "info@website.com",
     "phone": "+33 (0) 654968413",
-    "address": "Owner's names\nProperty Address\nCity and country"
+    "address": "Property Address\nCity and country",
+    "message": "Send us a message"
 }

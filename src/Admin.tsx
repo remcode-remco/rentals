@@ -1,6 +1,6 @@
 import { FormEvent, useState } from 'react'
 import { VerifyPassword } from './constants/constants'
-import { Message } from './App'
+import { Message } from './Home'
 
 const Admin = ({setMessage,setShowAdmin,setPassword}:{setMessage:(message:Message)=>void,setShowAdmin:(showAdmin:boolean)=>void,setPassword:(password:string)=>void}) => {
   const [pwd,setPwd] = useState<string>("")

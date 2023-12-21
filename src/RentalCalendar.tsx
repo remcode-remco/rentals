@@ -12,48 +12,50 @@ import { TextRental } from './Rental'
 
 const localizer = momentLocalizer(moment)
 
-const RentalCalendar = ({rental}:{rental:TextRental}) => {
+const RentalCalendar = ({rental}:{rental?:TextRental}) => {
   const [events, setEvents] = useState([])
 
   useEffect(() => {
     const fetchICalData = async () => {
-      const proxyUrl = 'https://www.remcode.net/gite/get_calendar.php'
+      if (rental) { 
+        const proxyUrl = 'https://www.remcode.net/gite/get_calendar.php'
 
-      const calendar_url = rental.calendar_url
+        const calendar_url = rental.calendar_url
 
-      const formData = new FormData();
-      formData.append('calendar_url', calendar_url);
-      try {
-        const response = await fetch(proxyUrl, {
-          method: 'POST',
-          body: formData,
-        });
-        const icalData = await response.text()
+        const formData = new FormData();
+        formData.append('calendar_url', calendar_url);
+        try {
+          const response = await fetch(proxyUrl, {
+            method: 'POST',
+            body: formData,
+          });
+          const icalData = await response.text()
 
-        const jcalData = ICAL.parse(icalData)
-        const comp = new ICAL.Component(jcalData)
-        const vevents = comp.getAllSubcomponents('vevent')
-        
-        const parsedEvents = vevents.map((vevent: { getFirstPropertyValue: (arg0: string) => any }) => {
-          const summary = vevent.getFirstPropertyValue('summary')
-          const startDate = vevent.getFirstPropertyValue('dtstart')
-          const endDate = vevent.getFirstPropertyValue('dtend')
+          const jcalData = ICAL.parse(icalData)
+          const comp = new ICAL.Component(jcalData)
+          const vevents = comp.getAllSubcomponents('vevent')
+          
+          const parsedEvents = vevents.map((vevent: { getFirstPropertyValue: (arg0: string) => any }) => {
+            const summary = vevent.getFirstPropertyValue('summary')
+            const startDate = vevent.getFirstPropertyValue('dtstart')
+            const endDate = vevent.getFirstPropertyValue('dtend')
 
-          return {
-            title: summary,
-            start: startDate.toJSDate(),
-            end: endDate.toJSDate(),
-          }
-        })
+            return {
+              title: summary,
+              start: startDate.toJSDate(),
+              end: endDate.toJSDate(),
+            }
+          })
 
-        setEvents(parsedEvents)
-      } catch (error) {
-        console.error('Error fetching or parsing iCalendar data:', error)
+          setEvents(parsedEvents)
+        } catch (error) {
+          console.error('Error fetching or parsing iCalendar data:', error)
+        }
       }
     }
     
-    fetchICalData()
-  }, [])
+    fetchICalData() 
+  }, [rental])
   
   return (
     <Calendar

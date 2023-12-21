@@ -1,106 +1,125 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useState, forwardRef } from "react"
 import { SaveEdit } from "./constants/constants.tsx"
 import Heading2 from "./shared/Heading2.tsx"
-import { AppContext, RentalsContext } from "./App.tsx";
+import { AppContext, RentalsContext } from "./Home.tsx";
 import Edit from "./shared/Edit.tsx";
 import Paragraph from "./shared/Paragraph.tsx";
+import IconMarker from "./shared/icons/IconMarker.tsx";
+import IconEmail from "./shared/icons/IconEmail.tsx";
+import IconPhone from "./shared/icons/IconPhone.tsx";
+import Heading3 from "./shared/Heading3.tsx";
+
+interface FormInput {
+  name:string;
+  email:string;
+  message:string;
+}
 
 export interface TextContact {
   title:string;
   text:string;
+  owner_image:string;
+  owner:string;
   email:string;
   phone:string;
   address:string;
+  message:string;
 }
 
-const Contact = ({content}:{content:TextContact}) => {
-  const contextValue = useContext(RentalsContext)
-  const { password, editingSection, language } = contextValue as AppContext
-  
-  const [changes, setChanges] = useState<TextContact>()
-  
-  const handleChange = (e: any) => {
-    if (changes) {
-      setChanges({
-        ...changes,
-        [e.target.name]:e.target.value
-      })
+interface ContactProps {
+  content?: TextContact;
+}
+
+const ContactInput = ({text,name,handleChange}:{text:string,name:string,handleChange:(e:any)=>void}) => (
+  <div className="flex flex-col mb-3">
+    <label className="capitalize font-medium">{name}</label>
+    {name === "message" ?
+      <textarea onChange={(e=>handleChange(e))} rows={10} name={name} defaultValue={text} className="shadow h-auto min-h-[186px] w-full overflow-auto bg-white px-3 pb-2 text-sm text-[#333333]" />
+    :
+      <input onChange={(e) => handleChange(e)} name={name} defaultValue={text} className="shadow h-9 w-full bg-white px-3 pb-6 text-sm text-[#333333]" />
     }
-  }
-  
-  const handleUpload = () => {
-    SaveEdit(language,password,editingSection,changes)
-  }
+  </div>
+)
 
-  useEffect(()=>{
-    if (content) {setChanges(content)}
-  },[content])
-
+const ContactDetails = ({content}:{content?:TextContact}) => {
+  let pClasses:string = "px-4 text-lg whitespace-pre-line"
   if (content) {
     return (
-      <section className="bg-gray-100">
-        <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
-            <div className="relative lg:col-span-2 lg:py-12">
-              <Heading2 text={content.title} />
-              <Paragraph text={content.text} />
-              {password && <Edit section={5} />}
-            </div>
-    
-          <div className="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
-            <form action="" className="space-y-4">
-              <div>
-                <label className="sr-only" htmlFor="name">Name</label>
-                <input
-                  className="w-full rounded-lg border-gray-200 p-3 text-sm"
-                  placeholder="Name"
-                  type="text"
-                  id="name"
-                />
-              </div>
-    
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <div>
-                  <label className="sr-only" htmlFor="email">Email</label>
-                  <input
-                    className="w-full rounded-lg border-gray-200 p-3 text-sm"
-                    placeholder="Email address"
-                    type="email"
-                    id="email"
-                    onChange={(e)=>handleChange(e)}
-                  />
-                </div>
-              </div>
-    
-              <div>
-                <label className="sr-only" htmlFor="message">Message</label>
-    
-                <textarea
-                  className="w-full rounded-lg border-gray-200 p-3 text-sm"
-                  placeholder="Message"
-                  rows={8}
-                  id="message"
-                ></textarea>
-              </div>
-    
-              <div className="mt-4">
-                <button onSubmit={()=>handleUpload()}
-                  type="submit"
-                  className="inline-block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto"
-                >
-                  Send Enquiry
-                </button>
-              </div>
-            </form>
-          </div>
+      <div className="flex flex-col mx-auto gap-4">
+        <div className="mb-4 flex max-w-[272px] items-start justify-start">
+          <IconMarker size={"30"} color={""} />
+          <p className={pClasses}>{content?.address}</p>
+        </div>
+        <div className="mb-4 flex max-w-[272px] items-start justify-start">
+          <IconEmail size={"30"} color={""} />
+          <p className={pClasses}>{content?.email}</p>
+        </div>
+        <div className="mb-4 flex max-w-[272px] items-start justify-start">
+          <IconPhone size={"30"} color={""} />
+          <p className={pClasses}>{content?.phone}</p>
         </div>
       </div>
-    </section>
-    
     )
-  } else {
-    return <div>Loading...</div>
   }
 }
 
-export default Contact
+const Contact: React.ForwardRefRenderFunction<HTMLDivElement, ContactProps> = ({ content }, ref) => {
+  const contextValue = useContext(RentalsContext)
+  const { password, editingSection, language } = contextValue as AppContext
+  const [formInput,setFormInput] = useState<FormInput>({name:"",email:"",message:""})
+  
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+      setFormInput({
+      ...formInput,
+      [name]: value,
+    })
+  }
+  
+    return (
+      <section ref={ref}>
+        <div className="relative bg-white mx-auto w-full max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
+          <div className="grid items-center gap-8 sm:gap-20 lg:grid-cols-2">
+            <div className="flex max-w-2xl flex-col items-start gap-4">
+              <Heading2 text={content?.title} />
+              <Paragraph text={content?.text} />
+              <div className="flex items-center mx-auto">
+                {content?.owner_image && <img src={content.owner_image} alt="" className="rounded-full mr-4 inline-block h-16 w-16 object-cover" />}
+                <div className="flex h-full items-center">
+                  <h6 className="font-bold">{content?.owner}</h6>
+                </div>
+              </div>
+              <ContactDetails content={content} />
+            </div>
+            
+            <div className="mx-2 max-w-xl bg-gray-100 px-8 py-5 text-center shadow-lg">
+              
+              <Heading3 text={content?.message} />
+              <form className="mx-auto my-4 max-w-sm text-left" name="wf-form-password" method="get">
+                <ContactInput
+                  text={""}
+                  name={"name"}
+                  handleChange={handleChange}
+                />              
+                <ContactInput
+                  text={""}
+                  name={"email"}
+                  handleChange={handleChange}
+                />              
+                <ContactInput
+                  text={""}
+                  name={"message"}
+                  handleChange={handleChange}
+                />
+                <div className="flex justify-end">
+                  <input type="submit" value="Submit" className="cursor-pointer mb-10 px-4 py-2 rounded shadow bg-blue-500 text-white" />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+  )
+}
+
+export default forwardRef(Contact)

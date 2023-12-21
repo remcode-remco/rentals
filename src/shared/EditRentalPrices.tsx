@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react"
-import { RentalsContext, AppContext } from "../App"
+import { RentalsContext, AppContext } from "../Home"
 
 import { useState } from "react"
 import DatePicker, { registerLocale } from "react-datepicker"

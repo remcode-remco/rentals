@@ -1,9 +1,9 @@
-const Heading1 = ({text,subtext,scrolledHalfway}:{text:string,subtext:string,scrolledHalfway:boolean}) => (
-  <div className={`m-2 bg-white/90 rounded p-3 shadow-lg tranform duration-1000 ${scrolledHalfway ? "opacity-0" : "opacity-100"}`}>
-    <h1 className="text-3xl font-bold leading-tight">
+const Heading1 = ({text,subtext,scrolledHalfway,doneLoading}:{text?:string,subtext?:string,scrolledHalfway:boolean,doneLoading:boolean}) => (
+  <div className={`m-2 lg:bg-white/90 rounded text-white p-3 tranform duration-500 ${doneLoading && !scrolledHalfway ? "opacity-100 delay-500" : "opacity-0"}`}>
+    <h1 className="text-7xl font-extrabold leading-tight">
       {text}
     </h1>
-    <p className="mt-1 lg:mt-4 text-gray-800">
+    <p className="mt-1 lg:mt-4 text-3xl">
       {subtext}
     </p>
   </div>

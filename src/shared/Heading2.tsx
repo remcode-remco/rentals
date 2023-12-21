@@ -1,5 +1,5 @@
-const Heading2 = ({text}:{text:string}) => (
-  <h2 className="text-3xl font-bold sm:text-4xl">
+const Heading2 = ({text}:{text?:string}) => (
+  <h2 className="w-full text-3xl text-gray-700 font-extrabold uppercase text-center">
     {text}
   </h2>
 )

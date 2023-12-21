@@ -1,4 +1,4 @@
-import { AppContext, RentalsContext } from "./App.tsx"
+import { AppContext, RentalsContext } from "./Home.tsx"
 import Edit from "./shared/Edit.tsx"
 import HeroImageEdit from "./HeroImageEdit.tsx";
 import { useContext } from "react";
@@ -9,23 +9,23 @@ export interface TextHero {
   subtitle: string;
 }
 
-const Hero = ({content,scrolledHalfway}:{content:TextHero,scrolledHalfway:boolean}) => {
+const Hero = ({content,scrolledHalfway,doneLoading}:{content?:TextHero,scrolledHalfway:boolean,doneLoading:boolean}) => {
   const contextValue = useContext(RentalsContext)
 
   const { password } = contextValue as AppContext
   
   return (
-    <div className="relative h-screen overflow-hidden">
-      <div className="absolute inset-0">
-        <img src="images/hero.jpg" alt="Background Image" className="object-cover object-center w-full h-full" />
+    <section className="relative h-screen overflow-hidden">
+      <div className={`fixed top-0 inset-0 ${doneLoading ? "opacity-100 transition transform duration-500" : "opacity-0"}`}>
+        <img src="images/hero.jpg" alt="Background Image" className={`object-cover object-center w-full h-full`} />
         {password && <HeroImageEdit section={2} />}
       </div>
       
       <div className="relative z-10 flex flex-col justify-center items-center h-full text-center">
-        <Heading1 scrolledHalfway={scrolledHalfway} text={content.title} subtext={content.subtitle} />
+        <Heading1 doneLoading={doneLoading} scrolledHalfway={scrolledHalfway} text={content?.title} subtext={content?.subtitle} />
         {password && <Edit section={2} />}
       </div>
-    </div>
+    </section>
   )
 }
 
