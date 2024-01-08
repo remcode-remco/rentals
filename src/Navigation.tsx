@@ -114,7 +114,7 @@ const Navigation = (
   const { navigation, languages } = content || {}
   
   return (
-    <header className={`m-2 z-50 fixed top-0  right-0 tranform duration-1000 left-0 `} >
+    <header className={`my-2 mx-4 z-50 fixed top-0 right-0 tranform duration-1000 left-0 `} >
       <div className="bg-white/90 rounded relative flex justify-end items-center max-w-screen-xl p-2 shadow-lg">
         <div className={`absolute p-3 text-2xl w-full font-semibold whitespace-nowrap tranform duration-1000 ${scrolledHalfway ? "opacity-100" : "opacity-0"} `}>
           <Link to='/'>

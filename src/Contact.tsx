@@ -75,7 +75,7 @@ const Contact: React.ForwardRefRenderFunction<HTMLDivElement, ContactProps> = ({
   
     return (
       <section ref={ref}>
-        <div className="relative bg-white mx-auto w-full max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
+        <div className="relative bg-white mx-auto w-full max-w-7xl px-5 py-16">
           <div className="grid items-center gap-8 sm:gap-20 lg:grid-cols-2">
             <div className="flex max-w-2xl flex-col items-start gap-4">
               <Heading2 text={content?.title} />

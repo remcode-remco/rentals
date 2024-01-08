@@ -20,7 +20,7 @@ const Footer = ({content,setLanguage}:{content?:ContentFooter,setLanguage:(langu
 			<div className="mx-auto w-full max-w-7xl px-5 py-16 md:px-10 md:py-24">
 				<div className="flex flex-row justify-between max-[767px]:flex-col max-[767px]:items-start">
 					<div className="w-full px-5">
-						<iframe 
+						{/* <iframe 
 							src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2866.2919816423278!2d-68.84758992454664!3d44.07732682489766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDTCsDA0JzM4LjQiTiA2OMKwNTAnNDIuMSJX!5e0!3m2!1sen!2sfr!4v1701965769870!5m2!1sen!2sfr" 
 							className="" 
 							width="100%" 
@@ -28,7 +28,7 @@ const Footer = ({content,setLanguage}:{content?:ContentFooter,setLanguage:(langu
 							allowFullScreen 
 							loading="lazy"
 						>
-						</iframe>
+						</iframe> */}
 					</div>
 					<div className="max-[767px]: max-[991px]:ml-4 max-[991px]:flex-none max-[767px]:mt-8">
 						<div className="mb-4 flex max-w-[272px] items-start justify-start">

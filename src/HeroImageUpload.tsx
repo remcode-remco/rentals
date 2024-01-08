@@ -1,4 +1,5 @@
 import Compressor from 'compressorjs'
+import { apiUrl } from './constants/constants'
 
 const compressedImage = ({image}:{image:Blob}):Promise<Blob> => {
   return new Promise((resolve, reject) => {
@@ -20,7 +21,7 @@ const HeroImageUpload = async ({section,image,password}:{section:number,image:Bl
   if (password) {
     let url = ''
     if (section === 2) {
-      url = 'http://localhost:8000/php/upload_hero.php'
+      url = apiUrl + 'upload_hero.php'
     }
 
     try {
@@ -46,7 +47,7 @@ export const AreaImageUpload = async ({section,image,password}:{section:number,i
   if (password) {
     let url = ''
     if (section === 3) {
-      url = 'http://localhost:8000/php/upload_area.php'
+      url = apiUrl + 'upload_area.php'
     }
 
     try {

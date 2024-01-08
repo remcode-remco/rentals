@@ -9,6 +9,7 @@ import ICAL from 'ical.js'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import 'moment/locale/en-gb'
 import { TextRental } from './Rental'
+import { apiUrl } from './constants/constants'
 
 const localizer = momentLocalizer(moment)
 
@@ -18,7 +19,7 @@ const RentalCalendar = ({rental}:{rental?:TextRental}) => {
   useEffect(() => {
     const fetchICalData = async () => {
       if (rental) { 
-        const proxyUrl = 'https://www.remcode.net/gite/get_calendar.php'
+        const proxyUrl = apiUrl + 'get_calendar.php'
 
         const calendar_url = rental.calendar_url
 

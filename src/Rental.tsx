@@ -25,7 +25,7 @@ const Rental = ({index,rental,text_prices,text_availability}:{index:number,renta
   const { password } = contextValue as AppContext
 
   return (
-    <div className="fixed top-0 left-0 right-0 bottom-0 lg:m-3 py-3 bg-white overflow-y-scroll">
+    <div className="fixed top-0 left-0 right-0 bottom-0 lg:m-3 bg-white overflow-y-scroll">
       <ImageGallery images={rental?.pictures} />
       <Heading3 text={rental?.name} />
       {password && <EditRental index={+index} section={4} />}

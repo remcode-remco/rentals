@@ -45,9 +45,14 @@ export interface Message {
 
 interface HomeProps {
   section: number;
+  params?: {
+    rentalId?: string; 
+  };
 }
 
-const Home: React.FC<HomeProps> = ({section}) => {
+const Home: React.FC<HomeProps> = ({section,params}) => {
+  const rentalId = params?.rentalId
+  console.log(rentalId)
   const [lockScroll,setLockScroll]=useState<boolean>(false)
   const [scrollPosition, setScrollPosition] = useState<number>(0)
   const [scrolledHalfway, setScrolledHalfway] = useState<boolean>(false)
@@ -110,7 +115,13 @@ const Home: React.FC<HomeProps> = ({section}) => {
     const timeoutId = setTimeout(delayedFunction, 500)
     return () => clearTimeout(timeoutId)
   }, [])
-
+  
+  useEffect(() => {
+    if (rentalId) {
+      setShowRental(parseInt(rentalId))
+    }
+  }, [rentalId])
+  
 
   useEffect(() => {
     if (lockScroll) {

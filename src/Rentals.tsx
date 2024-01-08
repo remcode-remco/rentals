@@ -1,4 +1,5 @@
-import { useState, TouchEventHandler, useContext, forwardRef } from "react"
+import { useState, TouchEventHandler, useContext, forwardRef, useEffect } from "react"
+import { useLocation, useNavigate } from 'react-router-dom'
 import Heading2 from "./shared/Heading2"
 import Paragraph from "./shared/Paragraph"
 import Rental, { TextRental } from "./Rental"
@@ -31,6 +32,9 @@ const Rentals: React.ForwardRefRenderFunction<HTMLDivElement, RentalsProps> = ({
   const [touchStartY, setTouchStartY] = useState<number|null>(null)
   const [touchEndY, setTouchEndY] = useState<number|null>(null)
   const [evenNoOfRentals] = useState<boolean>(content && content.rentals ? (content.rentals.length % 2) === 0 : false)
+  
+  const navigate = useNavigate()
+  const location = useLocation()
 
   // the required distance between touchStart and touchEnd to be detected as a swipe
   const minSwipeDistance = 100 
@@ -78,9 +82,21 @@ const Rentals: React.ForwardRefRenderFunction<HTMLDivElement, RentalsProps> = ({
       console.log("down swipe: " + isDownSwipe)
     }
   }
+  
+  const handleClickRental = (index:number) => {
+    setShowRental(index)
+    navigate('/rentaldetail')
+  }
+  
+  useEffect(() => {
+    if (location.pathname !== '/rentaldetail') {
+      setShowRental(null)
+    }
+  }, [location.pathname])
 
   return (
-    <section ref={ref} className="shadow-lg rounded bg-gray-100 w-full h-full relative pb-3">
+    <section ref={ref}>
+      <div className="relative shadow-lg rounded bg-gray-100 w-full h-full relative px-5 py-16">
         <div className="relative grid grid-cols-1 gap-2 p-2">
           <Heading2 text={content?.title} />
           <Paragraph text={content?.text} />
@@ -91,23 +107,24 @@ const Rentals: React.ForwardRefRenderFunction<HTMLDivElement, RentalsProps> = ({
         >
           {content?.rentals.map((rental: TextRental,index:number)=>(
             <div className={`h-full bg-gray-50 ${rental === content.rentals[content.rentals.length-1] && !evenNoOfRentals && ""}`} key={index} 
-                  onClick={()=>{!password && setShowRental(index)}}
+                  onClick={()=>{!password && handleClickRental(index)}}
             >
               <RentalOverview index={index} rental={rental} overview={true} />
             </div>
           ))}
         </div>
-      <div 
-        onClick={()=>{setShowRental(null);setLockScroll(false)}} 
-        className={`z-10 fixed top-0 bottom-0 left-0 right-0 transition-opacity bg-white/80 ${showRental !== null ? 'opacity-1 translate-y-0' : 'opacity-0 translate-y-full'}`}
-      ></div>
-      <div
-        onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}
-        className={`z-20 fixed bottom-0 left-0 right-0 bg-white py-4 transition-transform transform h-screen
-          ${showRental !== null ? 'translate-x-0' : 'translate-x-full' }`}
-      >
-        <div className="overflow-y-auto h-full px-4">
-          {showRental !== null && <Rental rental={content?.rentals[showRental]} index={showRental} text_prices={content?.prices} text_availability={content?.availability} />}
+        <div 
+          onClick={()=>{setShowRental(null);setLockScroll(false)}} 
+          className={`z-10 fixed top-0 bottom-0 left-0 right-0 transition-opacity bg-white/80 ${showRental !== null ? 'opacity-1 translate-y-0' : 'opacity-0 translate-y-full'}`}
+        ></div>
+        <div
+          onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}
+          className={`z-20 fixed bottom-0 left-0 right-0 bg-white py-4 transition-transform transform h-screen
+            ${showRental !== null ? 'translate-x-0' : 'translate-x-full' }`}
+        >
+          <div className="overflow-y-auto h-full px-4">
+            {showRental !== null && <Rental rental={content?.rentals[showRental]} index={showRental} text_prices={content?.prices} text_availability={content?.availability} />}
+          </div>
         </div>
       </div>
     </section>

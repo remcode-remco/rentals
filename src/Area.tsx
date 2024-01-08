@@ -24,21 +24,23 @@ const Area: React.ForwardRefRenderFunction<HTMLDivElement, AreaProps> = ({ conte
 
   const { password } = contextValue as AppContext
   return (
-    <section ref={ref} className="bg-white relative">
-      <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-16">
-        <div
-          className="relative overflow-hidden rounded-lg lg:order-last h-full order-2 mx-2"
-        >
-          <ImageGallery images={content?.pictures} />
-          {password && <AreaImageEdit />}
-        </div>
+    <section ref={ref} className="">
+      <div className="relative shadow-lg rounded bg-white w-full h-full relative px-5 py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-16">
+          <div
+            className="relative overflow-hidden rounded-lg lg:order-last h-full order-2 mx-2"
+          >
+            <ImageGallery images={content?.pictures} />
+            {password && <AreaImageEdit />}
+          </div>
 
-        <div className="relative flex items-center order-1">
-          {password && <Edit section={3} />}
-          <Heading2 text={content?.title} />
-        </div>
-        <div className="order-3">
-          <Paragraph text={content?.text} />
+          <div className="relative flex items-center order-1">
+            {password && <Edit section={3} />}
+            <Heading2 text={content?.title} />
+          </div>
+          <div className="order-3">
+            <Paragraph text={content?.text} />
+          </div>
         </div>
       </div>
     </section>
