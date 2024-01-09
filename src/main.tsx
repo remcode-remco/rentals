@@ -18,13 +18,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/rentals",
-    element: <Home section={3} />,    
-    children: [
-      {
-        path: ":rentalId",
-        element: <Home section={3} />,
-      },
-    ],
+    element: <Home section={3} />,
   },
   {
     path: "/contact",
@@ -34,7 +28,7 @@ const router = createBrowserRouter([
     path: "*",
     element: <Home section={1} />,
   },
-], { basename: '/' })
+], { basename: '/gite' })
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

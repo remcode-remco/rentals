@@ -21,7 +21,7 @@ const Hero = ({content,scrolledHalfway,doneLoading}:{content?:TextHero,scrolledH
         {password && <HeroImageEdit section={2} />}
       </div>
       
-      <div className="relative z-10 flex flex-col justify-center items-center h-full text-center">
+      <div className="relative z-10 flex flex-col justify-center lg:justify-end items-center lg:items-start h-full text-center lg:text-left">
         <Heading1 doneLoading={doneLoading} scrolledHalfway={scrolledHalfway} text={content?.title} subtext={content?.subtitle} />
         {password && <Edit section={2} />}
       </div>

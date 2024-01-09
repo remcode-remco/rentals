@@ -19,26 +19,27 @@ interface AreaProps {
 }
 
 const Area: React.ForwardRefRenderFunction<HTMLDivElement, AreaProps> = ({ content }, ref) => {
-
   const contextValue = useContext(RentalsContext)
-
   const { password } = contextValue as AppContext
+
   return (
     <section ref={ref} className="">
-      <div className="relative shadow-lg rounded bg-white w-full h-full relative px-5 py-16">
+      <div className="relative md:shadow-lg md:rounded bg-white w-full h-full relative px-5 pt-16 lg:pt-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-16">
+          <div className="relative flex items-center order-1 lg:hidden">
+            <Heading2 text={content?.title} />
+          </div>
           <div
-            className="relative overflow-hidden rounded-lg lg:order-last h-full order-2 mx-2"
+            className="relative overflow-hidden rounded-lg order-2 lg:order-3 h-full mx-2"
           >
             <ImageGallery images={content?.pictures} />
             {password && <AreaImageEdit />}
           </div>
-
-          <div className="relative flex items-center order-1">
-            {password && <Edit section={3} />}
-            <Heading2 text={content?.title} />
-          </div>
-          <div className="order-3">
+          <div className="order-3 lg:order-2">
+            <div className="hidden lg:block">
+              {password && <Edit section={3} />}
+              <Heading2 text={content?.title} />
+            </div>
             <Paragraph text={content?.text} />
           </div>
         </div>

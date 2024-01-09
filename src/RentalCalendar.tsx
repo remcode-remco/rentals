@@ -66,7 +66,7 @@ const RentalCalendar = ({rental}:{rental?:TextRental}) => {
       endAccessor="end"
       drilldownView={null}
       views={{ month: true, week: false, day: false, agenda: false, }}
-      style={{ height: 500 }}
+      style={{ height: 500}}
     />
   )
 }

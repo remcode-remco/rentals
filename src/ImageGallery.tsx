@@ -3,14 +3,12 @@ import "react-image-gallery/styles/css/image-gallery.css"
 
 const ImageGalleryComponent = ({images}:{images?:any}) => {
   function extractYouTubeVideoId(embedUrl: string) {
-    // Match the video ID using a regular expression
     const match = embedUrl.match(/(?:embed\/|v=)([a-zA-Z0-9_-]{11})/);
   
-    // Check if a match is found
     if (match && match.length > 1) {
-      return match[1] // Return the captured video ID
+      return match[1]
     } else {
-      return null; // Return null if no match is found
+      return null
     }
   }
   
@@ -31,13 +29,11 @@ const ImageGalleryComponent = ({images}:{images?:any}) => {
   
   const renderVideo = (item: { embedUrl: string | undefined; }) => {
     return (
-      <div className="aspect-square">
-        <iframe className="w-full h-full"
-          src={item.embedUrl}
-          allowFullScreen
-          title="ex"
-        />
-      </div>
+      <iframe className="aspect-square w-full h-full flex flex-col justify-stretch"
+        src={item.embedUrl}
+        allowFullScreen
+        title="ex"
+      />
     )
   }
 
@@ -48,7 +44,8 @@ const ImageGalleryComponent = ({images}:{images?:any}) => {
         items={modifiedPicturesArray} 
         showThumbnails={false}
         showPlayButton
-        additionalClass="w-full object-cover"
+        additionalClass="object-cover"
+        showFullscreenButton={window.innerWidth > 1024 ? true : false}
       />
     )
   }

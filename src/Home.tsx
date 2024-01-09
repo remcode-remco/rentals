@@ -1,6 +1,5 @@
 import React, { useRef, createContext } from 'react'
 import Admin from './Admin'
-import './Home.css'
 import Area, { TextArea } from './Area'
 import Hero, { TextHero } from './Hero'
 import Navigation, { TextNavigation } from './Navigation'
@@ -50,11 +49,8 @@ interface HomeProps {
   };
 }
 
-const Home: React.FC<HomeProps> = ({section,params}) => {
-  const rentalId = params?.rentalId
-  console.log(rentalId)
+const Home: React.FC<HomeProps> = ({section}) => {
   const [lockScroll,setLockScroll]=useState<boolean>(false)
-  const [scrollPosition, setScrollPosition] = useState<number>(0)
   const [scrolledHalfway, setScrolledHalfway] = useState<boolean>(false)
   const [editingSection, setEditingSection] = useState<number>(0)
   const [password,setPassword] = useState<string|null|undefined>("")
@@ -115,32 +111,15 @@ const Home: React.FC<HomeProps> = ({section,params}) => {
     const timeoutId = setTimeout(delayedFunction, 500)
     return () => clearTimeout(timeoutId)
   }, [])
-  
+    
   useEffect(() => {
-    if (rentalId) {
-      setShowRental(parseInt(rentalId))
-    }
-  }, [rentalId])
-  
-
-  useEffect(() => {
-    if (lockScroll) {
-      setScrollPosition(window.scrollY)
-      document.body.classList.add('h-screen')
-      document.body.classList.add('overflow-hidden')
+    if (showRental) {
+      setLockScroll(true)
     } else {
-      document.body.classList.remove('h-screen')
-      document.body.classList.remove('overflow-hidden')
-
-      window.scrollTo(0, scrollPosition)
+      setLockScroll(false)
     }
-
-    return () => {
-      document.body.classList.remove('overflow-hidden')
-      document.body.classList.remove('h-screen')
-    }
-  }, [lockScroll, scrollPosition])
-
+  }, [showRental])
+    
   useEffect(()=>{
     FetchData(language.split('-')[0])
     .then(data=>{
@@ -149,24 +128,24 @@ const Home: React.FC<HomeProps> = ({section,params}) => {
   },[language])
   
   const contextValue = {password, siteContents, language, editingSection, setEditingSection, setShowLoading, setMessage, setSiteContents, section, setShowRental}
-
-    return (
-      <RentalsContext.Provider value={contextValue}>
-        <div className='relative'>
-          <Navigation scrolledHalfway={scrolledHalfway} setScrolledHalfway={setScrolledHalfway} content={{navigation:siteContents?.navigation, languages:siteContents?.languages}} setLanguage={setLanguage} />
-          <Hero scrolledHalfway={scrolledHalfway} doneLoading={doneLoading} content={siteContents?.hero} />
-          <Area ref={areaRef} content={siteContents?.area} />
-          <Rentals ref={rentalsRef} content={siteContents?.rentals} setLockScroll={setLockScroll} showRental={showRental} setShowRental={setShowRental} />
-          <Contact ref={contactRef} content={siteContents?.contact} />
-          <Footer content={{contact: siteContents?.contact, navigation:siteContents?.navigation, languages:siteContents?.languages}} setLanguage={setLanguage} />
-          {!password && <IconAdmin showAdmin={showAdmin} setShowAdmin={setShowAdmin} size={"80"} color={"text-black"} /> }
-          {showAdmin && <Admin setMessage={setMessage} setShowAdmin={setShowAdmin} setPassword={setPassword} />}
-          <PopupMessage message={message} setMessage={setMessage} />
-          <Loading showLoading={showLoading} setLockScroll={setLockScroll} />
-        </div>
-      </RentalsContext.Provider>
-    )
-  }
+  
+  return (
+    <RentalsContext.Provider value={contextValue}>
+      <div className={`relative ${lockScroll && "overflow-y-hidden"}`}>
+        <Navigation setLockScroll={setLockScroll} scrolledHalfway={scrolledHalfway} content={{navigation:siteContents?.navigation, languages:siteContents?.languages}} setLanguage={setLanguage} showRental={showRental} setShowRental={setShowRental} />
+        <Hero scrolledHalfway={scrolledHalfway} doneLoading={doneLoading} content={siteContents?.hero} />
+        <Area ref={areaRef} content={siteContents?.area} />
+        <Rentals ref={rentalsRef} content={siteContents?.rentals} setLockScroll={setLockScroll} showRental={showRental} setShowRental={setShowRental} />
+        <Contact ref={contactRef} content={siteContents?.contact} />
+        <Footer />
+        {!password && <IconAdmin showAdmin={showAdmin} setShowAdmin={setShowAdmin} size={"80"} color={"text-black"} /> }
+        {showAdmin && <Admin setMessage={setMessage} setShowAdmin={setShowAdmin} setPassword={setPassword} />}
+        <PopupMessage message={message} setMessage={setMessage} />
+        <Loading showLoading={showLoading} setLockScroll={setLockScroll} />
+      </div>
+    </RentalsContext.Provider>
+  )
+}
 
 
 export default Home

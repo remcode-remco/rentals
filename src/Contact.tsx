@@ -75,8 +75,8 @@ const Contact: React.ForwardRefRenderFunction<HTMLDivElement, ContactProps> = ({
   
     return (
       <section ref={ref}>
-        <div className="relative bg-white mx-auto w-full max-w-7xl px-5 py-16">
-          <div className="grid items-center gap-8 sm:gap-20 lg:grid-cols-2">
+        <div className="relative bg-white mx-auto w-full max-w-7xl px-5 pt-16 lg:pt-24">
+          <div className="grid items-center gap-8 lg:grid-cols-2">
             <div className="flex max-w-2xl flex-col items-start gap-4">
               <Heading2 text={content?.title} />
               <Paragraph text={content?.text} />
@@ -87,6 +87,17 @@ const Contact: React.ForwardRefRenderFunction<HTMLDivElement, ContactProps> = ({
                 </div>
               </div>
               <ContactDetails content={content} />
+              <div className="w-full">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2866.2919816423278!2d-68.84758992454664!3d44.07732682489766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDTCsDA0JzM4LjQiTiA2OMKwNTAnNDIuMSJX!5e0!3m2!1sen!2sfr!4v1701965769870!5m2!1sen!2sfr" 
+                  className="" 
+                  width="100%" 
+                  height="300" 
+                  allowFullScreen 
+                  loading="lazy"
+                >
+                </iframe>
+              </div>
             </div>
             
             <div className="mx-2 max-w-xl bg-gray-100 px-8 py-5 text-center shadow-lg">
