@@ -76,8 +76,8 @@ const MenuHamburger = ({content,languages,setLanguage,setLockScroll}:{content?:T
 
 export const Menu = ({content}:{content?:TextNavigation}) => {
   return (
-    <div className="hidden justify-between items-center w-full lg:block">
-      <ul className="flex flex-col mt-4 lg:text-xl lg:flex-row lg:space-x-8 lg:mt-0">
+    <div className="hidden justify-between items-center w-full lg:block lg:pr-10">
+      <ul className="flex flex-col mt-4 lg:text-2xl lg:flex-row lg:space-x-8 lg:mt-0 xl:text-xl">
         <MenuItem label={content?.home} item={1} />
         <MenuItem label={content?.area} item={2} />
         <MenuItem label={content?.rentals} item={3} />
@@ -94,7 +94,7 @@ const MenuItem = ({label,item,setShowMenu}:{label?:string,item:number,setShowMen
   
   return (
     label && label.length > 0 && 
-      <li className="hover:bg-yellow-100 px-3 py-2 w-full text-center cursor-pointer">
+      <li className="hover:bg-gray-100 hover:shadow-lg rounded-xl px-3 py-2 w-full text-center cursor-pointer">
         <Link onClick={()=>{setShowRental(null);setShowMenu ? setShowMenu(false) : null}} to={link}>{label}</Link>
       </li>
   )
@@ -118,7 +118,7 @@ export const Language = ({languages,setLanguage}:{languages?:string[],setLanguag
         onSelect={code=>fixSelectLanguage(code.toLowerCase())}
         selectedSize={20}
         optionsSize={20}
-        className="p-3"
+        className="p-1"
         customLabels={{ GB: "EN", FR: "FR", NL: "NL" }}
       />
     )
@@ -142,9 +142,9 @@ const Navigation = (
   
   return (
     <header className={`z-50 fixed top-0 right-0 tranform duration-500 left-0 `} >
-      <div className="bg-white/90 relative flex justify-between items-center max-w-screen-xl p-2 lg:p-1 shadow-lg">
+      <div className="bg-white/90 relative flex justify-between items-center p-2 lg:p-1 shadow-lg">
         <div className={`
-                          absolute left-1 p-3 text-2xl w-full font-semibold whitespace-nowrap tranform duration-500 
+                          absolute left-1 p-3  text-xl md:text-3xl lg:text-2xl text-gray-600 whitespace-pre-line w-full tranform duration-500
                           ${scrolledHalfway ? "opacity-100" : "opacity-0"}
                           ${showRental !== null ? "translate-x-full lg:-translate-x-full" : "translate-x-0"}
                         `}>

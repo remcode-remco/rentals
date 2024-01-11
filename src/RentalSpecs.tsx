@@ -5,11 +5,11 @@ import { IoMdPerson } from "react-icons/io"
 import { IconContext } from "react-icons"
 
 const RentalSpec = ({spec,specNo}:{spec?:string,specNo:number}) => (
-  <div className="flex flex-col justify-end items-center text-gray-700">
-    <div className=" my-3 text-4xl md:text-5xl lg:text-3xl">
+  <div className="flex flex-col justify-end items-center text-gray-700 mb-5">
+    <div className="mb-3 text-4xl md:text-4xl lg:text-3xl">
       {spec ? spec : ""}
     </div>
-    <IconContext.Provider value={{ color: "text-gray-800", className: "text-4xl md:text-5xl lg:text-4xl" }}>
+    <IconContext.Provider value={{ color: "text-gray-800", className: "text-4xl md:text-4xl lg:text-4xl" }}>
         {specNo === 1 ?
           <IoMdPerson />
         : specNo === 2 ?

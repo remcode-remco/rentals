@@ -23,9 +23,9 @@ const Area: React.ForwardRefRenderFunction<HTMLDivElement, AreaProps> = ({ conte
   const { password } = contextValue as AppContext
 
   return (
-    <section ref={ref} className="">
-      <div className="relative md:shadow-lg md:rounded bg-white w-full h-full relative px-5 pt-16 lg:pt-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-16">
+    <section ref={ref} className="bg-white">
+      <div className="relative md:shadow-lg md:rounded bg-white w-full h-full relative px-5 pt-16 lg:py-24">
+        <div className="max-w-6xl xl:mx-auto grid grid-cols-1 lg:grid-cols-2 lg:gap-16">
           <div className="relative flex items-center order-1 lg:hidden">
             <Heading2 text={content?.title} />
           </div>

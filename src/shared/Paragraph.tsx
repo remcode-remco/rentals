@@ -9,13 +9,13 @@ const Paragraph = ({text}:{text?:string}) => {
     const [showEntireText,setShowEntireText] = useState<boolean>(false)
     
     return (
-      <div className="m-2 md:mx-4 md:my-4 text-xl md:text-3xl lg:text-2xl text-gray-600 whitespace-pre-line">
+      <div className="mx-2 md:mx-4 md:my-4 text-xl md:text-3xl lg:text-2xl text-gray-600 whitespace-pre-line">
         <span>{paragraphs[0]}</span>
         <div className={` transition transform duration-1000 
                           ${showEntireText ? 'opacity-100 max-h-screen' : 'opacity-0 max-h-0'}`}
         >
           {restOfParagraphs.split('##').map((paragraph, index) => (
-            <div className={`${index === 0 && "mt-6"} text-gray-600 whitespace-pre-line`} key={index}>
+            <div className={`${index === 0 && "mt-6"}`} key={index}>
               {paragraph}
             </div>
           ))}

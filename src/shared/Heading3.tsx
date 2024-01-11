@@ -1,5 +1,5 @@
 const Heading3 = ({text}:{text?:string}) => (
-  <h3 className="w-full text-2xl md:text-4xl text-gray-700 font-bold text-center p-2">
+  <h3 className="w-full text-3xl md:text-4xl lg:text-3xl text-gray-700 font-bold text-center py-2">
     {text ? text : ""}
   </h3>
 )

@@ -22,7 +22,7 @@ const RentalOverview = ({index,rental}:{index:number,rental:TextRental,overview:
   const { password } = contextValue as AppContext
 
   return (
-    <div className="relative rounded shadow-lg lg:m-3 px-2 py-3 lg:my-3 bg-white">
+    <div className="relative bg-white rounded-xl shadow-lg lg:m-3 px-0 pb-3 lg:my-3">
       <Image image={rental?.pictures[0]} />
       <Heading3 text={rental?.name} />
       {password && <EditRental index={index} section={4} />}
