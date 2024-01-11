@@ -42,7 +42,7 @@ const RentalImageUpload = ({index}:{index:number}) => {
               if (data.status === "success") {
                 setMessage({error:false,message:"Upload succesfull"})
                 const newRentals: TextRental[] = [...siteContents.rentals.rentals]
-                const newPictures: { original: string }[] = [...newRentals[index].pictures, { original: data.message }]
+                const newPictures: { src: string }[] = [...newRentals[index].pictures, { src: data.message }]
                 newRentals[index].pictures = newPictures
 
                 //@ts-ignore

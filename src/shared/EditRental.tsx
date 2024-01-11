@@ -26,7 +26,7 @@ const EditPictures = ({pictures,index}:{pictures:Pictures,index:number}) => {
         setSiteContents((prevSiteContents:SiteContents) => {
           const newRentals = [...prevSiteContents.rentals.rentals];
           const picturesIndex = newRentals[index].pictures.findIndex(
-            (pic) => pic.original === filename
+            (pic) => pic.src === filename
           );
     
           if (picturesIndex !== -1) {

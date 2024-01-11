@@ -42,7 +42,7 @@ const AreaImageUpload = () => {
               if (data.status === "success") {
                 setMessage({error:false,message:"Upload succesfull"})
                 const newArea:TextArea = siteContents.area
-                const newPictures: { original: string }[] = [...newArea.pictures, { original: data.message }]
+                const newPictures: { src: string }[] = [...newArea.pictures, { src: data.message }]
                 newArea.pictures = newPictures
 
                 // @ts-ignore
