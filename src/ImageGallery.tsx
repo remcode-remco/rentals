@@ -1,56 +1,65 @@
-import ImageGallery from "react-image-gallery"
-import "react-image-gallery/styles/css/image-gallery.css"
+import PhotoAlbum from "react-photo-album"
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 
-const ImageGalleryComponent = ({images}:{images?:any}) => {
-  function extractYouTubeVideoId(embedUrl: string) {
-    const match = embedUrl.match(/(?:embed\/|v=)([a-zA-Z0-9_-]{11})/);
-  
-    if (match && match.length > 1) {
-      return match[1]
-    } else {
-      return null
+// import optional lightbox plugins
+import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
+import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
+import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import "yet-another-react-lightbox/plugins/thumbnails.css";
+
+import { useEffect, useState } from 'react';
+
+const ImageGallery = ({photos,targetRowHeight}) => {
+  const [pictures, setPictures] = useState([])
+  const [index, setIndex] = useState(-1);
+
+  useEffect(() => {
+    if (photos) {
+      const updateImageDimensions = async () => {
+        const updatedPictures = await Promise.all(
+          photos.map(async (picture) => {
+            const { src } = picture;
+            const img = new Image();
+            img.src = src;
+
+            return new Promise((resolve) => {
+              img.onload = () => {
+                const updatedPicture = {
+                  ...picture,
+                  width: img.width,
+                  height: img.height,
+                };
+                resolve(updatedPicture);
+              };
+            });
+          })
+        );
+
+        setPictures(updatedPictures);
+      };
+
+      updateImageDimensions();
     }
-  }
-  
-  const modifyPicturesArray = (images:any) => {
-    return images.map((image:any) => {
-      if (image.embedUrl && image.embedUrl.includes('youtube.com')) {
-        return {
-          embedUrl: image.embedUrl,
-          original: 'https://img.youtube.com/vi/' + extractYouTubeVideoId(image.embedUrl) + '/0.jpg',
-          thumbnail: 'https://img.youtube.com/vi/' + extractYouTubeVideoId(image.embedUrl) + '/0.jpg',
-          renderItem: renderVideo.bind(this),
-        }
-      } else {
-        return image
-      }
-    })
-  }
-  
-  const renderVideo = (item: { embedUrl: string | undefined; }) => {
-    return (
-      <iframe className="aspect-square w-full h-full flex flex-col justify-stretch"
-        src={item.embedUrl}
-        allowFullScreen
-        title="ex"
-      />
-    )
-  }
+  }, [photos]);
 
-  if (images) {
-    const modifiedPicturesArray = modifyPicturesArray(images)
+  if (pictures && pictures.length > 0) {
     return (
-      <ImageGallery 
-        items={modifiedPicturesArray} 
-        showThumbnails={false}
-        showPlayButton
-        additionalClass="object-cover"
-        showFullscreenButton={window.innerWidth > 1024 ? true : false}
-      />
+      <>
+        <PhotoAlbum photos={[...pictures.slice(1)]} layout="rows" targetRowHeight={targetRowHeight} onClick={({ index }) => setIndex(index)} />
+
+          <Lightbox
+            slides={pictures}
+            open={index >= 0}
+            index={index+1}
+            close={() => setIndex(-1)}
+            // enable optional lightbox plugins
+            plugins={[Fullscreen, Slideshow, Thumbnails, Zoom]}
+          />
+    </>
     )
   }
 }
 
-export default ImageGalleryComponent
-
-
+export default ImageGallery

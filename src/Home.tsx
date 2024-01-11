@@ -135,7 +135,7 @@ const Home: React.FC<HomeProps> = ({section}) => {
         <Navigation setLockScroll={setLockScroll} scrolledHalfway={scrolledHalfway} content={{navigation:siteContents?.navigation, languages:siteContents?.languages}} setLanguage={setLanguage} showRental={showRental} setShowRental={setShowRental} />
         <Hero scrolledHalfway={scrolledHalfway} doneLoading={doneLoading} content={siteContents?.hero} />
         <Area ref={areaRef} content={siteContents?.area} />
-        <Rentals ref={rentalsRef} content={siteContents?.rentals} setLockScroll={setLockScroll} showRental={showRental} setShowRental={setShowRental} />
+        <Rentals ref={rentalsRef} content={siteContents?.rentals} showRental={showRental} setShowRental={setShowRental} />
         <Contact ref={contactRef} content={siteContents?.contact} />
         <Footer />
         {password && <IconAdmin showAdmin={showAdmin} setShowAdmin={setShowAdmin} size={"40"} color={"text-black"} /> }

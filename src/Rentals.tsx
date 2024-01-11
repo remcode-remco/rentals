@@ -21,10 +21,9 @@ interface RentalsProps {
   content?: TextRentals;
   showRental:number|null;
   setShowRental:(showRental:number|null)=>void;
-  setLockScroll:(lockScroll:boolean)=>void;
 }
 
-const Rentals: React.ForwardRefRenderFunction<HTMLDivElement, RentalsProps> = ({ content,setLockScroll,showRental,setShowRental }, ref) => {
+const Rentals: React.ForwardRefRenderFunction<HTMLDivElement, RentalsProps> = ({ content,showRental,setShowRental }, ref) => {
   const contextValue = useContext(RentalsContext)
   const { password } = contextValue as AppContext
   

@@ -2,7 +2,7 @@ import { useState, forwardRef } from "react"
 import Heading2 from "./shared/Heading2.tsx"
 import Paragraph from "./shared/Paragraph.tsx"
 import Heading3 from "./shared/Heading3.tsx"
-import { FaInstagram, FaMapMarkerAlt } from "react-icons/fa"
+import { FaInstagram } from "react-icons/fa"
 import { MdOutlineEmail } from "react-icons/md"
 import { FiPhone, FiTwitter, FiFacebook } from "react-icons/fi"
 

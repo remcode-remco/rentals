@@ -1,12 +1,14 @@
 import { useState } from "react"
-import IconArrowDown from "./icons/IconArrowDown"
-import IconArrowUp from "./icons/IconArrowUp"
+// import IconArrowDown from "./icons/IconArrowDown"
+// import IconArrowUp from "./icons/IconArrowUp"
 
 const Paragraph = ({text}:{text?:string}) => {
   if (text) {
     const paragraphs = text.split('\n\n')
     const restOfParagraphs = paragraphs.slice(1).join('##\n')
-    const [showEntireText,setShowEntireText] = useState<boolean>(false)
+    // disabled for now =================================
+    const [showEntireText,setShowEntireText] = useState<boolean>(true)
+    // ================================
     
     return (
       <div className="mx-2 md:mx-4 md:my-4 text-xl md:text-3xl lg:text-2xl text-gray-600 whitespace-pre-line">
@@ -20,7 +22,7 @@ const Paragraph = ({text}:{text?:string}) => {
             </div>
           ))}
         </div>
-        {paragraphs.length > 1 && (
+        {/* {paragraphs.length > 1 && (
           <div onClick={() => setShowEntireText(!showEntireText)}
             className={`relative flex justify-center transition-max-h overflow-hidden transition duration-1000 cursor-pointer md:p-3`}
           >
@@ -30,7 +32,7 @@ const Paragraph = ({text}:{text?:string}) => {
               <IconArrowDown size={40} color="" handleIconClick={() => null} />
             }
           </div>
-        )}
+        )} */}
       </div>
     )
   }

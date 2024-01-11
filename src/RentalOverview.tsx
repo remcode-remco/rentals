@@ -8,7 +8,7 @@ import RentalSpecs from "./RentalSpecs"
 export interface TextRental {
   name:string;
   description:string;
-  pictures: {original:string}[];
+  pictures: {src:string}[];
   people:string;
   beds:string;
   baths:string;
@@ -23,7 +23,7 @@ const RentalOverview = ({index,rental}:{index:number,rental:TextRental,overview:
 
   return (
     <div className="relative bg-white rounded-xl shadow-lg lg:m-3 px-0 pb-3 lg:my-3">
-      <Image image={rental?.pictures[0]} />
+      <Image images={rental?.pictures} i={-1} overview={true} />
       <Heading3 text={rental?.name} />
       {password && <EditRental index={index} section={4} />}
       <RentalSpecs rental={rental} />

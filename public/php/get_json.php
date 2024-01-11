@@ -43,20 +43,20 @@
                         if (preg_match('/^(\d+)_/', $imageFile, $matches)) {
                             $index = intval($matches[1]);
                             // add to the pictures array of the specific rental index
-                            $decodedContent['rentals'][$index]['pictures'][] = ['original' => "images/{$imageFile}"];
+                            $decodedContent['rentals'][$index]['pictures'][] = ['src' => "/images/{$imageFile}"];
                         }
                     }
 
-                    if (isset($decodedContent['rentals']) && is_array($decodedContent['rentals'])) {
-                        foreach ($decodedContent['rentals'] as $rentalIndex => $rental) {
-                            if (isset($rental['videos'])) {
-                                // Add videos to the 'pictures' array for each rental
-                                foreach ($rental['videos'] as $video) {
-                                    $decodedContent['rentals'][$rentalIndex]['pictures'][] = $video;
-                                }
-                            }
-                        }
-                    }
+                    // if (isset($decodedContent['rentals']) && is_array($decodedContent['rentals'])) {
+                    //     foreach ($decodedContent['rentals'] as $rentalIndex => $rental) {
+                    //         if (isset($rental['videos'])) {
+                    //             // Add videos to the 'pictures' array for each rental
+                    //             foreach ($rental['videos'] as $video) {
+                    //                 $decodedContent['rentals'][$rentalIndex]['pictures'][] = $video;
+                    //             }
+                    //         }
+                    //     }
+                    // }
                 }
     
                 if ($fileName === 'area') {
@@ -64,15 +64,15 @@
                     foreach ($imageFiles as $imageFile) {
                         // Check if the file starts with 'area_'
                         if (preg_match('/^area_/', $imageFile, $matches)) {
-                            $decodedContent['pictures'][] = ['original' => "images/{$imageFile}"];                    
+                            $decodedContent['pictures'][] = ['src' => "/images/{$imageFile}"];                    
                         }
                     }
-                    if (isset($decodedContent) && isset($decodedContent['videos']) && is_array($decodedContent['videos'])) {
-                        // Add videos to the 'pictures' array for the 'area'
-                        foreach ($decodedContent['videos'] as $video) {
-                            $decodedContent['pictures'][] = $video;
-                        }
-                    }                
+                    // if (isset($decodedContent) && isset($decodedContent['videos']) && is_array($decodedContent['videos'])) {
+                    //     // Add videos to the 'pictures' array for the 'area'
+                    //     foreach ($decodedContent['videos'] as $video) {
+                    //         $decodedContent['pictures'][] = $video;
+                    //     }
+                    // }                
                 }
             
             $fileContents[$fileName] = $decodedContent;
