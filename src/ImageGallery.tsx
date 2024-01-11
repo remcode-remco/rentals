@@ -10,7 +10,7 @@ import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 
 import { useEffect, useState } from 'react';
-
+//@ts-ignore
 const ImageGallery = ({photos,targetRowHeight}) => {
   const [pictures, setPictures] = useState([])
   const [index, setIndex] = useState(-1);
@@ -19,6 +19,7 @@ const ImageGallery = ({photos,targetRowHeight}) => {
     if (photos) {
       const updateImageDimensions = async () => {
         const updatedPictures = await Promise.all(
+          //@ts-ignore
           photos.map(async (picture) => {
             const { src } = picture;
             const img = new Image();
@@ -37,6 +38,7 @@ const ImageGallery = ({photos,targetRowHeight}) => {
           })
         );
 
+//@ts-ignore
         setPictures(updatedPictures);
       };
 

@@ -9,9 +9,9 @@ import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 
-interface RentalImage {
-  src:string;
-}
+// interface RentalImage {
+//   src:string;
+// }
 
 const Image = ({images,overview}:{images:any,overview:boolean}) => {
   const [index, setIndex] = useState(-1)
