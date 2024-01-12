@@ -22,8 +22,8 @@ const RentalOverview = ({index,rental}:{index:number,rental:TextRental,overview:
   const { password } = contextValue as AppContext
 
   return (
-    <div className="relative bg-white rounded-xl shadow-lg lg:m-3 px-0 pb-3 lg:my-3">
-      <Image images={rental?.pictures} overview={true} />
+    <div className="relative bg-white rounded-xl shadow-lg hover:shadow-green-600 lg:m-3 px-0 pb-3 lg:my-3 cursor-pointer">
+      <Image images={rental?.pictures} clickable={true} />
       <Heading3 text={rental?.name} />
       {password && <EditRental index={index} section={4} />}
       <RentalSpecs rental={rental} />

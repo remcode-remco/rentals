@@ -60,9 +60,9 @@ const MenuHamburger = ({content,languages,setLanguage,setLockScroll}:{content?:T
         <span className="sr-only">Open main menu</span>
         <IconBurger size="40" color={"border rounded p-1 shadow"} />
       </button>
-      <div className={`fixed left-0 right-0 bottom-0 top-0 bg-white/90 transform transition duration-500 ${showMenu ? 'translate-x-0' : '-translate-x-full'}`}>
+      <div className={`z-50 fixed left-0 right-0 bottom-0 top-0 transform transition duration-500 ${showMenu ? 'translate-x-0' : '-translate-x-full'}`}>
         <ButtonClose showMenu={showMenu} setShowMenu={setShowMenu} setLockScroll={setLockScroll} />
-        <ul className={`h-screen flex flex-col lg:flex-row items-center justify-center gap-10 text-4xl transform transition duration-1000 ${showMenu ? 'opacity-100' : 'opacity-0'}`}>
+        <ul className={`h-screen bg-white/90 flex flex-col lg:flex-row items-center justify-center gap-10 text-4xl transform transition duration-1000 ${showMenu ? 'opacity-100' : 'opacity-0'}`}>
           <MenuItem setShowMenu={setShowMenu} label={content?.home} item={1} />
           <MenuItem setShowMenu={setShowMenu} label={content?.area} item={2} />
           <MenuItem setShowMenu={setShowMenu} label={content?.rentals} item={3} />
@@ -133,15 +133,15 @@ const MenuButtons = () => (
 )
 
 const Navigation = (
-    {content,setLanguage,scrolledHalfway,showRental,setShowRental,setLockScroll}:
-    {content?:ContentNavigation,setLanguage:(language:string)=>void,scrolledHalfway:boolean,showRental:number|null,setShowRental:(showRental:number|null)=>void,setLockScroll:(lockScroll:boolean)=>void}
+    {content,setLanguage,scrolledHalfway,showRental,setShowRental,setLockScroll,doneLoading}:
+    {content?:ContentNavigation,setLanguage:(language:string)=>void,scrolledHalfway:boolean,showRental:number|null,setShowRental:(showRental:number|null)=>void,setLockScroll:(lockScroll:boolean)=>void,doneLoading:boolean}
 ) => {
   const contextValue = useContext(RentalsContext)
   const { password } = contextValue as AppContext
   const { navigation, languages } = content || {}
   
   return (
-    <header className={`z-50 fixed top-0 right-0 tranform duration-500 left-0 `} >
+    <header className={`z-50 fixed top-0 left-0 right-0 tranform duration-300 transition-all delay-500 ease-out ${doneLoading ? "translate-y-0" : "-translate-y-full"}`} >
       <div className="bg-white/90 relative flex justify-between items-center p-2 lg:p-1 shadow-lg">
         <div className={`
                           absolute left-1 p-3  text-xl md:text-3xl lg:text-2xl text-gray-600 whitespace-pre-line w-full tranform duration-500

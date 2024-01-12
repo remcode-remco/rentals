@@ -43,7 +43,7 @@
                         if (preg_match('/^(\d+)_/', $imageFile, $matches)) {
                             $index = intval($matches[1]);
                             // add to the pictures array of the specific rental index
-                            $decodedContent['rentals'][$index]['pictures'][] = ['src' => "/images/{$imageFile}"];
+                            $decodedContent['rentals'][$index]['pictures'][] = ['src' => "images/{$imageFile}"];
                         }
                     }
 
@@ -64,7 +64,7 @@
                     foreach ($imageFiles as $imageFile) {
                         // Check if the file starts with 'area_'
                         if (preg_match('/^area_/', $imageFile, $matches)) {
-                            $decodedContent['pictures'][] = ['src' => "/images/{$imageFile}"];                    
+                            $decodedContent['pictures'][] = ['src' => "images/{$imageFile}"];                    
                         }
                     }
                     // if (isset($decodedContent) && isset($decodedContent['videos']) && is_array($decodedContent['videos'])) {

@@ -53,7 +53,7 @@ const Rentals: React.ForwardRefRenderFunction<HTMLDivElement, RentalsProps> = ({
             {password && <Edit section={4} />}
           </div>
           <div className={`grid gap-4 pb-3
-                            ${evenNoOfRentals || content && content.rentals.length < 4 ? "md:grid-cols-2 lg:grid-cols-3" : "md:grid-cols-3"}`}
+                            ${evenNoOfRentals || content && content.rentals.length < 4 ? "grid-cols-2 lg:grid-cols-3" : "md:grid-cols-3"}`}
           >
             {content?.rentals.map((rental: TextRental,index:number)=>(
               <div className={`h-full ${rental === content.rentals[content.rentals.length-1] && !evenNoOfRentals && ""}`} key={index} 

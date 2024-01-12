@@ -132,13 +132,13 @@ const Home: React.FC<HomeProps> = ({section}) => {
   return (
     <RentalsContext.Provider value={contextValue}>
       <div className={`relative ${lockScroll && "overflow-y-hidden"}`}>
-        <Navigation setLockScroll={setLockScroll} scrolledHalfway={scrolledHalfway} content={{navigation:siteContents?.navigation, languages:siteContents?.languages}} setLanguage={setLanguage} showRental={showRental} setShowRental={setShowRental} />
+        <Navigation setLockScroll={setLockScroll} doneLoading={doneLoading} scrolledHalfway={scrolledHalfway} content={{navigation:siteContents?.navigation, languages:siteContents?.languages}} setLanguage={setLanguage} showRental={showRental} setShowRental={setShowRental} />
         <Hero scrolledHalfway={scrolledHalfway} doneLoading={doneLoading} content={siteContents?.hero} />
         <Area ref={areaRef} content={siteContents?.area} />
         <Rentals ref={rentalsRef} content={siteContents?.rentals} showRental={showRental} setShowRental={setShowRental} />
         <Contact ref={contactRef} content={siteContents?.contact} />
         <Footer />
-        {password && <IconAdmin showAdmin={showAdmin} setShowAdmin={setShowAdmin} size={"40"} color={"text-black"} /> }
+        {!password && <IconAdmin showAdmin={showAdmin} setShowAdmin={setShowAdmin} size={"40"} color={"text-black"} /> }
         {showAdmin && <Admin setMessage={setMessage} setShowAdmin={setShowAdmin} setPassword={setPassword} />}
         <PopupMessage message={message} setMessage={setMessage} />
         <Loading showLoading={showLoading} setLockScroll={setLockScroll} />

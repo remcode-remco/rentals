@@ -36,9 +36,9 @@ const ContactInput = ({text,name,handleChange}:{text:string,name:string,handleCh
   <div className="flex flex-col mb-3 w-full">
     <label className="capitalize pb-2 text-xl md:text-3xl lg:text-2xl text-gray-600 whitespace-pre-line">{name}</label>
     {name === "message" ?
-      <textarea onChange={(e=>handleChange(e))} rows={10} name={name} defaultValue={text} className="shadow overflow-auto bg-white p-3" />
+      <textarea onChange={(e=>handleChange(e))} rows={10} name={name} defaultValue={text} className="shadow shadow-green-600 overflow-auto bg-white p-3" />
     :
-      <input onChange={(e) => handleChange(e)} name={name} defaultValue={text} className="shadow bg-white p-3" />
+      <input onChange={(e) => handleChange(e)} name={name} defaultValue={text} className="shadow shadow-green-600 bg-white p-3" />
     }
   </div>
 )
@@ -68,12 +68,12 @@ const ContactDetailsLink = ({data,type}:{data?:string,type:number}) => (
 )
 
 const ContactDetails = ({content}:{content?:TextContact}) => (
-  <div className="lg:col-span-2 flex w-full items-center justify-center">
-    <div className="flex flex-col items-center w-full md:mx-auto md:w-auto bg-gray-100 p-5 rounded-xl shadow-lg">
+  <div className="flex w-full items-center justify-center">
+    <div className="flex flex-col items-center md:mx-auto md:w-auto bg-gray-50 p-5 rounded-xl shadow-lg">
       {content?.owner_image && <img src={content.owner_image} alt="" className="rounded-xl shadow-lg w-40 object-cover" />}
       <div className="flex flex-col h-full items-center">
         <Heading3 text={content?.owner} />
-        <div className="flex gap-6 text-gray-800">
+        <div className="flex gap-6 text-gray-800 my-3">
           <ContactDetailsLink data={content?.email} type={1} />
           <ContactDetailsLink data={content?.phone} type={2} />
           <ContactDetailsLink data={content?.facebook} type={3} />
@@ -98,7 +98,7 @@ const ContactForm = ({message}:{message?:string}) => {
   }
 
   return (
-    <div className="lg:rounded-xl lg:shadow-lg bg-gray-50 relative p-3 lg:p-10 lg:ml-3 lg:mr-2 flex flex-col w-full lg:h-full items-center justify-center">
+    <div className="relative p-3 lg:p-10 lg:ml-3 lg:mr-2 flex flex-col w-full lg:h-full items-center justify-center">
       <Heading3 text={message} />
       <form className="max-w-xl mx-auto flex flex-col items-center w-full">
         <ContactInput
@@ -117,7 +117,7 @@ const ContactForm = ({message}:{message?:string}) => {
           handleChange={handleChange}
         />
         <div className="flex justify-center ">
-          <input type="submit" value="Submit" className="cursor-pointer mb-3 px-4 py-2 rounded shadow-lg text-xl bg-blue-500 text-white" />
+          <input type="submit" value="Submit" className="cursor-pointer mb-3 px-10 py-2 rounded-full shadow hover:shadow-green-600 text-xl bg-white text-gray-800 border border-green-600" />
         </div>
       </form>
     </div>
@@ -125,9 +125,11 @@ const ContactForm = ({message}:{message?:string}) => {
 }
 
 const ContactMap = ({content}:{content?:TextContact}) => (
-  <div className="lg:rounded-xl lg:shadow-lg lg:p-5 lg:bg-gray-50 mb-4 lg:mb-0 lg:mr-3 lg:ml-2 flex flex-col">
+  <div className="lg:rounded-xl lg:shadow-lg lg:p-5 lg:bg-white mb-4 lg:mb-0 lg:mr-3 lg:ml-2 flex flex-col">
     <Heading3 text={content?.locate_us} />
-    <Paragraph text={content?.address} />
+    <div className="px-10 pt-3">
+      <Paragraph text={content?.address} />
+    </div>
     <div className="w-full">
       <iframe 
         src={content?.googlemaps}
@@ -149,14 +151,14 @@ const Contact: React.ForwardRefRenderFunction<HTMLDivElement, ContactProps> = ({
   
     return (
       <section ref={ref}>
-        <div className="bg-white w-full relative pb-20">
-          <div className="relative bg-white mx-auto w-full max-w-6xl pt-16 lg:pt-24">
+        <div className="bg-white w-full relative">
+          <div className="relative bg-white mx-auto w-full max-w-6xl pt-16 lg:pt-24 pb-10">
             <Heading2 text={content?.title} />
-            <div className="max-w-2xl mx-auto">
+            <div className="max-w-6xl mx-auto grid md:grid-cols-2 mb-5">
               <Paragraph text={content?.text} />
-            </div>
-            <div className="grid items-center lg:items-start gap-8 lg:grid-cols-2">
               <ContactDetails content={content} />
+            </div>
+            <div className="md:bg-gray-50 md:p-5 grid items-center lg:items-start gap-8 lg:grid-cols-2">
               <ContactForm message={content?.message} />
               <ContactMap content={content} />
             </div>

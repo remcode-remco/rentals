@@ -1,6 +1,6 @@
 {
     "title": "The property",
-    "text": "Nestled along the enchanting coastline of the Mediterranean, Villa Serenity Retreat is a haven of tranquility and opulence. Set amidst lush gardens and overlooking the azure waters, this prestigious property offers an unparalleled escape for those seeking a blend of luxury and natural beauty.\n\nStep onto the sun-kissed grounds adorned with vibrant flora and ancient olive trees. Immerse yourself in the rich history of the estate, where every stone tells a story. Whether strolling through the fragrant citrus groves or finding solace in the shaded pergolas, the grounds of Villa Serenity Retreat invite you to unwind and connect with nature.",
+    "text": "0000000000000Nestled along the enchanting coastline of the Mediterranean, Villa Serenity Retreat is a haven of tranquility and opulence. Set amidst lush gardens and overlooking the azure waters, this prestigious property offers an unparalleled escape for those seeking a blend of luxury and natural beauty.\n\nStep onto the sun-kissed grounds adorned with vibrant flora and ancient olive trees. Immerse yourself in the rich history of the estate, where every stone tells a story. Whether strolling through the fragrant citrus groves or finding solace in the shaded pergolas, the grounds of Villa Serenity Retreat invite you to unwind and connect with nature.",
     "videos": [
         {
             "embedUrl": "https:\/\/www.youtube.com\/embed\/qkehup4b4yM?si=vOtPV1Z-JMVHN54e"
@@ -8,10 +8,16 @@
     ],
     "pictures": [
         {
-            "original": "\/images\/area_blabla.jpg"
+            "src": "images\/area_0_d8cb5dba - Copy.jpg"
         },
         {
-            "embedUrl": "https:\/\/www.youtube.com\/embed\/qkehup4b4yM?si=vOtPV1Z-JMVHN54e"
+            "src": "images\/area_Untitled_004 - Copy.jpeg"
+        },
+        {
+            "src": "images\/area_Untitled_008 - Copy.jpeg"
+        },
+        {
+            "src": "images\/area_area.jpg"
         }
     ]
 }

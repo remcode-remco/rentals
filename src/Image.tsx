@@ -13,14 +13,14 @@ import "yet-another-react-lightbox/plugins/thumbnails.css";
 //   src:string;
 // }
 
-const Image = ({images,overview}:{images:any,overview:boolean}) => {
+const Image = ({images,clickable}:{images:any,clickable:boolean}) => {
   const [index, setIndex] = useState(-1)
 
   if (images) {
     return (
       <>
-        <img className={`object-cover w-full h-full min-h-[50vh] ${overview && "rounded-t-xl"}`} src={images[0] && images[0].src ? images[0].src : "images/img_placeholder.png"} 
-          onClick={() =>{overview ? null : setIndex(0)}}
+        <img className={`object-cover w-full h-full min-h-[25vh] ${clickable && "rounded-t-xl"}`} src={images[0] && images[0].src ? images[0].src : "images/img_placeholder.png"} 
+          onClick={() =>{clickable ? null : setIndex(0)}}
         />
         
         <Lightbox
