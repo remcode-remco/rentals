@@ -99,7 +99,7 @@ const MenuItem = ({label,item,setShowMenu}:{label?:string,item:number,setShowMen
   
   return (
     label && label.length > 0 && 
-      <li className="hover:bg-gray-100 hover:shadow-lg rounded-xl px-3 py-2 w-full text-center cursor-pointer">
+      <li className="hover:border-b hover:border-green-800 hover:transition-all hover:delay-100 hover:ease-in px-3 py-2 w-full text-center cursor-pointer">
         <Link onClick={()=>{setShowRental(null);setShowMenu ? setShowMenu(false) : null}} to={link}>{label}</Link>
       </li>
   )
@@ -121,9 +121,9 @@ export const Language = ({languages,setLanguage}:{languages?:string[],setLanguag
         countries={fixLanguagesArray(languages)}
         selected={fixSelectedLanguage(language)} 
         onSelect={code=>fixSelectLanguage(code.toLowerCase())}
-        selectedSize={20}
-        optionsSize={20}
-        className="p-1"
+        selectedSize={16}
+        optionsSize={16}
+        className="p-0"
         customLabels={{ GB: "EN", FR: "FR", NL: "NL" }}
       />
     )
@@ -147,7 +147,7 @@ const Navigation = (
   
   return (
     <header className={`z-50 fixed top-0 left-0 right-0 tranform duration-300 transition-all delay-500 ease-out ${doneLoading ? "translate-y-0" : "-translate-y-full"}`} >
-      <div className="bg-green-200/80 border-b border-green-800 relative flex justify-between items-center lg:grid lg:grid-cols-4 p-2 lg:p-1">
+      <div className="bg-white shadow border-b border-green-800 relative flex justify-between items-center lg:grid lg:grid-cols-4 p-2 lg:p-1">
         <div className={`
                           absolute left-1 p-3  text-xl md:text-3xl lg:text-2xl text-gray-600 whitespace-pre-line w-full tranform duration-500
                           ${scrolledHalfway ? "opacity-100" : "opacity-0"}
