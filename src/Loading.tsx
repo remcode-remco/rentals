@@ -9,10 +9,10 @@ const Loading = ({showLoading}:{showLoading:boolean}) => {
   useEffect(()=>{
     if (showLoading) {
       setLockScroll(true)
-      setClasses("z-50 fixed top-0 bottom-0 right-0 left-0 bg-yellow-500/50 translate-y-0 flex items-center justify-center opacity-100 transition-opacity")
+      setClasses("z-50 fixed top-0 bottom-0 right-0 left-0 bg-green-200/50 translate-y-0 flex items-center justify-center opacity-100 transition-opacity")
     } else {
       setLockScroll(false)
-      setClasses("fixed top-0 bottom-0 right-0 left-0 bg-red-500 translate-y-full opacity-0")
+      setClasses("fixed top-0 bottom-0 right-0 left-0 translate-y-full opacity-0")
     }
   },[showLoading])
 

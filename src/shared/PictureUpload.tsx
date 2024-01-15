@@ -4,6 +4,7 @@ import { RentalsContext, AppContext, SiteContents } from '../Home'
 import IconPlus from './icons/IconPlus'
 import { apiUrl } from '../constants/constants'
 import { TextRental } from '../Rental'
+import { SLIDE_STATUS_LOADING } from 'yet-another-react-lightbox'
 
 interface CompressorSettings {
   quality: number;
@@ -13,7 +14,7 @@ interface CompressorSettings {
 
 const PictureUpload = ({section,index}:{section:number,index:number}) => {
   const contextValue = useContext(RentalsContext)
-  const { password, setMessage, siteContents, setSiteContents } = contextValue as AppContext
+  const { password, setMessage, siteContents, setSiteContents, setShowLoading } = contextValue as AppContext
 
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -25,6 +26,7 @@ const PictureUpload = ({section,index}:{section:number,index:number}) => {
   
   const handleCompressedUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && password && siteContents) {
+      setShowLoading(true)
       const image = e.target.files[0]
 
       let compressor_settings:CompressorSettings = 
@@ -89,9 +91,11 @@ const PictureUpload = ({section,index}:{section:number,index:number}) => {
                   }))
                 }
               }
+              setShowLoading(false)
             })
             .catch(error => {
               console.error('Error uploading file:', error)
+              setShowLoading(false)
             })
         },
       })

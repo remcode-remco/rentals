@@ -13,7 +13,6 @@ import PopupMessage from './shared/PopupMessage'
 import Loading from './Loading'
 import EditForm from './shared/EditForm'
 
-
 export interface AppContext {
   password:string|null|undefined;
   language:string;
@@ -53,7 +52,6 @@ interface HomeProps {
 
 const Home: React.FC<HomeProps> = ({section}) => {
   const [lockScroll,setLockScroll]=useState<boolean>(false)
-  const [scrolledPosition, setScrolledPosition] = useState<number>(0)
   const [scrolledHalfway, setScrolledHalfway] = useState<boolean>(false)
   const [editingSection, setEditingSection] = useState<number>(0)
   const [password,setPassword] = useState<string|null|undefined>()
@@ -98,7 +96,6 @@ const Home: React.FC<HomeProps> = ({section}) => {
       const windowHeight = window.innerHeight
       const scrollPosition = window.scrollY
       const halfwayPoint = windowHeight / 2.6
-      setScrolledPosition(scrollPosition)
       setScrolledHalfway(scrollPosition >= halfwayPoint)
     }
     window.addEventListener('scroll', handleScroll)
@@ -107,14 +104,6 @@ const Home: React.FC<HomeProps> = ({section}) => {
     }
   }, [])  
 
-  useEffect(() => {
-    if (!lockScroll) {
-      window.scrollTo({
-        top: scrolledPosition,
-        left: 0,
-      })
-    }
-  }, [lockScroll])  
 
   useEffect(() => {
     const delayedFunction = () => {
