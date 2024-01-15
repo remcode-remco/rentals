@@ -7,16 +7,13 @@
     "dates": [
         "2024\/01\/14",
         "2024-04-06",
-        "2024-06-01",
-        "2024-07-06",
-        "2024-08-31",
-        "2024-10-26"
+        "2024\/05\/03"
     ],
     "rentals": [
         {
             "name": "Tranquil Oasis",
             "description": "Immerse yourself in the serenity of the Azure Horizon Suite. The interior boasts contemporary elegance, while the expansive terrace offers breathtaking views of the Mediterranean. Perfect for intimate getaways.",
-            "people": "3",
+            "people": "4",
             "beds": "2",
             "baths": "1",
             "calendar_url": "https:\/\/www.remcode.net\/gite\/cal.ics",
@@ -36,16 +33,19 @@
             ],
             "pictures": [
                 {
-                    "original": "\/gite\/images\/0_0_b9d9122a.jpg"
+                    "src": "images\/0_0_b9d9122a.jpg"
                 },
                 {
-                    "original": "\/images\/0_0_d8cb5dba.jpg"
+                    "src": "images\/0_0_d8cb5dba.jpg"
                 },
                 {
-                    "original": "\/images\/0_0_e0a1907b.jpg"
+                    "src": "images\/0_Untitled_004.jpeg"
                 },
                 {
-                    "embedUrl": "https:\/\/www.youtube.com\/embed\/qkehup4b4yM?si=vOtPV1Z-JMVHN54e"
+                    "src": "images\/0_Untitled_008.jpeg"
+                },
+                {
+                    "src": "images\/0_Untitled_022.jpeg"
                 }
             ]
         },
@@ -60,12 +60,16 @@
                 600,
                 650,
                 "799",
-                "110000",
+                "110",
                 675,
                 "699",
                 725
             ],
-            "pictures": []
+            "pictures": [
+                {
+                    "src": "images\/1_0_e0a1907b.jpg"
+                }
+            ]
         },
         {
             "name": "Seaside Grandeur",
@@ -85,13 +89,13 @@
             ],
             "pictures": [
                 {
-                    "original": "\/images\/2_2_0cec0dd3.jpg"
+                    "src": "images\/2_2_0cec0dd3.jpg"
                 },
                 {
-                    "original": "\/images\/2_2_3c9603b1.jpg"
+                    "src": "images\/2_2_3c9603b1.jpg"
                 },
                 {
-                    "original": "\/images\/2_2_91f5156a.jpg"
+                    "src": "images\/2_2_91f5156a.jpg"
                 }
             ]
         }

@@ -1,6 +1,9 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import { RentalsContext, AppContext } from "./Home"
 
-const Loading = ({showLoading,setLockScroll}:{showLoading:boolean,setLockScroll:(lockScroll:boolean)=>void}) => {
+const Loading = ({showLoading}:{showLoading:boolean}) => {
+  const contextValue = useContext(RentalsContext)
+  const { setLockScroll } = contextValue as AppContext
   const [classes,setClasses] = useState<string>("")
 
   useEffect(()=>{

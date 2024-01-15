@@ -61,8 +61,8 @@ const AreaImageUpload = () => {
   }
   
   return (
-    <div className='absolute right-0 z-40'>
-      <IconImage size={'60'} color={'text-black'} handleIconClick={handleIconClick} />
+    <div className='absolute right-0 left-0 top-0 bottom-0 flex items-center justify-center opacity-0 hover:opacity-100 hover:bg-green-50/40'>
+      <IconImage size={'60'} handleIconClick={handleIconClick} />
       <input
         type="file"
         id="fileInput"

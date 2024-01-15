@@ -92,11 +92,10 @@ const EditRentalPrices = ({dates,prices,setChanges,editingRental}:{dates:string[
   }
   
   return (
-    <div>
-    <table className="min-w-full divide-y divide-gray-200">
+    <div className="mt-3 p-3 bg-white border border-green-800 shadow shadow-green-800 rounded text-xl text-center">
+    <table className="p-2 w-full divide-y divide-gray-200">
       <thead>
         <tr>
-          <th></th>
           <th>
             Start/End<br />
             { language === "fr" || language === "nl" ?
@@ -106,39 +105,40 @@ const EditRentalPrices = ({dates,prices,setChanges,editingRental}:{dates:string[
             }
           </th>
           <th>Price</th>
+          <th></th>
         </tr>
       </thead>
-      <tbody className="bg-white divide-y divide-gray-200">
+      <tbody className="divide-y divide-gray-200">
         {dates.map((date, index) => (
           <tr key={index}>
-            <td>
-              {index === dates.length -1 &&
-                <>          
-                    <div onClick={()=>removeDate()} className=''>
-                      <IconGarbage size={20} color={"hover:bg-red-300 text-black"} />
-                    </div>
-                  <IconPlus size={20} color={""} handleIconClick={()=>addDate()} />
-                </>
-              }
-            </td>
-            <td className="px-6 py-4 whitespace-nowrap" onClick={()=>setShowDatePicker(index)}>
+            <td className="w-2/6 px-1 py-2 whitespace-nowrap text-center" onClick={()=>setShowDatePicker(index)}>
               {showDatePicker === index ?
-                <DatePicker locale={language} autoFocus={true} openToDate={new Date(date)} selected={startDate} onChange={(d) => d ? handleChangeDate(d,index) : null} />
+                <DatePicker locale={language} autoFocus={true} openToDate={new Date(date)} selected={startDate} onCalendarClose={()=>setShowDatePicker(-1)} onChange={(d) => d ? handleChangeDate(d,index) : null} />
               :
               new Intl.DateTimeFormat(language, { day: '2-digit', month: '2-digit', year: 'numeric' }).format(new Date(date))
               }
             </td>
-            <td className="px-6 py-4 whitespace-nowrap">
+            <td className="px-1 py-2 whitespace-nowrap">
               {showPriceInput === index ?
                 <input 
                   onChange={(e) => handleChangePrice(e, index)} 
                   name="price" 
                   type="number"
                   defaultValue={prices[index] ? prices[index] : 0} 
-                  className="my-2 p-1 border shadow w-full" 
+                  className="p-1 rounded border border-green-800 shadow shadow-green-800 w-full text-gray-800 focus:shadow-lg mb-1 text-center"
                 />
               :
-                <span onClick={()=>setShowPriceInput(index)}>{prices[index] ? prices[index] : 0}</span>
+                <span className="w-full mb-1" onClick={()=>setShowPriceInput(index)}>{prices[index] ? prices[index] : 0}</span>
+              }
+            </td>
+            <td>
+              {index === dates.length -1 &&
+                <div className="flex gap-3">          
+                    <div onClick={()=>removeDate()} className=''>
+                      <IconGarbage size={40} color={"hover:bg-red-300 text-black"} />
+                    </div>
+                  <IconPlus size={40} color={""} handleIconClick={()=>addDate()} />
+                </div>
               }
             </td>
           </tr>

@@ -13,22 +13,26 @@ import "yet-another-react-lightbox/plugins/thumbnails.css";
 //   src:string;
 // }
 
-const Image = ({images,clickable}:{images:any,clickable:boolean}) => {
+const Image = ({images,rental_overview}:{images:any,rental_overview:boolean}) => {
   const [index, setIndex] = useState(-1)
 
   if (images) {
     return (
       <>
-        <img className={`object-cover w-full h-full min-h-[25vh] ${clickable && "rounded-t-xl"}`} src={images[0] && images[0].src ? images[0].src : "images/img_placeholder.png"} 
-          onClick={() =>{clickable ? null : setIndex(0)}}
+        <img className={`cursor-pointer object-cover w-full h-full min-h-[25vh] max-h-[50vh] ${rental_overview ? "rounded-t-xl lg:h-[40vh] lg:max-h-screen" : "lg:h-[60vh] lg:max-h-screen xl:h-[80vh]"}`} 
+          src={images[0] && images[0].src ? images[0].src : "images/img_placeholder.png"} 
+          onClick={() =>{rental_overview ? null : setIndex(0)}}
+          onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+            const target = e.target as HTMLImageElement;
+            target.src = "/images/img_placeholder.png";
+          }}
         />
-        
+
         <Lightbox
           slides={images}
           open={index >= 0}
           index={index}
           close={() => setIndex(-1)}
-          // enable optional lightbox plugins
           plugins={[Fullscreen, Slideshow, Thumbnails, Zoom]}
         />
       </>

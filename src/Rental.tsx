@@ -41,15 +41,15 @@ const Rental = ({index,rental,content_prices,text_availability}:{index:number,re
       <div className="fixed top-0 left-0 right-0 bottom-0 pt-0 lg:pt-0 bg-white overflow-y-scroll">
         <div className="lg:grid lg:grid-cols-2 lg:gap-5"> 
           <div id="imageDiv" className="lg:order-2 flex justify-center w-full h-full min-h-[50vh] max-h-[80vh] duration-500 ease-in opacity-0">
-            <Image images={rental.pictures} clickable={false} />
+            <Image images={rental.pictures} rental_overview={false} />
           </div>
           <div id="textDiv" className={`lg:pt-24 lg:pl-10 lg:order-1 delay-300 duration-500 ease-in opacity-0`}>
             <Heading3 text={rental.name} />
-            {password && <EditRental index={+index} section={4} />}
+            {/* {password && <EditRental index={+index} section={4} />} */}
             <Paragraph text={rental.description} />
             <RentalSpecs rental={rental} />
           </div>
-          <div className="xl:w-full xl:max-w-[1600px] xl:mx-auto lg:order-3 lg:col-span-2 md:mx-2">
+          <div className="lg:w-full xl:max-w-[1600px] xl:mx-auto lg:order-3 lg:col-span-2 md:mx-2">
             <ImageGallery photos={rental.pictures} targetRowHeight={300} />
           </div>
           <div className="bg-gray-50 lg:p-5 lg:order-4 lg:w-full lg:col-span-2 lg:flex lg:justify-center">

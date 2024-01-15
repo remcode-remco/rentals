@@ -45,7 +45,7 @@ const Rentals: React.ForwardRefRenderFunction<HTMLDivElement, RentalsProps> = ({
 
   return (
     <section ref={ref}>
-      <div className="relative bg-gray-100 w-full">
+      <div className="relative bg-gray-50 w-full">
         <div className="max-w-6xl xl:mx-auto px-5 pt-16 lg:pt-24">
           <div className="relative grid md:grid-cols-1 gap-2 px-2">
             <Heading2 text={content?.title} />
@@ -53,7 +53,7 @@ const Rentals: React.ForwardRefRenderFunction<HTMLDivElement, RentalsProps> = ({
             {password && <Edit section={4} />}
           </div>
           <div className={`grid gap-4 pb-3
-                            ${evenNoOfRentals || content && content.rentals.length < 4 ? "grid-cols-2 lg:grid-cols-3" : "md:grid-cols-3"}`}
+                            ${evenNoOfRentals || content && content.rentals.length < 4 ? "grid-cols-2 md:grid-cols-3" : "md:grid-cols-3"}`}
           >
             {content?.rentals.map((rental: TextRental,index:number)=>(
               <div className={`h-full ${rental === content.rentals[content.rentals.length-1] && !evenNoOfRentals && ""}`} key={index} 

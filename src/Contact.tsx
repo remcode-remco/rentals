@@ -1,10 +1,13 @@
-import { useState, forwardRef } from "react"
+import { useState, forwardRef, useContext } from "react"
 import Heading2 from "./shared/Heading2.tsx"
 import Paragraph from "./shared/Paragraph.tsx"
 import Heading3 from "./shared/Heading3.tsx"
 import { FaInstagram } from "react-icons/fa"
 import { MdOutlineEmail } from "react-icons/md"
 import { FiPhone, FiTwitter, FiFacebook } from "react-icons/fi"
+import { RentalsContext, AppContext } from "./Home.tsx"
+import Edit from "./shared/Edit.tsx"
+import EditPicture from "./shared/EditPicture.tsx"
 
 interface FormInput {
   name:string;
@@ -67,24 +70,38 @@ const ContactDetailsLink = ({data,type}:{data?:string,type:number}) => (
     null
 )
 
-const ContactDetails = ({content}:{content?:TextContact}) => (
-  <div className="flex w-full items-center justify-center">
-    <div className="flex flex-col items-center md:mx-auto md:w-auto bg-gray-50 p-5 rounded-xl shadow-lg">
-      {content?.owner_image && <img src={content.owner_image} alt="" className="rounded-xl shadow-lg w-40 object-cover" />}
-      <div className="flex flex-col h-full items-center">
-        <Heading3 text={content?.owner} />
-        <div className="flex gap-6 text-gray-800 my-3">
-          <ContactDetailsLink data={content?.email} type={1} />
-          <ContactDetailsLink data={content?.phone} type={2} />
-          <ContactDetailsLink data={content?.facebook} type={3} />
-          <ContactDetailsLink data={content?.instagram} type={4} />
-          <ContactDetailsLink data={content?.twitter} type={5} />
+const ContactDetails = ({content}:{content?:TextContact}) => {
+  const contextValue = useContext(RentalsContext)
+  const { password } = contextValue as AppContext
+
+  return (
+    <div className="flex w-full items-center justify-center">
+      <div className="flex flex-col items-center md:mx-auto md:w-auto bg-gray-50 p-5 rounded-xl shadow-lg hover:shadow-green-600 duration-300 transition-all">
+        <div className="relative">
+          <img  src={content?.owner_image ? content.owner_image : "/images/img_placeholder.png"} 
+                alt="owner profile picture" 
+                className="rounded-xl shadow-lg w-40 object-cover" 
+                onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = "/images/img_placeholder.png";
+                }}
+          />
+          {password && <EditPicture section={4} />}
+        </div>
+        <div className="flex flex-col h-full items-center">
+          <Heading3 text={content?.owner} />
+          <div className="flex gap-6 text-gray-800 my-3">
+            <ContactDetailsLink data={content?.email} type={1} />
+            <ContactDetailsLink data={content?.phone} type={2} />
+            <ContactDetailsLink data={content?.facebook} type={3} />
+            <ContactDetailsLink data={content?.instagram} type={4} />
+            <ContactDetailsLink data={content?.twitter} type={5} />
+          </div>
         </div>
       </div>
     </div>
-  </div>
-)
-
+  )
+}
 
 const ContactForm = ({message}:{message?:string}) => {
   const [formInput,setFormInput] = useState<FormInput>({name:"",email:"",message:""})
@@ -117,7 +134,7 @@ const ContactForm = ({message}:{message?:string}) => {
           handleChange={handleChange}
         />
         <div className="flex justify-center ">
-          <input type="submit" value="Submit" className="cursor-pointer mb-3 px-10 py-2 rounded-full shadow hover:shadow-green-600 text-xl bg-white text-gray-800 border border-green-600" />
+          <input type="submit" value="Submit" className="cursor-pointer mb-3 px-10 py-2 rounded-full shadow-lg hover:shadow-green-600 text-xl bg-white text-gray-800 border border-green-600" />
         </div>
       </form>
     </div>
@@ -145,22 +162,31 @@ const ContactMap = ({content}:{content?:TextContact}) => (
 )
 
 const Contact: React.ForwardRefRenderFunction<HTMLDivElement, ContactProps> = ({ content }, ref) => {
-  // const contextValue = useContext(RentalsContext)
-  // const { password, editingSection, language } = contextValue as AppContext
-
+  const contextValue = useContext(RentalsContext)
+  const { password } = contextValue as AppContext
   
     return (
       <section ref={ref}>
         <div className="bg-white w-full relative">
-          <div className="relative bg-white mx-auto w-full max-w-6xl pt-16 lg:pt-24 pb-10">
-            <Heading2 text={content?.title} />
-            <div className="max-w-6xl mx-auto grid md:grid-cols-2 mb-5">
-              <Paragraph text={content?.text} />
-              <ContactDetails content={content} />
+          <div className="relative bg-white md:bg-gray-50 mx-auto w-full pt-16 lg:pt-24 pb-10">
+            <div className="relative bg-white">
+              <Heading2 text={content?.title} />
+              {password && <Edit section={5} />}
             </div>
-            <div className="md:bg-gray-50 md:p-5 grid items-center lg:items-start gap-8 lg:grid-cols-2">
-              <ContactForm message={content?.message} />
-              <ContactMap content={content} />
+            <div className="bg-white mx-auto">
+              <div className="max-w-6xl md:mx-auto grid md:grid-cols-2 pb-5">
+                <div className="relative">
+                  <Paragraph text={content?.text} />
+                  {password && <Edit section={5} />}
+                </div>
+                <ContactDetails content={content} />
+              </div>
+            </div>
+            <div className="md:bg-gray-50 md:max-w-6xl md:mx-auto">
+              <div className="md:p-5 grid items-center lg:items-start gap-8 lg:grid-cols-2">
+                <ContactForm message={content?.message} />
+                <ContactMap content={content} />
+              </div>
             </div>
           </div>
         </div>

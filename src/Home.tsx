@@ -11,6 +11,7 @@ import IconAdmin from './shared/icons/IconAdmin'
 import { FetchData } from './constants/constants'
 import PopupMessage from './shared/PopupMessage'
 import Loading from './Loading'
+import EditForm from './shared/EditForm'
 
 
 export interface AppContext {
@@ -24,6 +25,7 @@ export interface AppContext {
   setSiteContents:(siteContents:SiteContents|null|undefined)=>void;
   section:number|undefined;
   setShowRental:(showRental:number|null)=>void;
+  setLockScroll:(lockScroll:boolean)=>void;
 }
 
 export interface SiteContents {
@@ -51,9 +53,10 @@ interface HomeProps {
 
 const Home: React.FC<HomeProps> = ({section}) => {
   const [lockScroll,setLockScroll]=useState<boolean>(false)
+  const [scrolledPosition, setScrolledPosition] = useState<number>(0)
   const [scrolledHalfway, setScrolledHalfway] = useState<boolean>(false)
   const [editingSection, setEditingSection] = useState<number>(0)
-  const [password,setPassword] = useState<string|null|undefined>("")
+  const [password,setPassword] = useState<string|null|undefined>()
   const [showAdmin,setShowAdmin] = useState<boolean>(false)
   const [siteContents,setSiteContents] = useState<SiteContents|null|undefined>()
   const [language,setLanguage] = useState<string>(navigator.language)
@@ -95,7 +98,7 @@ const Home: React.FC<HomeProps> = ({section}) => {
       const windowHeight = window.innerHeight
       const scrollPosition = window.scrollY
       const halfwayPoint = windowHeight / 2.6
-
+      setScrolledPosition(scrollPosition)
       setScrolledHalfway(scrollPosition >= halfwayPoint)
     }
     window.addEventListener('scroll', handleScroll)
@@ -103,7 +106,16 @@ const Home: React.FC<HomeProps> = ({section}) => {
       window.removeEventListener('scroll', handleScroll)
     }
   }, [])  
-  
+
+  useEffect(() => {
+    if (!lockScroll) {
+      window.scrollTo({
+        top: scrolledPosition,
+        left: 0,
+      })
+    }
+  }, [lockScroll])  
+
   useEffect(() => {
     const delayedFunction = () => {
       setDoneLoading(true)
@@ -127,12 +139,12 @@ const Home: React.FC<HomeProps> = ({section}) => {
     })
   },[language])
   
-  const contextValue = {password, siteContents, language, editingSection, setEditingSection, setShowLoading, setMessage, setSiteContents, section, setShowRental}
-  
+  const contextValue = {password, siteContents, language, editingSection, setEditingSection, setShowLoading, setMessage, setSiteContents, section, setShowRental, setLockScroll}
+console.log(scrolledPosition)
   return (
     <RentalsContext.Provider value={contextValue}>
-      <div className={`relative ${lockScroll && "overflow-y-hidden"}`}>
-        <Navigation setLockScroll={setLockScroll} doneLoading={doneLoading} scrolledHalfway={scrolledHalfway} content={{navigation:siteContents?.navigation, languages:siteContents?.languages}} setLanguage={setLanguage} showRental={showRental} setShowRental={setShowRental} />
+      <div className={`relative ${lockScroll ? "overflow-y-hidden h-screen" : ""}`}>
+        <Navigation doneLoading={doneLoading} scrolledHalfway={scrolledHalfway} content={{navigation:siteContents?.navigation, languages:siteContents?.languages}} setLanguage={setLanguage} showRental={showRental} setShowRental={setShowRental} />
         <Hero scrolledHalfway={scrolledHalfway} doneLoading={doneLoading} content={siteContents?.hero} />
         <Area ref={areaRef} content={siteContents?.area} />
         <Rentals ref={rentalsRef} content={siteContents?.rentals} showRental={showRental} setShowRental={setShowRental} />
@@ -141,7 +153,8 @@ const Home: React.FC<HomeProps> = ({section}) => {
         {!password && <IconAdmin showAdmin={showAdmin} setShowAdmin={setShowAdmin} size={"40"} color={"text-black"} /> }
         {showAdmin && <Admin setMessage={setMessage} setShowAdmin={setShowAdmin} setPassword={setPassword} />}
         <PopupMessage message={message} setMessage={setMessage} />
-        <Loading showLoading={showLoading} setLockScroll={setLockScroll} />
+        <Loading showLoading={showLoading} />
+        {editingSection > 0 && <EditForm />}
       </div>
     </RentalsContext.Provider>
   )

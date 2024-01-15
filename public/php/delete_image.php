@@ -10,12 +10,11 @@
 
   $jsonInput = file_get_contents('php://input');
   $data = json_decode($jsonInput, true);
-  $uploadDirectory = '/images/';
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       // Assuming you receive the password and filename via POST
       $password = isset($data['password']) ? $data['password'] : '';
-      $filename = isset($data['filename']) ? __DIR__ . '/..' . $data['filename'] : '';
+      $filename = isset($data['filename']) ? $_SERVER['DOCUMENT_ROOT'] . '/' . $data['filename'] : '';
       // Perform password check
       if ($password === $expectedPassword) {
         error_log($filename);

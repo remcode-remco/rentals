@@ -4,6 +4,7 @@ import Image from "./Image"
 import { RentalsContext, AppContext } from "./Home"
 import EditRental from "./shared/EditRental"
 import RentalSpecs from "./RentalSpecs"
+import EditPictures from "./shared/EditPictures"
 
 export interface TextRental {
   name:string;
@@ -22,11 +23,16 @@ const RentalOverview = ({index,rental}:{index:number,rental:TextRental,overview:
   const { password } = contextValue as AppContext
 
   return (
-    <div className="relative bg-white rounded-xl shadow-lg hover:shadow-green-600 lg:m-3 px-0 pb-3 lg:my-3 cursor-pointer">
-      <Image images={rental?.pictures} clickable={true} />
-      <Heading3 text={rental?.name} />
-      {password && <EditRental index={index} section={4} />}
-      <RentalSpecs rental={rental} />
+    <div className="bg-white rounded-xl shadow-lg hover:shadow-green-600 duration-300 transition-all lg:m-3 px-0 pb-3 lg:my-3 cursor-pointer">
+      <div className="relative">
+        {password && rental?.pictures && <EditPictures pictures={rental?.pictures} section={3} index={index} />}
+        <Image images={rental?.pictures} rental_overview={true} />
+      </div>
+      <div className="relative">
+        <Heading3 text={rental?.name} />
+        {password && <EditRental index={index} section={4} />}
+        <RentalSpecs rental={rental} />
+      </div>
     </div>
   )
 }

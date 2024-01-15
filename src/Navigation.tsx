@@ -2,7 +2,7 @@ import { useContext, useState } from "react"
 import { AppContext, RentalsContext } from "./Home"
 import ReactFlagsSelect from 'react-flags-select'
 import Edit from "./shared/Edit"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import IconEmail from "./shared/icons/IconEmail"
 import IconPhone from "./shared/icons/IconPhone"
 import IconBurger from "./shared/icons/IconBurger"
@@ -25,11 +25,13 @@ const ButtonBack = ( {showRental,setShowRental}:
   {showRental:number|null,setShowRental:(showRental:number|null)=>void}
 ) => {
 
+  const navigate = useNavigate()
+  
   return (
     <div className={`absolute left-0 top-0 z-10 flex h-full items-center justify-start duration-500 ${showRental === null ? "-translate-x-full" : "translate-x-0"}`}>
-      <button onClick={()=>setShowRental(null)} data-collapse-toggle="mobile-menu-2" type="button" 
+      <button onClick={()=>{navigate('/');setShowRental(null)}} data-collapse-toggle="mobile-menu-2" type="button" 
         className="" aria-controls="mobile-menu-2" aria-expanded="false">
-        <span className="sr-only">Open main menu</span>
+        <span className="sr-only">Back</span>
         <IoChevronBackOutline size="40" />
       </button>
     </div>
@@ -75,14 +77,17 @@ const MenuHamburger = ({content,languages,setLanguage,setLockScroll}:{content?:T
 }
 
 export const Menu = ({content}:{content?:TextNavigation}) => {
+  const contextValue = useContext(RentalsContext)
+  const { password } = contextValue as AppContext
   return (
-    <div className="hidden justify-between items-center w-full lg:block lg:pr-10">
+    <div className="relative hidden justify-between items-center w-full lg:block lg:pr-10">
       <ul className="flex flex-col mt-4 lg:text-2xl lg:flex-row lg:space-x-8 lg:mt-0 xl:text-xl">
         <MenuItem label={content?.home} item={1} />
         <MenuItem label={content?.area} item={2} />
         <MenuItem label={content?.rentals} item={3} />
         <MenuItem label={content?.contact} item={4} />
       </ul>
+      {password && <Edit section={1} />}
     </div>
   )
 }
@@ -133,16 +138,16 @@ const MenuButtons = () => (
 )
 
 const Navigation = (
-    {content,setLanguage,scrolledHalfway,showRental,setShowRental,setLockScroll,doneLoading}:
-    {content?:ContentNavigation,setLanguage:(language:string)=>void,scrolledHalfway:boolean,showRental:number|null,setShowRental:(showRental:number|null)=>void,setLockScroll:(lockScroll:boolean)=>void,doneLoading:boolean}
+    {content,setLanguage,scrolledHalfway,showRental,setShowRental,doneLoading}:
+    {content?:ContentNavigation,setLanguage:(language:string)=>void,scrolledHalfway:boolean,showRental:number|null,setShowRental:(showRental:number|null)=>void,doneLoading:boolean}
 ) => {
-  const contextValue = useContext(RentalsContext)
-  const { password } = contextValue as AppContext
   const { navigation, languages } = content || {}
+  const contextValue = useContext(RentalsContext)
+  const { setLockScroll } = contextValue as AppContext
   
   return (
     <header className={`z-50 fixed top-0 left-0 right-0 tranform duration-300 transition-all delay-500 ease-out ${doneLoading ? "translate-y-0" : "-translate-y-full"}`} >
-      <div className="bg-white/90 relative flex justify-between items-center p-2 lg:p-1 shadow-lg">
+      <div className="bg-green-200/80 border-b border-green-800 relative flex justify-between items-center lg:grid lg:grid-cols-4 p-2 lg:p-1">
         <div className={`
                           absolute left-1 p-3  text-xl md:text-3xl lg:text-2xl text-gray-600 whitespace-pre-line w-full tranform duration-500
                           ${scrolledHalfway ? "opacity-100" : "opacity-0"}
@@ -161,16 +166,15 @@ const Navigation = (
           </Link>
         </div>
         
-        <div className={`hidden lg:block text-2xl font-semibold whitespace-nowrap tranform duration-500
+        <div className={`hidden lg:block lg:justify-self-start text-2xl font-semibold whitespace-nowrap tranform duration-500
                           ${scrolledHalfway || showRental !== null ? "opacity-0" : "opacity-100"}
                         `}>
           {languages && <Language languages={languages} setLanguage={setLanguage} />}
         </div>
-        <nav className={`z-10 flex gap-2 items-center justify-center`}>
+        <nav className={`lg:col-span-3 lg:justify-self-end z-10 flex gap-2 items-center justify-center`}>
           <Menu content={navigation} />
           <MenuHamburger content={navigation} languages={languages} setLanguage={setLanguage} setLockScroll={setLockScroll} />
           <ButtonBack showRental={showRental} setShowRental={setShowRental} />
-          {password && <Edit section={1} />}
         </nav>
       </div>
     </header>

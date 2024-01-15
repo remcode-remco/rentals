@@ -4,10 +4,10 @@ import { AppContext, RentalsContext } from "./Home.tsx"
 import Edit from "./shared/Edit.tsx"
 import React, { forwardRef, useContext, useState } from 'react'
 import ImageGallery from "./ImageGallery.tsx"
-import AreaImageEdit from "./AreaImageEdit.tsx"
 import Image from "./Image.tsx"
 import IconArrowDown from "./shared/icons/IconArrowDown"
 import IconArrowUp from "./shared/icons/IconArrowUp.tsx"
+import EditPictures from "./shared/EditPictures.tsx"
 
 export interface TextArea {
   title:string;
@@ -39,15 +39,15 @@ const Area: React.ForwardRefRenderFunction<HTMLDivElement, AreaProps> = ({ conte
           <div
             className="relative overflow-hidden rounded-lg order-2 lg:order-3 h-full mx-auto"
           >
-            <Image images={content?.pictures} clickable={false} />
-            {password && <AreaImageEdit />}
+            <Image images={content?.pictures} rental_overview={false} />
+            {password && content?.pictures && <EditPictures pictures={content?.pictures} section={2} index={0} />}
           </div>
-          <div className="order-3 lg:order-2">
+          <div className="relative order-3 lg:order-2">
             <div className="hidden lg:block">
-              {password && <Edit section={3} />}
               <Heading2 text={content?.title} />
             </div>
             <Paragraph text={content?.text} />
+            {password && <Edit section={3} />}
           </div>
           {content?.pictures && content?.pictures.length > 1 && (
             <div onClick={() => setShowEntireText(!showEntireText)}
