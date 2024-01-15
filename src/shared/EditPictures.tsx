@@ -1,10 +1,9 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import { AppContext, RentalsContext, SiteContents } from "../Home"
-import { DeleteImage, SaveEdit } from "../constants/constants"
+import { DeleteImage } from "../constants/constants"
 import IconGarbage from "./icons/IconGarbage"
 import PictureUpload from "./PictureUpload"
 import IconImage from "./icons/IconImage"
-import ButtonCancel from "./ButtonCancel"
 
 type Pictures = { src: string }[]
 

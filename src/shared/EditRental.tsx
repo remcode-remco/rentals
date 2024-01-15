@@ -8,8 +8,6 @@ import EditInput from "./EditInput"
 import EditRentalSpecs from "./EditRentalSpecs"
 import { TextRentals } from "../Rentals"
 import EditRentalPrices from "./EditRentalPrices"
-import EditPictures from "./EditPictures"
-
 
 const EditRental = ({index,section}:{index:number,section:number}) => {
   const contextValue = useContext(RentalsContext)
@@ -49,10 +47,8 @@ const EditRental = ({index,section}:{index:number,section:number}) => {
   
   const handleUpload = () => {
     setShowLoading(true)
-    console.log(changes.rentals[1].name)
     SaveEdit(language,password,section,changes)
     .then((response)=>{
-      console.log(response)
       if (response.status === "success") {
         setMessage({error:false,message:"Saved succesfully!"})
         setShowLoading(false)

@@ -140,7 +140,7 @@ const Home: React.FC<HomeProps> = ({section}) => {
   },[language])
   
   const contextValue = {password, siteContents, language, editingSection, setEditingSection, setShowLoading, setMessage, setSiteContents, section, setShowRental, setLockScroll}
-console.log(scrolledPosition)
+
   return (
     <RentalsContext.Provider value={contextValue}>
       <div className={`relative ${lockScroll ? "overflow-y-hidden h-screen" : ""}`}>

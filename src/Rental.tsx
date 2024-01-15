@@ -1,11 +1,8 @@
-import { useContext, useEffect } from "react"
+import { useEffect } from "react"
 import Heading3 from "./shared/Heading3"
-// import ImageGallery from "./ImageGallery"
 import Paragraph from "./shared/Paragraph"
 import RentalCalendar from "./RentalCalendar"
 import RentalPrices from "./RentalPrices"
-import { RentalsContext, AppContext } from "./Home"
-import EditRental from "./shared/EditRental"
 import RentalSpecs from "./RentalSpecs"
 import Image from "./Image"
 import ImageGallery from "./ImageGallery"
@@ -23,9 +20,6 @@ export interface TextRental {
 }
 
 const Rental = ({index,rental,content_prices,text_availability}:{index:number,rental?:TextRental,content_prices?:{title?:string,text?:string},text_availability?:string}) => {
-  const contextValue = useContext(RentalsContext)
-  const { password } = contextValue as AppContext
-
   useEffect(() => {
     const textDiv = document.getElementById('textDiv')
     const imageDiv = document.getElementById('imageDiv')
@@ -45,7 +39,6 @@ const Rental = ({index,rental,content_prices,text_availability}:{index:number,re
           </div>
           <div id="textDiv" className={`lg:pt-24 lg:pl-10 lg:order-1 delay-300 duration-500 ease-in opacity-0`}>
             <Heading3 text={rental.name} />
-            {/* {password && <EditRental index={+index} section={4} />} */}
             <Paragraph text={rental.description} />
             <RentalSpecs rental={rental} />
           </div>
