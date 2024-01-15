@@ -24,7 +24,7 @@ const Image = ({images,rental_overview}:{images:any,rental_overview:boolean}) =>
           onClick={() =>{rental_overview ? null : setIndex(0)}}
           onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
             const target = e.target as HTMLImageElement;
-            target.src = "/images/img_placeholder.png";
+            target.src = "images/img_placeholder.png";
           }}
         />
 

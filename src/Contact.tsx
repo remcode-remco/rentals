@@ -78,12 +78,12 @@ const ContactDetails = ({content}:{content?:TextContact}) => {
     <div className="flex w-full items-center justify-center">
       <div className="flex flex-col items-center md:mx-auto md:w-auto bg-gray-50 p-5 rounded-xl shadow-lg hover:shadow-green-600 duration-300 transition-all">
         <div className="relative">
-          <img  src={content?.owner_image ? content.owner_image : "/images/img_placeholder.png"} 
+          <img  src={content?.owner_image ? content.owner_image : "images/img_placeholder.png"} 
                 alt="owner profile picture" 
                 className="rounded-xl shadow-lg w-40 object-cover" 
                 onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
                   const target = e.target as HTMLImageElement;
-                  target.src = "/images/img_placeholder.png";
+                  target.src = "images/img_placeholder.png";
                 }}
           />
           {password && <EditPicture section={4} />}

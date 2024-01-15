@@ -20,7 +20,7 @@ const Hero = ({content,scrolledHalfway,doneLoading}:{content?:TextHero,scrolledH
               className={`object-cover w-full h-full`} 
               onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
                 const target = e.target as HTMLImageElement;
-                target.src = "/images/img_placeholder.png";
+                target.src = "images/img_placeholder.png";
               }}
         />
         {password && <EditPicture section={1} />}
