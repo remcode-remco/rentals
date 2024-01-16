@@ -4,7 +4,6 @@ import { RentalsContext, AppContext, SiteContents } from '../Home'
 import IconPlus from './icons/IconPlus'
 import { apiUrl } from '../constants/constants'
 import { TextRental } from '../Rental'
-import { SLIDE_STATUS_LOADING } from 'yet-another-react-lightbox'
 
 interface CompressorSettings {
   quality: number;
