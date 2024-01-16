@@ -138,8 +138,7 @@ const Home: React.FC<HomeProps> = ({section}) => {
         <Area ref={areaRef} content={siteContents?.area} />
         <Rentals ref={rentalsRef} content={siteContents?.rentals} showRental={showRental} setShowRental={setShowRental} />
         <Contact ref={contactRef} content={siteContents?.contact} />
-        <Footer />
-        {!password && <IconAdmin showAdmin={showAdmin} setShowAdmin={setShowAdmin} size={"40"} color={"text-black"} /> }
+        <Footer showAdmin={showAdmin} setShowAdmin={setShowAdmin} />
         {showAdmin && <Admin setMessage={setMessage} setShowAdmin={setShowAdmin} setPassword={setPassword} />}
         <PopupMessage message={message} setMessage={setMessage} />
         <Loading showLoading={showLoading} />
