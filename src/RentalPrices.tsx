@@ -8,7 +8,7 @@ const RentalPrices = ({rentalIndex}:{rentalIndex:number}) => {
   if (siteContents) {
     return (
       <div className='max-w-lg mx-auto'>
-        <table className="text-gray-600 text-xl lg:text-2xl min-w-full divide-y divide-gray-200">
+        <table className="text-gray-600 text-xl min-w-full divide-y divide-gray-200">
           <tbody className="bg-white divide-y divide-gray-200">
             {siteContents.rentals.dates.map((date, index) => (
               index !== siteContents.rentals.dates.length-1 &&

@@ -168,8 +168,8 @@ const Contact: React.ForwardRefRenderFunction<HTMLDivElement, ContactProps> = ({
     return (
       <section ref={ref}>
         <div className="bg-white w-full relative">
-          <div className="relative bg-white md:bg-gray-50 mx-auto w-full pt-16 lg:pt-24 pb-10">
-            <div className="relative bg-white">
+          <div className="relative bg-white md:bg-gray-50 mx-auto w-full pb-10">
+            <div className="relative bg-white pt-16 lg:pt-24">
               <Heading2 text={content?.title} />
               {password && <Edit section={5} />}
             </div>

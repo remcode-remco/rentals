@@ -1,10 +1,11 @@
-import { useContext } from "react"
+import { lazy, useContext } from "react"
 import Heading3 from "./shared/Heading3"
-import Image from "./Image"
 import { RentalsContext, AppContext } from "./Home"
 import EditRental from "./shared/EditRental"
 import RentalSpecs from "./RentalSpecs"
 import EditPictures from "./shared/EditPictures"
+
+const Image = lazy(() => import('./Image.tsx'))
 
 export interface TextRental {
   name:string;

@@ -1,10 +1,10 @@
 import { useContext, useEffect } from "react"
 import { RentalsContext, AppContext } from "../Home"
+import "react-datepicker/dist/react-datepicker.css"
 
 import { useState } from "react"
 import DatePicker, { registerLocale } from "react-datepicker"
 
-import "react-datepicker/dist/react-datepicker.css"
 import fr from 'date-fns/locale/fr'
 import en from 'date-fns/locale/en-GB'
 import nl from 'date-fns/locale/nl'

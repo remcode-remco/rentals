@@ -1,8 +1,9 @@
-import { FormEvent, useState } from 'react'
+import { FormEvent, useContext, useState } from 'react'
 import { VerifyPassword } from './constants/constants'
-import { Message } from './Home'
+import { AppContext, RentalsContext } from './Home'
 
-const Admin = ({setMessage,setShowAdmin,setPassword}:{setMessage:(message:Message)=>void,setShowAdmin:(showAdmin:boolean)=>void,setPassword:(password:string)=>void}) => {
+const Admin = ({setShowAdmin,setPassword}:{setShowAdmin:(showAdmin:boolean)=>void,setPassword:(password:string)=>void}) => {  const contextValue = useContext(RentalsContext)
+  const { setMessage } = contextValue as AppContext
   const [pwd,setPwd] = useState<string>("")
   const [authenticated,setAuthenticated] = useState<boolean>(false)
   

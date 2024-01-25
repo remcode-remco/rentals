@@ -2,12 +2,13 @@ import Heading2 from "./shared/Heading2.tsx"
 import Paragraph from "./shared/Paragraph.tsx"
 import { AppContext, RentalsContext } from "./Home.tsx"
 import Edit from "./shared/Edit.tsx"
-import React, { forwardRef, useContext, useState } from 'react'
-import ImageGallery from "./ImageGallery.tsx"
-import Image from "./Image.tsx"
+import React, { forwardRef, lazy, useContext, useState } from 'react'
 import IconArrowDown from "./shared/icons/IconArrowDown"
 import IconArrowUp from "./shared/icons/IconArrowUp.tsx"
 import EditPictures from "./shared/EditPictures.tsx"
+
+const Image = lazy(() => import('./Image.tsx'))
+const ImageGallery = lazy(() => import('./ImageGallery.tsx'))
 
 export interface TextArea {
   title:string;
@@ -25,9 +26,6 @@ const Area: React.ForwardRefRenderFunction<HTMLDivElement, AreaProps> = ({ conte
   const contextValue = useContext(RentalsContext)
   const { password } = contextValue as AppContext
   const [showEntireText,setShowEntireText] = useState<boolean>(false)
-  // from div line 18:
-  // ${showEntireText ? 'opacity-100 max-h-screen' : 'opacity-0 max-h-0'}`}
-  // ===============================
   
   return (
     <section ref={ref} className="bg-white">

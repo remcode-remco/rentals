@@ -1,3 +1,4 @@
+import 'react-big-calendar/lib/css/react-big-calendar.css'
 import { useState, useEffect } from 'react'
 import { Calendar, momentLocalizer } from 'react-big-calendar'
 import moment from 'moment'
@@ -6,7 +7,6 @@ import moment from 'moment'
 import ICAL from 'ical.js'
 // no TS for ical.js
 
-import 'react-big-calendar/lib/css/react-big-calendar.css'
 import 'moment/locale/en-gb'
 import { TextRental } from './Rental'
 import { apiUrl } from './constants/constants'
@@ -38,13 +38,13 @@ const RentalCalendar = ({rental}:{rental?:TextRental}) => {
           
           const parsedEvents = vevents.map((vevent: { getFirstPropertyValue: (arg0: string) => any }) => {
             const summary = vevent.getFirstPropertyValue('summary')
-            const startDate = vevent.getFirstPropertyValue('dtstart')
-            const endDate = vevent.getFirstPropertyValue('dtend')
-
+            const startDate = new Date(vevent.getFirstPropertyValue('dtstart').toJSDate().setHours(vevent.getFirstPropertyValue('dtstart').toJSDate().getHours() + 16))
+            const endDate = new Date(vevent.getFirstPropertyValue('dtend').toJSDate().setHours(vevent.getFirstPropertyValue('dtend').toJSDate().getHours() - 14))
+            
             return {
               title: summary,
-              start: startDate.toJSDate(),
-              end: endDate.toJSDate(),
+              start: startDate,
+              end: endDate,
             }
           })
 
@@ -58,15 +58,83 @@ const RentalCalendar = ({rental}:{rental?:TextRental}) => {
     fetchICalData() 
   }, [rental])
   
+  const eventStyleGetter = (event, start, end, isSelected) => {
+    if (event.first_day) {
+      return {
+        style: {
+          color: 'transparent',
+          background: 'linear-gradient(to bottom right, white, white 50%, darkred 50%, darkred)'
+          
+        },
+      }
+    } else {
+      if (event.last_day) {
+        return {
+          style: {
+            background: 'linear-gradient(to top left, white, white 50%, darkred 50%, darkred)',
+            color: 'transparent',
+          },
+        }
+      }
+    }
+    
+    return {
+      style: {
+        backgroundColor: 'darkred',
+        color: 'transparent',
+      },
+    }
+  }
+
+
+  const breakUpEvents = (events) => {
+    const updatedEvents = []
+  
+    events.forEach((event) => {
+      const start = moment(event.start)
+      const end = moment(event.end)
+  
+      updatedEvents.push({
+        title: 'booking filler',
+        start: start.toDate(),
+        end: start.endOf('day').toDate(),
+        first_day: true,
+      })
+  
+      // Add event for the days in between
+      if (start.add(1, 'day').isBefore(end, 'day')) {
+        updatedEvents.push({
+          ...event,
+          start: start.startOf('day').set({ hour: 0, minute: 1, second: 0, millisecond: 0 }).toDate(),
+          end: end.startOf('day').set({ hour: 0, minute: 0, second: 0, millisecond: 0 }).toDate(),
+        })
+      }
+  
+      updatedEvents.push({
+        title: 'booking filler',
+        start: end.startOf('day').toDate(),
+        end: end.toDate(),
+        last_day: true,
+      })
+    })
+  
+    return updatedEvents
+  }
+    
+  const updatedEvents = breakUpEvents(events)
+  
   return (
     <Calendar
       localizer={localizer}
-      events={events}
+      // events={events}
+      events={updatedEvents}
       startAccessor="start"
       endAccessor="end"
       drilldownView={null}
       views={{ month: true, week: false, day: false, agenda: false, }}
-      style={{ height: 500}}
+      style={{ height: 600}}
+      eventPropGetter={eventStyleGetter}
+      showMultiDayTimes={true}
     />
   )
 }

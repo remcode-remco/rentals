@@ -1,7 +1,9 @@
-import { useEffect, useState } from 'react'
-import { Message } from '../Home'
+import { useContext, useEffect, useState } from 'react'
+import { AppContext, Message, RentalsContext } from './Home'
 
-const PopupMessage = ({message,setMessage}:{message:Message|null,setMessage:(message:Message|null)=>void}) => {
+const PopupMessage = ({message}:{message:Message|null}) => {
+  const contextValue = useContext(RentalsContext)
+  const { setMessage } = contextValue as AppContext
   const [classNames,setClassnames]=useState<string>("transition-all translate-y-full")
 
   useEffect(() => {
