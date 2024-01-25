@@ -1,5 +1,4 @@
-import { useContext, useEffect, useState } from "react"
-import { RentalsContext, AppContext } from "./Home"
+import { useEffect, useState } from "react"
 
 const Loading = ({showLoading}:{showLoading:boolean}) => {
   const [classes,setClasses] = useState<string>("")
