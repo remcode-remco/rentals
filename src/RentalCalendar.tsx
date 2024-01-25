@@ -11,6 +11,16 @@ import 'moment/locale/en-gb'
 import { TextRental } from './Rental'
 import { apiUrl } from './constants/constants'
 
+interface Event {
+  title: string;
+  start: Date;
+  end: Date;
+  first_day?: boolean;
+  last_day?:boolean;
+}
+
+interface Events extends Array<Event> {}
+
 const localizer = momentLocalizer(moment)
 
 const RentalCalendar = ({rental}:{rental?:TextRental}) => {
@@ -58,7 +68,7 @@ const RentalCalendar = ({rental}:{rental?:TextRental}) => {
     fetchICalData() 
   }, [rental])
   
-  const eventStyleGetter = (event, start, end, isSelected) => {
+  const eventStyleGetter = (event:Event) => {
     if (event.first_day) {
       return {
         style: {
@@ -87,8 +97,8 @@ const RentalCalendar = ({rental}:{rental?:TextRental}) => {
   }
 
 
-  const breakUpEvents = (events) => {
-    const updatedEvents = []
+  const breakUpEvents = (events:Events) => {
+    const updatedEvents:Events = []
   
     events.forEach((event) => {
       const start = moment(event.start)
