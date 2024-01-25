@@ -30,7 +30,7 @@ const App = () => {
       path: '*',
       element: <Navigate to="/" replace />,
     },
-  ], { basename: '/gite' });
+  ], { basename: '/' });
 
   return (
     <React.StrictMode>
