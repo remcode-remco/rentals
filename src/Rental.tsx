@@ -35,7 +35,7 @@ const Rental = ({index,rental,content_prices,text_availability}:{index:number,re
   if (rental) {
     return (
       <div className="z-50 fixed top-0 left-0 w-full h-full overflow-auto">
-        <div className="relative lg:max-w-5xl lg:mt-5 lg:mx-auto lg:rounded lg:shadow-lg lg:shadow-green-800 left-0 right-0 bottom-0 pt-0 lg:pt-0 bg-gray-50">
+        <div className="relative lg:max-w-5xl lg:my-5 lg:mx-auto lg:rounded lg:shadow-lg lg:shadow-green-800 left-0 right-0 bottom-0 pt-0 lg:pt-0 bg-gray-50">
           <div className=""> 
             <div id="imageDiv" className="lg:order-2 flex justify-center w-full h-full min-h-[50vh] max-h-[80vh] duration-500 ease-in opacity-0">
               <Suspense fallback={<Loading showLoading={false} />}>

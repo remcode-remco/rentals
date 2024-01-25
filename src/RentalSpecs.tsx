@@ -5,7 +5,7 @@ import { IoMdPerson } from "react-icons/io"
 import { IconContext } from "react-icons"
 
 const RentalSpec = ({spec,specNo}:{spec?:string,specNo:number}) => (
-  <div className="flex flex-col justify-end items-center text-gray-700 mb-5 lg:mb-0">
+  <div className="flex flex-col justify-end items-center text-gray-700 mb-5 lg:mb-0 md:py-2">
     <div className="mb-3 lg:mb-0 text-2xl lg:text-2xl">
       {spec ? spec : ""}
     </div>
