@@ -14,7 +14,7 @@ const Image = ({images,rental_overview}:{images:any,rental_overview:boolean}) =>
   if (images) {
     return (
       <>
-        <img className={`cursor-pointer object-cover object-center w-full h-full min-h-[25vh] max-h-[50vh] ${rental_overview ? "rounded-t-xl lg:h-[40vh] lg:max-h-screen" : "lg:max-h-[60vh] xl:h-[80vh]"}`} 
+        <img className={`cursor-pointer object-cover object-center w-full h-full min-h-[25vh] max-h-[50vh] ${rental_overview ? "rounded-t-xl lg:h-[40vh] lg:max-h-screen" : "lg:rounded-t-xl lg:max-h-[60vh] xl:h-[80vh]"}`} 
           src={images[0] && images[0].src ? images[0].src : "images/img_placeholder.png"} 
           onClick={() =>{rental_overview ? null : setIndex(0)}}
           onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {

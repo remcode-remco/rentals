@@ -1,7 +1,7 @@
 import { lazy, useContext, useState } from "react"
 import { AppContext, RentalsContext } from "./Home"
 import Edit from "./shared/Edit"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import IconEmail from "./shared/icons/IconEmail"
 import IconPhone from "./shared/icons/IconPhone"
 import IconBurger from "./shared/icons/IconBurger"
@@ -26,14 +26,14 @@ const ButtonBack = () => {
   const contextValue = useContext(RentalsContext)
   const { showRental, setShowRental } = contextValue as AppContext
 
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
   
   return (
     <div className={`absolute left-0 top-0 z-50 flex h-10 items-center justify-start duration-500 ml-2 mt-2
                      ${showRental === -1 ? "-translate-x-full" : "translate-x-0"}
                      `}
     >
-      <button onClick={()=>setShowRental(-1)} data-collapse-toggle="mobile-menu-2" type="button" 
+      <button onClick={()=>{navigate('/rentals');setShowRental(-1)}} data-collapse-toggle="mobile-menu-2" type="button" 
         className="bg-white rounded-xl shadow-lg" aria-controls="mobile-menu-2" aria-expanded="false">
         <span className="sr-only">Back</span>
         <IoChevronBackOutline size="40" />
