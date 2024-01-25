@@ -17,7 +17,7 @@
         if (isset($_POST['section'])) {        
             if ($_POST['section'] === "1") {
                 // Section 1 is hero section
-                unlink('/images/hero.jpg');
+                unlink($_SERVER['DOCUMENT_ROOT'] . '/images/hero.jpg');
                 $filename = "hero.jpg";
             } elseif ($_POST['section'] === "2") {
                 // Section 2 is area: add "area_" to the beginning of the original filename
@@ -28,7 +28,7 @@
                 $filename = $rentalIndex . '_' . $originalFileName;
             } elseif ($_POST['section'] === "4") {
                 // Section 4 is owner image
-                unlink('/images/owner_img.jpg');
+                unlink($_SERVER['DOCUMENT_ROOT'] . '/images/owner_img.jpg');
                 $filename = "owner_img.jpg";
             } else {
                 // When section is not set
