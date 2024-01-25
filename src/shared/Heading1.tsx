@@ -8,7 +8,7 @@ const Heading1 = ({text,subtext,scrolledHalfway,doneLoading}:{text?:string,subte
     
   return (
     <div className={`relative m-2 text-white p-3 tranform duration-500 ${doneLoading && !scrolledHalfway ? "opacity-100 delay-500" : "opacity-0"}`}>
-      <h1 className="text-7xl font-extrabold leading-tight">
+      <h1 className="text-7xl md:text-5xl font-extrabold leading-tight">
         {text}
       </h1>
       <p className="mt-1 lg:mt-4 text-3xl">
