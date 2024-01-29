@@ -106,7 +106,7 @@ const MenuItem = ({label,item,setShowMenu}:{label?:string,item:number,setShowMen
   return (
     label && label.length > 0 && 
       <li className="hover:border-b hover:border-green-800 hover:transition-all hover:delay-100 hover:ease-in px-3 py-2 w-full text-center cursor-pointer">
-        <Link onClick={()=>{setShowRental(-1);setShowMenu ? setShowMenu(false) : null}} to={link}>{label}</Link>
+        <Link onClick={()=>{setShowRental(-1);setShowMenu ? setShowMenu(false) : null;item === 1 && window.scrollTo({top: 0, left: 0, behavior: 'smooth'})}} to={link}>{label}</Link>
       </li>
   )
 }
