@@ -1,5 +1,5 @@
-// export const apiUrl = 'http://localhost:8000/php/'
-export const apiUrl = 'php/'
+export const apiUrl = 'http://localhost:8000/php/'
+// export const apiUrl = 'php/'
 const url_upload = apiUrl + 'upload.php'
 const url_delete = apiUrl + 'delete_image.php'
 const url_get_json = apiUrl + 'get_json.php?language='

@@ -29,8 +29,8 @@ const ButtonBack = () => {
   const navigate = useNavigate()
   
   return (
-    <div className={`absolute left-0 top-0 z-50 flex h-10 items-center justify-start duration-500 ml-2 mt-2
-                     ${showRental === -1 ? "-translate-x-full" : "translate-x-0"}
+    <div className={`absolute left-0 top-0 z-50 flex h-10 items-center justify-start duration-500  mt-2
+                     ${showRental === -1 ? "-translate-x-full ml-0" : "translate-x-0 ml-2"}
                      `}
     >
       <button onClick={()=>{navigate('/rentals');setShowRental(-1)}} data-collapse-toggle="mobile-menu-2" type="button" 

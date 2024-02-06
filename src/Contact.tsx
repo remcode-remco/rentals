@@ -105,6 +105,7 @@ const ContactDetails = ({content}:{content?:TextContact}) => {
 
 const ContactForm = ({message}:{message?:string}) => {
   const [formInput,setFormInput] = useState<FormInput>({name:"",email:"",message:""})
+  const [confirmation, setConfirmation] = useState<string|null>(null)
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -114,29 +115,59 @@ const ContactForm = ({message}:{message?:string}) => {
     })
   }
 
+  const handleSubmit = (e: { preventDefault: () => void }) => {
+    e.preventDefault()
+
+    fetch("/send_mail.php", {
+      method: "POST",
+      body: JSON.stringify(formInput),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          setConfirmation("Message sent successfully! We will contact you as soon as possible.")
+        } else {
+          setConfirmation("Failed to send message. Please contact us directly: remco@remcode.net")
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        setConfirmation("Failed to send message. Please contact us directly: remco@remcode.net")
+      })
+  }
+
   return (
     <div className="relative p-3 lg:p-10 lg:ml-3 lg:mr-2 flex flex-col w-full lg:h-full items-center justify-center">
       <Heading3 text={message} />
-      <form className="max-w-xl mx-auto flex flex-col items-center w-full">
-        <ContactInput
-          text={""}
-          name={"name"}
-          handleChange={handleChange}
-        />              
-        <ContactInput
-          text={""}
-          name={"email"}
-          handleChange={handleChange}
-        />              
-        <ContactInput
-          text={""}
-          name={"message"}
-          handleChange={handleChange}
-        />
-        <div className="flex justify-center ">
-          <input type="submit" value="Submit" className="cursor-pointer mb-3 px-10 py-2 rounded-full shadow-lg hover:shadow-green-600 text-xl bg-white text-gray-800 border border-green-600" />
+      {confirmation ? 
+        <div className="absolute top-0 bottom-0 left-0 right-0 bg-green-50 flex items-center justify-center text-xl rounded">
+          <span className="text-center whitespace-pre-line">{confirmation}</span>
         </div>
-      </form>
+      :
+        <form onSubmit={handleSubmit} className="max-w-xl mx-auto flex flex-col items-center w-full">
+          <ContactInput
+            text={""}
+            name={"name"}
+            handleChange={handleChange}
+          />              
+          <ContactInput
+            text={""}
+            name={"email"}
+            handleChange={handleChange}
+          />              
+          <ContactInput
+            text={""}
+            name={"message"}
+            handleChange={handleChange}
+          />
+          <div className="flex justify-center ">
+            <input type="submit" value="Submit" className="cursor-pointer mb-3 px-10 py-2 rounded-full shadow-lg hover:shadow-green-600 text-xl bg-white text-gray-800 border border-green-600" />
+          </div>
+        </form>
+      }
     </div>
   )
 }
