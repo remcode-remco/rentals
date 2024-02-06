@@ -35,7 +35,7 @@ const Rental = ({index,rental,content_prices,text_availability}:{index:number,re
   if (rental) {
     return (
       <div className="z-50 fixed top-0 left-0 w-full h-full overflow-auto">
-        <div className="relative lg:max-w-5xl lg:my-5 lg:mx-auto lg:rounded lg:shadow-lg lg:shadow-green-800 left-0 right-0 bottom-0 pt-0 lg:pt-0 bg-gray-50">
+        <div className="relative lg:max-w-5xl xl:max-w-6xl lg:my-5 lg:mx-auto lg:rounded lg:shadow-lg lg:shadow-green-800 left-0 right-0 bottom-0 pt-0 lg:pt-0 bg-gray-50">
           <div className=""> 
             <div id="imageDiv" className="lg:order-2 flex justify-center w-full h-full min-h-[50vh] max-h-[80vh] duration-500 ease-in opacity-0">
               <Suspense fallback={<Loading showLoading={false} />}>
@@ -43,9 +43,11 @@ const Rental = ({index,rental,content_prices,text_availability}:{index:number,re
               </Suspense>
             </div>
             <div id="textDiv" className={`lg:order-1 delay-300 duration-500 ease-in opacity-0`}>
-              <Heading3 text={rental.name} />
-              <Paragraph text={rental.description} />
-              <RentalSpecs rental={rental} />
+              <div className="lg:grid lg:grid-cols-6">
+                <div className="lg:col-span-6"></div>
+                <div className="lg:col-span-5"><Heading3 text={rental.name} /><Paragraph text={rental.description} /></div>
+                <RentalSpecs rental={rental} />
+              </div>
             </div>
             <div className="lg:w-full xl:max-w-[1600px] xl:mx-auto lg:order-3 lg:col-span-2 md:mx-2">
               <Suspense fallback={<Loading showLoading={false} />}>

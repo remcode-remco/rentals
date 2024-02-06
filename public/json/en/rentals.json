@@ -1,20 +1,17 @@
 {
-    "title": "Villas and chalets",
-    "text": "Our exclusive rentals at Villa Serenity Retreat offer an enchanting fusion of modern comfort and Mediterranean charm. Each meticulously curated space promises a distinctive experience\u2014whether you choose the intimate tranquility of the Azure Horizon Suite, the golden hues and warmth of Sunset Haven Villa, or the grandeur of the Majestic Seaview Residence.",
+    "title": "Rentals",
+    "text": "In this section, you can feature the various rental spaces available on your property. Each rental can be presented with a title and subtitle, offering potential guests a glimpse into its distinctive charm. You have the flexibility to include an unlimited number of pictures for each rental, showcasing its interior, exterior, and surrounding vistas.\n\nEasily add a table showing the pricing for each period and add a short description or what is included and what is not.\n\nAdditionally, you can link each rental to its respective calendar on popular platforms like Airbnb or Booking.com. This allows guests to easily check availability and make reservations through their preferred booking platform.",
     "prices": "Prices",
     "prices_text": "Our prices are per week and include bedlinnen.",
     "availability": "Availability",
     "dates": [
         "2024\/01\/14",
         "2024-04-06",
-        "2024\/05\/03",
-        "2024\/05\/24",
-        "2024\/08\/15",
-        "2024\/11\/22"
+        "2024\/05\/03"
     ],
     "rentals": [
         {
-            "name": "Tranquil Oasis",
+            "name": "First Rental",
             "description": "Immerse yourself in the serenity of the Azure Horizon Suite. The interior boasts contemporary elegance, while the expansive terrace offers breathtaking views of the Mediterranean. Perfect for intimate getaways.",
             "people": "4",
             "beds": "2",
@@ -31,7 +28,7 @@
                 650,
                 975,
                 600,
-                "550",
+                500,
                 675
             ],
             "pictures": [
@@ -53,7 +50,7 @@
             ]
         },
         {
-            "name": "Golden Retreat",
+            "name": "Second Rental",
             "description": "Experience the warmth of Sunset Haven Villa, where the golden hues of the setting sun paint the surroundings. Indulge in luxurious interiors and unwind on the private patio overlooking the coast.",
             "people": "6",
             "beds": "4",
@@ -75,10 +72,10 @@
             ]
         },
         {
-            "name": "Seaside Grandeur",
+            "name": "Third Rental",
             "description": "A residence of grand proportions, the Majestic Seaview Residence combines opulence with comfort. Enjoy the spacious living areas, a fully equipped kitchen, and a private garden with direct access to the Mediterranean shoreline.",
             "people": "6",
-            "beds": "44",
+            "beds": "4",
             "baths": "2",
             "calendar_url": "https:\/\/www.airbnb.com\/calendar\/ical\/35450605.ics?s=fdfe02b1f240b8b92b457b9153f41fcf",
             "prices": [

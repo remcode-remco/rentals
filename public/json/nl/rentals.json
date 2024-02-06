@@ -1,74 +1,103 @@
 {
-  "title": "Onze accomodaties",
-  "text": "Onze exclusieve verhuur bij Villa Serenity Retreat biedt een betoverende samensmelting van modern comfort en mediterrane charme. Elk zorgvuldig samengestelde ruimte belooft een onderscheidende ervaring, of je nu kiest voor de intieme rust van de Azuren Horizon Suite, de gouden tinten en warmte van de Villa Havre du Coucher de Soleil, of de grandeur van de Majestueuze Zeezicht Residentie. Dompel jezelf onder in luxueuze interieurs, geniet van privéterrassen met panoramisch uitzicht en ontspan in een omgeving waar de tijdloze schoonheid van de Middellandse Zee het decor vormt voor een onvergetelijk verblijf. Onze verhuur is ontworpen om je ontsnapping te verheffen, en biedt een harmonieuze mix van weelde en sereniteit voor een ongeëvenaarde kustretraite.",
-  "prices": "Prices",
-  "prices_text": "Our prices are per week and include bedlinnen.",
-  "availability": "Availability",
-  "dates": [
-      "2024-01-06",
-      "2024-04-06",
-      "2024-06-01",
-      "2024-07-06",
-      "2024-08-31",
-      "2024-10-26",
-      "2024-12-21"
-  ],
-  "rentals": [
-    {
-      "name": "Vredige Oase",
-      "description": "Dompel jezelf onder in de sereniteit van de Azuren Horizon Suite. Het interieur straalt eigentijdse elegantie uit, terwijl het ruime terras adembenemend uitzicht biedt op de Middellandse Zee. Perfect voor intieme uitjes.",
-      "people": "3",
-      "beds": "2",
-      "baths": "1",
-      "calendar_url": "https://www.remcode.net/gite/cal.ics",
-      "videos": [ 
+    "title": "Rentals",
+    "text": "In this section, you can feature the various rental spaces available on your property. Each rental can be presented with a title and subtitle, offering potential guests a glimpse into its distinctive charm. You have the flexibility to include an unlimited number of pictures for each rental, showcasing its interior, exterior, and surrounding vistas.\n\nEasily add a table showing the pricing for each period and add a short description or what is included and what is not.\n\nAdditionally, you can link each rental to its respective calendar on popular platforms like Airbnb or Booking.com. This allows guests to easily check availability and make reservations through their preferred booking platform.",
+    "prices": "Prices",
+    "prices_text": "Our prices are per week and include bedlinnen.",
+    "availability": "Availability",
+    "dates": [
+        "2024\/01\/14",
+        "2024-04-06",
+        "2024\/05\/03"
+    ],
+    "rentals": [
         {
-          "embedUrl":"https://www.youtube.com/embed/qkehup4b4yM?si=vOtPV1Z-JMVHN54e"
+            "name": "First Rental",
+            "description": "Immerse yourself in the serenity of the Azure Horizon Suite. The interior boasts contemporary elegance, while the expansive terrace offers breathtaking views of the Mediterranean. Perfect for intimate getaways.",
+            "people": "4",
+            "beds": "2",
+            "baths": "1",
+            "calendar_url": "https:\/\/www.remcode.net\/gite\/cal.ics",
+            "videos": [
+                {
+                    "embedUrl": "https:\/\/www.youtube.com\/embed\/qkehup4b4yM?si=vOtPV1Z-JMVHN54e"
+                }
+            ],
+            "prices": [
+                500,
+                600,
+                650,
+                975,
+                600,
+                500,
+                675
+            ],
+            "pictures": [
+                {
+                    "src": "images\/0_0_b9d9122a.jpg"
+                },
+                {
+                    "src": "images\/0_0_d8cb5dba.jpg"
+                },
+                {
+                    "src": "images\/0_Untitled_004.jpeg"
+                },
+                {
+                    "src": "images\/0_Untitled_008.jpeg"
+                },
+                {
+                    "src": "images\/0_Untitled_022.jpeg"
+                }
+            ]
+        },
+        {
+            "name": "Second Rental",
+            "description": "Experience the warmth of Sunset Haven Villa, where the golden hues of the setting sun paint the surroundings. Indulge in luxurious interiors and unwind on the private patio overlooking the coast.",
+            "people": "6",
+            "beds": "4",
+            "baths": "2",
+            "calendar_url": "https:\/\/www.airbnb.com\/calendar\/ical\/35450605.ics?s=fdfe02b1f240b8b92b457b9153f41fcf",
+            "prices": [
+                600,
+                650,
+                "799",
+                "110",
+                675,
+                "699",
+                725
+            ],
+            "pictures": [
+                {
+                    "src": "images\/1_0_e0a1907b.jpg"
+                }
+            ]
+        },
+        {
+            "name": "Third Rental",
+            "description": "A residence of grand proportions, the Majestic Seaview Residence combines opulence with comfort. Enjoy the spacious living areas, a fully equipped kitchen, and a private garden with direct access to the Mediterranean shoreline.",
+            "people": "6",
+            "beds": "4",
+            "baths": "2",
+            "calendar_url": "https:\/\/www.airbnb.com\/calendar\/ical\/35450605.ics?s=fdfe02b1f240b8b92b457b9153f41fcf",
+            "prices": [
+                600,
+                650,
+                "799",
+                "110000",
+                675,
+                "699",
+                725
+            ],
+            "pictures": [
+                {
+                    "src": "images\/2_2_0cec0dd3.jpg"
+                },
+                {
+                    "src": "images\/2_2_3c9603b1.jpg"
+                },
+                {
+                    "src": "images\/2_2_91f5156a.jpg"
+                }
+            ]
         }
-      ],
-      "prices": [
-        500,
-        600,
-        650,
-        975,
-        600,
-        500,
-        675
-      ]
-    },
-    {
-      "name": "Gouden Toevlucht",
-      "description": "Ervaar de warmte van de Zonsondergang Haven Villa, waar de gouden tinten van de ondergaande zon de omgeving schilderen. Laat je verwennen in luxe interieurs en ontspan op het privéterras met uitzicht op de kust.",
-      "people": "6",
-      "beds": "4",
-      "baths": "2",
-      "calendar_url": "https://www.airbnb.com/calendar/ical/35450605.ics?s=fdfe02b1f240b8b92b457b9153f41fcf",
-      "prices": [
-        600,
-        650,
-        700,
-        1100,
-        675,
-        625,
-        725
-      ]
-    },
-    {
-      "name": "Zeezijde Grootsheid",
-      "description": "Een residentie van grandioze proporties, de Majestueuze Zeezicht Residentie combineert weelde met comfort. Geniet van de ruime leefruimtes, een volledig uitgeruste keuken en een privétuin met directe toegang tot de Middellandse Zeekust.",
-      "people": "6",
-      "beds": "4",
-      "baths": "2",
-      "calendar_url": "https://www.airbnb.com/calendar/ical/35450605.ics?s=fdfe02b1f240b8b92b457b9153f41fcf",
-      "prices": [
-        600,
-        650,
-        700,
-        1100,
-        675,
-        625,
-        725
-      ]
-    }
-  ]
+    ]
 }

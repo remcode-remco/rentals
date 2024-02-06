@@ -1,9 +1,38 @@
 {
-    "title": "La domaine",
-    "text": "Nichée le long de la côte enchanteresse de la Méditerranée, la Villa Serenity Retreat est un havre de tranquillité et d'opulence. Située au milieu de jardins luxuriants et surplombant les eaux azurées, cette propriété prestigieuse offre une évasion inégalée pour ceux qui recherchent un mélange de luxe et de beauté naturelle.\n\nExplorez les Lieux\nMarchez sur les terrains ensoleillés ornés de flore vibrante et d'oliviers anciens. Imprégnez-vous de la riche histoire du domaine, où chaque pierre raconte une histoire. Que vous vous promeniez dans les vergers d'agrumes parfumés ou que vous trouviez la paix dans les pergolas ombragées, les terrains de la Villa Serenity Retreat vous invitent à vous détendre et à vous connecter avec la nature.\n\nAdoptez l'Héritage\nAvec une histoire remontant à des siècles, la villa dégage une élégance intemporelle. Soigneusement restaurée pour préserver son charme architectural, la propriété intègre de manière transparente des équipements modernes à son passé historique. Admirez les meubles anciens et les œuvres d'art originales qui ornent l'intérieur, créant une atmosphère de sophistication raffinée.\n\nIndulgez-vous dans le Luxe\nTrois locations distinctes au sein de la villa promettent une expérience sur mesure. Chacune est conçue de manière unique, les intérieurs harmonisent le confort avec le style. Des espaces de vie spacieux, des cuisines entièrement équipées et des chambres somptueuses offrent une retraite au sein de la retraite. Sortez sur les terrasses privées, où la vue panoramique et les brises marines rafraîchissantes subliment l'expérience méditerranéenne.",
-    "videos": [ 
+    "title": "The property",
+    "text": "Cette section peut être utilisée pour présenter votre propriété en détail. Décrivez les terrains, les environs et toutes les caractéristiques uniques. Vous pouvez ajouter un nombre illimité de photos ici pour donner aux clients potentiels une vue d'ensemble de la propriété, y compris son extérieur, son intérieur et ses environs.\n\nCliquez sur n'importe quelle image pour ouvrir la galerie.",
+    "videos": [
         {
-          "embedUrl":"https://www.youtube.com/embed/qkehup4b4yM?si=vOtPV1Z-JMVHN54e"
+            "embedUrl": "https:\/\/www.youtube.com\/embed\/qkehup4b4yM?si=vOtPV1Z-JMVHN54e"
+        }
+    ],
+    "pictures": [
+        {
+            "src": "images\/area_0_d8cb5dba - Copy.jpg"
+        },
+        {
+            "src": "images\/area_2_91f5156a.jpg"
+        },
+        {
+            "src": "images\/area_Untitled_004 - Copy.jpeg"
+        },
+        {
+            "src": "images\/area_Untitled_008 - Copy.jpeg"
+        },
+        {
+            "src": "images\/area_gite1_1.jpg"
+        },
+        {
+            "src": "images\/area_gite1_3.jpg"
+        },
+        {
+            "src": "images\/area_guernevelien4.jpg"
+        },
+        {
+            "src": "images\/area_hero.jpg"
+        },
+        {
+            "src": "images\/area_vingt_ans_sans_ferme.jpg"
         }
     ]
 }

@@ -1,6 +1,6 @@
 {
     "title": "The property",
-    "text": "Nestled along the enchanting coastline of the Mediterranean, Villa Serenity Retreat is a haven of tranquility and opulence. Set amidst lush gardens and overlooking the azure waters, this prestigious property offers an unparalleled escape for those seeking a blend of luxury and natural beauty.\n\nStep onto the sun-kissed grounds adorned with vibrant flora and ancient olive trees. Immerse yourself in the rich history of the estate, where every stone tells a story. Whether strolling through the fragrant citrus groves or finding solace in the shaded pergolas, the grounds of Villa Serenity Retreat invite you to unwind and connect with nature.",
+    "text": "This section can be utilized to showcase your property in detail. Describe the grounds, surrounding areas, and any unique features. You can add an unlimited number of pictures here to give potential guests a comprehensive view of the property, including its exterior, interior, and surroundings.\n\nClick any image to open the gallery.",
     "videos": [
         {
             "embedUrl": "https:\/\/www.youtube.com\/embed\/qkehup4b4yM?si=vOtPV1Z-JMVHN54e"
@@ -11,13 +11,28 @@
             "src": "images\/area_0_d8cb5dba - Copy.jpg"
         },
         {
+            "src": "images\/area_2_91f5156a.jpg"
+        },
+        {
             "src": "images\/area_Untitled_004 - Copy.jpeg"
         },
         {
             "src": "images\/area_Untitled_008 - Copy.jpeg"
         },
         {
-            "src": "images\/area_area.jpg"
+            "src": "images\/area_gite1_1.jpg"
+        },
+        {
+            "src": "images\/area_gite1_3.jpg"
+        },
+        {
+            "src": "images\/area_guernevelien4.jpg"
+        },
+        {
+            "src": "images\/area_hero.jpg"
+        },
+        {
+            "src": "images\/area_vingt_ans_sans_ferme.jpg"
         }
     ]
 }

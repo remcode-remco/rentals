@@ -1,74 +1,103 @@
 {
-  "title": "Nos villas",
-  "text": "Nos locations exclusives à la Villa Serenity Retreat offrent une fusion enchanteresse entre le confort moderne et le charme méditerranéen. Chaque espace méticuleusement aménagé promet une expérience distinctive, que vous optiez pour l'intimité tranquille de la Suite Horizon Azur, les teintes dorées et la chaleur de la Villa Havre du Coucher de Soleil, ou la grandeur de la Résidence Majestueuse Vue sur la Mer. Immergez-vous dans des intérieurs luxueux, savourez des terrasses privées avec des vues panoramiques, et détendez-vous dans un cadre où la beauté intemporelle de la Méditerranée devient le décor d'un séjour inoubliable. Nos locations sont conçues pour sublimer votre escapade, offrant un mélange harmonieux d'opulence et de sérénité pour une retraite côtière sans égale.",
-  "prices": "Prices",
-  "prices_text": "Our prices are per week and include bedlinnen.",
-  "availability": "Availability",
-  "dates": [
-      "2024-01-06",
-      "2024-04-06",
-      "2024-06-01",
-      "2024-07-06",
-      "2024-08-31",
-      "2024-10-26",
-      "2024-12-21"
-  ],
-  "rentals": [
-    {
-      "name": "Oasis Tranquille",
-      "description": "Plongez dans la sérénité de la Suite Horizon Azur. L'intérieur allie élégance contemporaine, tandis que la terrasse spacieuse offre une vue imprenable sur la Méditerranée. Parfait pour des escapades intimes.",
-      "people": "3",
-      "beds": "2",
-      "baths": "1",
-      "calendar_url": "https://www.remcode.net/gite/cal.ics",
-      "videos": [ 
+    "title": "Locations",
+    "text": "Dans cette section, vous pouvez présenter vos locations disponibles sur votre propriété. Chaque location peut être présentée avec un titre et un sous-titre, offrant aux clients potentiels un aperçu de son charme distinctif. Vous avez la flexibilité d'inclure un nombre illimité de photos pour chaque location, mettant en valeur son intérieur, son extérieur et les vues environnantes.\n\nAjoutez facilement un tableau montrant les tarifs pour chaque période et ajoutez une courte description ou ce qui est inclus et ce qui ne l'est pas.\n\nDe plus, vous pouvez lier chaque location à son calendrier respectif sur des plateformes populaires telles que Airbnb ou Booking.com. Cela permet aux clients de vérifier facilement la disponibilité et de faire des réservations via leur plateforme de réservation préférée.",
+    "prices": "Prix",
+    "prices_text": "Nos prix sont en euros et par semaine.",
+    "availability": "Disponibilité",
+    "dates": [
+        "2024\/01\/14",
+        "2024-04-06",
+        "2024\/05\/03"
+    ],
+    "rentals": [
         {
-          "embedUrl":"https://www.youtube.com/embed/qkehup4b4yM?si=vOtPV1Z-JMVHN54e"
+            "name": "Premier location",
+            "description": "Immerse yourself in the serenity of the Azure Horizon Suite. The interior boasts contemporary elegance, while the expansive terrace offers breathtaking views of the Mediterranean. Perfect for intimate getaways.",
+            "people": "4",
+            "beds": "2",
+            "baths": "1",
+            "calendar_url": "https:\/\/www.remcode.net\/gite\/cal.ics",
+            "videos": [
+                {
+                    "embedUrl": "https:\/\/www.youtube.com\/embed\/qkehup4b4yM?si=vOtPV1Z-JMVHN54e"
+                }
+            ],
+            "prices": [
+                500,
+                600,
+                650,
+                975,
+                600,
+                500,
+                675
+            ],
+            "pictures": [
+                {
+                    "src": "images\/0_0_b9d9122a.jpg"
+                },
+                {
+                    "src": "images\/0_0_d8cb5dba.jpg"
+                },
+                {
+                    "src": "images\/0_Untitled_004.jpeg"
+                },
+                {
+                    "src": "images\/0_Untitled_008.jpeg"
+                },
+                {
+                    "src": "images\/0_Untitled_022.jpeg"
+                }
+            ]
+        },
+        {
+            "name": "Deuxième location",
+            "description": "Experience the warmth of Sunset Haven Villa, where the golden hues of the setting sun paint the surroundings. Indulge in luxurious interiors and unwind on the private patio overlooking the coast.",
+            "people": "6",
+            "beds": "4",
+            "baths": "2",
+            "calendar_url": "https:\/\/www.airbnb.com\/calendar\/ical\/35450605.ics?s=fdfe02b1f240b8b92b457b9153f41fcf",
+            "prices": [
+                600,
+                650,
+                "799",
+                "110",
+                675,
+                "699",
+                725
+            ],
+            "pictures": [
+                {
+                    "src": "images\/1_0_e0a1907b.jpg"
+                }
+            ]
+        },
+        {
+            "name": "Troisième location",
+            "description": "A residence of grand proportions, the Majestic Seaview Residence combines opulence with comfort. Enjoy the spacious living areas, a fully equipped kitchen, and a private garden with direct access to the Mediterranean shoreline.",
+            "people": "6",
+            "beds": "4",
+            "baths": "2",
+            "calendar_url": "https:\/\/www.airbnb.com\/calendar\/ical\/35450605.ics?s=fdfe02b1f240b8b92b457b9153f41fcf",
+            "prices": [
+                600,
+                650,
+                "799",
+                "110000",
+                675,
+                "699",
+                725
+            ],
+            "pictures": [
+                {
+                    "src": "images\/2_2_0cec0dd3.jpg"
+                },
+                {
+                    "src": "images\/2_2_3c9603b1.jpg"
+                },
+                {
+                    "src": "images\/2_2_91f5156a.jpg"
+                }
+            ]
         }
-      ],
-      "prices": [
-        500,
-        600,
-        650,
-        975,
-        600,
-        500,
-        675
-      ]
-    },
-    {
-      "name": "Retraite Dorée",
-      "description": "Découvrez la chaleur de la Villa Havre du Coucher de Soleil, où les teintes dorées du soleil couchant peignent les environs. Laissez-vous choyer dans des intérieurs luxueux et détendez-vous sur la terrasse privée avec vue sur la côte.",
-      "people": "6",
-      "beds": "4",
-      "baths": "2",
-      "calendar_url": "https://www.airbnb.com/calendar/ical/35450605.ics?s=fdfe02b1f240b8b92b457b9153f41fcf",
-      "prices": [
-        600,
-        650,
-        700,
-        1100,
-        675,
-        625,
-        725
-      ]
-    },
-    {
-      "name": "Grandeur en Bord de Mer",
-      "description": "Une résidence de proportions grandioses, la Résidence Majestueuse Vue sur la Mer allie opulence et confort. Profitez des espaces de vie spacieux, d'une cuisine entièrement équipée et d'un jardin privé avec un accès direct au littoral méditerranéen.",
-      "people": "6",
-      "beds": "4",
-      "baths": "2",
-      "calendar_url": "https://www.airbnb.com/calendar/ical/35450605.ics?s=fdfe02b1f240b8b92b457b9153f41fcf",
-      "prices": [
-        600,
-        650,
-        700,
-        1100,
-        675,
-        625,
-        725
-      ]
-    }
-  ]
+    ]
 }

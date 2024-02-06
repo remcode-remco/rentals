@@ -13,7 +13,7 @@ const Paragraph = ({text}:{text?:string}) => {
     // ${showEntireText ? 'opacity-100 max-h-screen' : 'opacity-0 max-h-0'}`}
     // ===============================
     return (
-      <div className="mx-2 md:mx-4 md:my-4 lg:my-0 lg:ml-20 text-xl lg:text-xl text-gray-600 whitespace-pre-line">
+      <div className="mx-2 md:mx-4 md:my-4 lg:my-0 text-xl text-gray-600 whitespace-pre-line">
         <span>{paragraphs[0]}</span>
         <div className={` transition transform duration-1000 
                          `}

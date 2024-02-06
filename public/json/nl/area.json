@@ -1,9 +1,38 @@
 {
-    "title": "Het domein",
-    "text": "Genesteld langs de betoverende kustlijn van de Middellandse Zee is Villa Serenity Retreat een oase van rust en weelde. Temidden van weelderige tuinen en met uitzicht op het azuurblauwe water biedt deze prestigieuze accommodatie een ongeëvenaarde ontsnapping voor degenen die een mix van luxe en natuurlijke schoonheid zoeken.\n\nVerken het Terrein\nBetreed de zonovergoten gronden, versierd met levendige flora en eeuwenoude olijfbomen. Laat je onderdompelen in de rijke geschiedenis van het landgoed, waar elke steen een verhaal vertelt. Of je nu wandelt door de geurige citrusboomgaarden of rust zoekt in de schaduwrijke pergola's, de gronden van Villa Serenity Retreat nodigen je uit om te ontspannen en in contact te komen met de natuur.\n\nOmarm het Erfgoed\nMet een geschiedenis die teruggaat eeuwen, straalt de villa een tijdloze elegantie uit. Zorgvuldig gerestaureerd om zijn architectonische charme te behouden, integreert het pand naadloos moderne voorzieningen met zijn verleden. Bewonder het antieke meubilair en originele kunstwerken die de binnenkant sieren, waardoor een sfeer van verfijnde elegantie ontstaat.\n\nGeniet van Luxe\nDrie verschillende verhuureenheden binnen de villa beloven een op maat gemaakte ervaring. Elk uniek ontworpen, harmoniseren de interieurs comfort met stijl. Ruime woonruimtes, volledig uitgeruste keukens en weelderige slaapkamers bieden een toevluchtsoord binnen een toevluchtsoord. Stap naar buiten naar privéterrassen, waar panoramisch uitzicht en verfrissende zeewind de ervaring aan de Middellandse Zee versterken.",
-    "videos": [ 
+    "title": "The property",
+    "text": "This section can be utilized to showcase your property in detail. Describe the grounds, surrounding areas, and any unique features. You can add an unlimited number of pictures here to give potential guests a comprehensive view of the property, including its exterior, interior, and surroundings.\n\nClick any image to open the gallery.",
+    "videos": [
         {
-          "embedUrl":"https://www.youtube.com/embed/qkehup4b4yM?si=vOtPV1Z-JMVHN54e"
+            "embedUrl": "https:\/\/www.youtube.com\/embed\/qkehup4b4yM?si=vOtPV1Z-JMVHN54e"
+        }
+    ],
+    "pictures": [
+        {
+            "src": "images\/area_0_d8cb5dba - Copy.jpg"
+        },
+        {
+            "src": "images\/area_2_91f5156a.jpg"
+        },
+        {
+            "src": "images\/area_Untitled_004 - Copy.jpeg"
+        },
+        {
+            "src": "images\/area_Untitled_008 - Copy.jpeg"
+        },
+        {
+            "src": "images\/area_gite1_1.jpg"
+        },
+        {
+            "src": "images\/area_gite1_3.jpg"
+        },
+        {
+            "src": "images\/area_guernevelien4.jpg"
+        },
+        {
+            "src": "images\/area_hero.jpg"
+        },
+        {
+            "src": "images\/area_vingt_ans_sans_ferme.jpg"
         }
     ]
 }
