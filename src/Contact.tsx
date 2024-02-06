@@ -8,6 +8,7 @@ import { FiPhone, FiTwitter, FiFacebook } from "react-icons/fi"
 import { RentalsContext, AppContext } from "./Home.tsx"
 import Edit from "./shared/Edit.tsx"
 import EditPicture from "./shared/EditPicture.tsx"
+import { apiUrl } from "./constants/constants.tsx"
 
 interface FormInput {
   name:string;
@@ -104,21 +105,21 @@ const ContactDetails = ({content}:{content?:TextContact}) => {
 }
 
 const ContactForm = ({message}:{message?:string}) => {
-  const [formInput,setFormInput] = useState<FormInput>({name:"",email:"",message:""})
+  const [formInput, setFormInput] = useState<FormInput>({
+    name: "",
+    email: "",
+    message: "",
+  })
   const [confirmation, setConfirmation] = useState<string|null>(null)
-  
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-      setFormInput({
-      ...formInput,
-      [name]: value,
-    })
-  }
+
+  const handleChange = (e: { target: { name: any; value: any } }) => {
+    setFormInput({ ...formInput, [e.target.name]: e.target.value })
+  };
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault()
-
-    fetch("/send_mail.php", {
+console.log(formInput)
+    fetch(apiUrl + "send_mail.php", {
       method: "POST",
       body: JSON.stringify(formInput),
       headers: {
@@ -144,7 +145,7 @@ const ContactForm = ({message}:{message?:string}) => {
       <Heading3 text={message} />
       {confirmation ? 
         <div className="absolute top-0 bottom-0 left-0 right-0 bg-green-50 flex items-center justify-center text-xl rounded">
-          <span className="text-center whitespace-pre-line">{confirmation}</span>
+          <span className="text-center whitespace-pre-line px-5">{confirmation}</span>
         </div>
       :
         <form onSubmit={handleSubmit} className="max-w-xl mx-auto flex flex-col items-center w-full">
