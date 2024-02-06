@@ -63,20 +63,23 @@ const MenuHamburger = ({content,languages}:{content?:TextNavigation,languages?:s
 
   return (
     <div className={`z-10 flex items-center lg:order-2 ${showRental === -1 ? "" : "hidden"}`}>
-      <button onClick={()=>{setLockScroll(true);setShowMenu(true);console.log("MenuHamburger")}} type="button" 
-        className="lg:hidden">
+      <button
+        onClick={()=>{setLockScroll(true);setShowMenu(true)}} 
+        type="button" 
+        className="lg:hidden"
+      >
         <span className="sr-only">Open main menu</span>
         <IconBurger size="40" color={"border rounded p-1 shadow"} />
       </button>
       <div className={`z-50 fixed left-0 right-0 bottom-0 top-0 transform transition duration-500 ${showMenu ? 'translate-x-0' : '-translate-x-full'}`}>
         <ButtonClose showMenu={showMenu} setShowMenu={setShowMenu} setLockScroll={setLockScroll} />
-        <ul className={`h-screen bg-white/90 flex flex-col lg:flex-row items-center justify-center gap-10 text-4xl transform transition duration-1000 ${showMenu ? 'opacity-100' : 'opacity-0'}`}>
+        <ul className={`h-screen bg-white/95 flex flex-col lg:flex-row items-center justify-center gap-10 text-4xl transform transition duration-1000 ${showMenu ? 'opacity-100' : 'opacity-0'}`}>
           <MenuItem setShowMenu={setShowMenu} label={content?.home} item={1} />
           <MenuItem setShowMenu={setShowMenu} label={content?.area} item={2} />
           <MenuItem setShowMenu={setShowMenu} label={content?.rentals} item={3} />
           <MenuItem setShowMenu={setShowMenu} label={content?.contact} item={4} />
-        </ul>
         {languages && <Language languages={languages} />}
+        </ul>
       </div>
     </div>
   )
@@ -100,13 +103,13 @@ export const Menu = ({content}:{content?:TextNavigation}) => {
 
 const MenuItem = ({label,item,setShowMenu}:{label?:string,item:number,setShowMenu?:(showMenu:boolean)=>void}) => {
   const contextValue = useContext(RentalsContext)
-  const { setShowRental } = contextValue as AppContext
+  const { setShowRental, setLockScroll } = contextValue as AppContext
   let link:string = (item === 1) ? "/" : (item === 2) ? "/area" : (item === 3) ? "/rentals" : (item === 4) ? "/contact" :"/"
   
   return (
     label && label.length > 0 && 
       <li className="hover:border-b hover:border-green-800 hover:transition-all hover:delay-100 hover:ease-in px-3 py-2 w-full text-center cursor-pointer">
-        <Link onClick={()=>{setShowRental(-1);setShowMenu ? setShowMenu(false) : null;item === 1 && window.scrollTo({top: 0, left: 0, behavior: 'smooth'})}} to={link}>{label}</Link>
+        <Link onClick={()=>{setLockScroll(false);setShowRental(-1);setShowMenu ? setShowMenu(false) : null;item === 1 && window.scrollTo({top: 0, left: 0, behavior: 'smooth'})}} to={link}>{label}</Link>
       </li>
   )
 }
