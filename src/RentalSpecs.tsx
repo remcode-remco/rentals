@@ -4,8 +4,8 @@ import { FaBed, FaBath } from 'react-icons/fa'
 import { IoMdPerson } from "react-icons/io"
 import { IconContext } from "react-icons"
 
-const RentalSpec = ({spec,specNo}:{spec?:string,specNo:number}) => (
-  <div className="flex flex-col justify-end items-center text-gray-700 mb-5 lg:mb-0 md:py-2 border-2 border-gray-200 lg:my-2 rounded-xl shadow py-3 px-5">
+const RentalSpec = ({spec,specNo,overview}:{spec?:string,specNo:number,overview:boolean}) => (
+  <div className={`flex flex-col justify-end items-center text-gray-700 mb-3 md:py-2 border-2 border-gray-200 md:my-2 rounded-xl shadow ${overview ? "py-1 px-2 md:py-3 md:px-5" : "py-3 px-5"} `}>
     <div className="mb-3 lg:mb-0 text-2xl lg:text-2xl">
       {spec ? spec : ""}
     </div>
@@ -22,11 +22,11 @@ const RentalSpec = ({spec,specNo}:{spec?:string,specNo:number}) => (
   </div>
 )
 
-const RentalSpecs = ({rental}:{rental?:TextRental}) => (
-  <div className="h-full lg:h-auto grid grid-cols-3 gap-3 lg:flex lg:flex-col max-w-xs mx-auto lg:px-10 lg:py-3">
-    <RentalSpec spec={rental?.people} specNo={1} />
-    <RentalSpec spec={rental?.beds} specNo={2} />
-    <RentalSpec spec={rental?.baths} specNo={3} />
+const RentalSpecs = ({rental,overview}:{rental?:TextRental,overview:boolean}) => (
+  <div className={`h-full lg:h-auto grid grid-cols-3 lg:flex ${overview ? "mx-2 gap-2" : "lg:flex-col gap-3 mx-auto"} max-w-xs lg:px-10 lg:py-3`}>
+    <RentalSpec overview={overview} spec={rental?.people} specNo={1} />
+    <RentalSpec overview={overview} spec={rental?.beds} specNo={2} />
+    <RentalSpec overview={overview} spec={rental?.baths} specNo={3} />
   </div>
 )
 

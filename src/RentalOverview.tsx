@@ -32,7 +32,7 @@ const RentalOverview = ({index,rental}:{index:number,rental:TextRental,overview:
       <div className="relative">
         <Heading3 text={rental?.name} />
         {password && <EditRental index={index} section={4} />}
-        <RentalSpecs rental={rental} />
+        <RentalSpecs overview={true} rental={rental} />
       </div>
     </div>
   )

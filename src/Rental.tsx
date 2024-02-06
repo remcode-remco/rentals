@@ -46,7 +46,7 @@ const Rental = ({index,rental,content_prices,text_availability}:{index:number,re
               <div className="lg:grid lg:grid-cols-6">
                 <div className="lg:col-span-6"></div>
                 <div className="lg:col-span-5"><Heading3 text={rental.name} /><Paragraph text={rental.description} /></div>
-                <RentalSpecs rental={rental} />
+                <RentalSpecs overview={false} rental={rental} />
               </div>
             </div>
             <div className="lg:w-full xl:max-w-[1600px] xl:mx-auto lg:order-3 lg:col-span-2 md:mx-2">
