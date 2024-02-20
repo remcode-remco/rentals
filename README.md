@@ -9,7 +9,7 @@ Made in React (vite) with TailwindCSS.
 ## CMS capabilities
 Minimal CMS, allows text and images to be changes. No layout or other changes. Information is stored in JSON files that are edited using PHP scripts, there is no backend! This makes the site easily portable; just copy the files and you're done.
 
-## installation
+## Installation
 To build:
 ```
 npm run build
