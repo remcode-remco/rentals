@@ -1,30 +1,18 @@
-# React + TypeScript + Vite
+# Rental template
+This is a template for a website to showcase vacation rentals (holiday rentals, gites in French).
+See [Demo](https://rental.remcode.net)
+- add an unlimited number of images, these will be displayed as a gallery
+- link an ics calendar to display availability from any of the major platforms (AirBnb, Booking, etc)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Made in React (vite) with TailwindCSS.
 
-Currently, two official plugins are available:
+## CMS capabilities
+Minimal CMS, allows text and images to be changes. No layout or other changes. Information is stored in JSON files that are edited using PHP scripts, there is no backend! This makes the site easily portable; just copy the files and you're done.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+## installation
+To build:
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+npm run build
+```
+Copy files to your webhost that supports PHP, edit `php/password_config.php` and set its permissions to `0700`.
+You can now log in by clicking the lock at the bottom of the page. Hover over any content to make changes.
